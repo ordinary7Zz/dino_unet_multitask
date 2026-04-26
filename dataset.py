@@ -138,6 +138,23 @@ class MultiTaskDataset(Dataset):
             label_mapping[basename] = labels
         return label_mapping
 
+    def _resolve_mask_path(self, normalized_filename):
+        relative_dir = os.path.dirname(normalized_filename)
+        stem = os.path.splitext(os.path.basename(normalized_filename))[0]
+        mask_dir = os.path.join(self.gt_root, relative_dir)
+
+        if not os.path.isdir(mask_dir):
+            return None
+
+        for candidate_name in os.listdir(mask_dir):
+            candidate_stem, _ = os.path.splitext(candidate_name)
+            if candidate_stem == stem:
+                candidate_path = os.path.join(mask_dir, candidate_name)
+                if os.path.isfile(candidate_path):
+                    return candidate_path
+
+        return None
+
     def _build_samples_from_json(self):
         if not self.label_data:
             raise ValueError('label_json_path is required when target_key is provided')
@@ -149,7 +166,8 @@ class MultiTaskDataset(Dataset):
             raise KeyError(f"target_key '{self.target_key}' not found in label JSON")
 
         samples = []
-        missing_paths = []
+        missing_images = []
+        missing_masks = []
 
         for item in self.label_data:
             filename = item.get('filename')
@@ -158,10 +176,13 @@ class MultiTaskDataset(Dataset):
 
             normalized_filename = self._normalize_relative_path(filename)
             image_path = os.path.join(self.image_root, normalized_filename)
-            mask_path = os.path.join(self.gt_root, normalized_filename)
+            if not os.path.exists(image_path):
+                missing_images.append(image_path)
+                continue
 
-            if not os.path.exists(image_path) or not os.path.exists(mask_path):
-                missing_paths.append((image_path, mask_path))
+            mask_path = self._resolve_mask_path(normalized_filename)
+            if mask_path is None:
+                missing_masks.append(normalized_filename)
                 continue
 
             samples.append({
@@ -171,13 +192,16 @@ class MultiTaskDataset(Dataset):
                 'target': item.get(self.target_key, -1)
             })
 
-        if missing_paths:
-            preview = '\n'.join(
-                f"image={image_path}, mask={mask_path}"
-                for image_path, mask_path in missing_paths[:5]
-            )
+        if missing_images:
+            preview = '\n'.join(missing_images[:5])
             raise FileNotFoundError(
-                f"Missing image or mask files for {len(missing_paths)} JSON entries. First entries:\n{preview}"
+                f"Missing image files for {len(missing_images)} JSON entries. First entries:\n{preview}"
+            )
+
+        if missing_masks:
+            preview = '\n'.join(missing_masks[:5])
+            raise FileNotFoundError(
+                f"Missing mask files for {len(missing_masks)} JSON entries. First relative paths:\n{preview}"
             )
 
         if not samples:
