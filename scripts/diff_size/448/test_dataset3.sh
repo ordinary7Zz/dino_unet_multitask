@@ -1,0 +1,125 @@
+#!/bin/bash
+
+# ---------------------- Configuration ----------------------
+# Set CUDA device
+CUDA_VISIBLE_DEVICES="1"
+
+# Image size
+IMG_SIZE=448
+
+# Model checkpoint path
+CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/diff_size/448/diff_size_train_multitask_dataset3/20260112_114530/dino_unet_diff_size_train_multitask_dataset3_epoch_50.pth"
+
+# Validation dataset paths (used to select malignancy threshold by Youden)
+VAL_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_3/images/"
+VAL_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_3/masks/"
+VAL_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_3/dataset3_label.json"
+
+# Configure multiple test dataset paths
+# Configure multiple test dataset paths
+TEST_DATASET_NAMES=(
+    "TN3K"
+    "DDTI"
+    "ThyroidXL"
+    "PKTN"
+    "TN5K"
+    "test_dataset3"
+)
+
+TEST_IMAGE_PATHS=(
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/test_dataset_3/images/"
+)
+
+TEST_MASK_PATHS=(
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/test_dataset_3/masks/"
+)
+
+TEST_LABEL_PATHS=(
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/tn3k_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/DDTI_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/thyroidxl_test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/PKTN_processed_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/TN5K_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/test_dataset_3/test_dataset3_label.json"
+)
+
+# Ensure arrays have the same length
+if [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_IMAGE_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_MASK_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_LABEL_PATHS[@]} ]; then
+    echo "Error: Arrays must have the same length"
+    exit 1
+fi
+
+# Prediction results save path
+SAVE_PATH="./predictions/test_dataset3"
+
+# Whether to save prediction results (true/false)
+SAVE_RESULTS="false"
+
+# Log directory
+LOG_DIR="./logs/test_logs/diff_size/$IMG_SIZE/test_dataset3"
+
+# ---------------------- Execution ----------------------
+
+# Create save directory if it doesn't exist
+mkdir -p "$SAVE_PATH"
+
+# Build test image paths arguments
+TEST_IMAGE_ARGS=()
+for img_path in "${TEST_IMAGE_PATHS[@]}"; do
+    if [ -d "$img_path" ]; then
+        TEST_IMAGE_ARGS+=("--test_image_paths" "$img_path")
+    fi
+done
+
+# Build test mask paths arguments
+TEST_MASK_ARGS=()
+for mask_path in "${TEST_MASK_PATHS[@]}"; do
+    if [ -d "$mask_path" ]; then
+        TEST_MASK_ARGS+=("--test_gt_paths" "$mask_path")
+    fi
+done
+
+# Build test label paths arguments
+TEST_LABEL_ARGS=()
+for label_path in "${TEST_LABEL_PATHS[@]}"; do
+    if [ -f "$label_path" ]; then
+        TEST_LABEL_ARGS+=("--test_label_paths" "$label_path")
+    else
+        # If label file doesn't exist, still add it as empty to maintain order
+        TEST_LABEL_ARGS+=("--test_label_paths" "")
+    fi
+done
+
+# Build test dataset names arguments
+TEST_NAMES_ARGS=()
+for dataset_name in "${TEST_DATASET_NAMES[@]}"; do
+    TEST_NAMES_ARGS+=("--test_dataset_names" "$dataset_name")
+done
+
+# Execute the test command
+python -u test_parallel.py \
+    --threshold_malignancy 0.5 \
+    --cuda_device $CUDA_VISIBLE_DEVICES \
+    --checkpoint "$CHECKPOINT_PATH" \
+    --val_image_path "$VAL_IMAGE_PATH" \
+    --val_gt_path "$VAL_MASK_PATH" \
+    --val_label_path "$VAL_LABEL_PATH" \
+    "${TEST_IMAGE_ARGS[@]}" \
+    "${TEST_MASK_ARGS[@]}" \
+    "${TEST_LABEL_ARGS[@]}" \
+    "${TEST_NAMES_ARGS[@]}" \
+    --save_path "$SAVE_PATH" \
+    --save_results "$SAVE_RESULTS" \
+    --log_dir "$LOG_DIR" \
+    --img_size $IMG_SIZE \
+    --dino_pretrained "true"

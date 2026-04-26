@@ -1,0 +1,33 @@
+# 超大目录
+checkpoints/
+pyradiomics_train/
+classification_model/
+Malignant_Cls_Model/
+resnet50/
+classification/
+infer/
+logs/
+predictions/
+backup/
+
+# 模型文件
+*.pth
+*.pt
+*.bin
+*.pkl
+*.h5
+*.ckpt
+*.tar
+*.zip
+*.rar
+
+# 缓存文件
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.tmp
+
+# 日志
+*.log
+wandb/
