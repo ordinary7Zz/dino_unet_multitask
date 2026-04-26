@@ -65,7 +65,7 @@ for i in "${!TEST_LABEL_PATHS[@]}"; do
 done
 
 # 执行训练脚本
-python train_multitask_gamtl.py \
+python train_multitask_binary_gamtl.py \
     --cuda_device $CUDA_VISIBLE_DEVICES \
     --method "$METHOD" \
     --train_image_path "$TRAIN_IMAGE_PATH" \
@@ -75,6 +75,7 @@ python train_multitask_gamtl.py \
     --test_mask_paths $MASK_PATHS_ARGS \
     --test_label_paths $LABEL_PATHS_ARGS \
     --test_dataset_names $DATASET_NAMES_ARGS \
+    --target_key "LNM_CN01" \
     --epoch $EPOCH \
     --lr $LR \
     --batch_size $BATCH_SIZE \
@@ -82,4 +83,4 @@ python train_multitask_gamtl.py \
     --checkpoint_interval $CHECKPOINT_INTERVAL \
     --eval_interval $EVAL_INTERVAL \
     --dataset_name "$DATASET_NAME" \
-    --task_schedule "seg,bm"
+    --task_schedule "seg,cls"

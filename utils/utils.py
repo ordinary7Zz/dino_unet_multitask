@@ -1,11 +1,13 @@
 import torch
 import numpy as np
 
+
 def log_print(message, log_file=None):
     print(message, end='')
     if log_file is not None:
         log_file.write(message)
-        log_file.flush() 
+        log_file.flush()
+
 
 def set_stage_trainability(model, stage, unfreeze_all_in_stage3=False, unfreeze_last_n=2):
     """
@@ -53,6 +55,7 @@ def set_stage_trainability(model, stage, unfreeze_all_in_stage3=False, unfreeze_
             if name.startswith("dino"):
                 param.requires_grad = True
 
+
 def build_optimizer(model, head_lr, backbone_lr, weight_decay):
     # 把参数分成：backbone(可训练部分) vs 其他(head/decoder)
     backbone_params, head_params = [], []
@@ -72,6 +75,66 @@ def build_optimizer(model, head_lr, backbone_lr, weight_decay):
 
     return torch.optim.AdamW(param_groups, weight_decay=weight_decay)
 
+
+def _auto_gla_tau(p_neg, p_pos, gla_tau, log_file=None):
+    imbalance_ratio = max(p_neg, p_pos) / min(p_neg, p_pos)
+
+    if gla_tau is not None:
+        log_print(f"Using manual tau={gla_tau:.2f}\n", log_file)
+        return gla_tau
+
+    if imbalance_ratio < 1.2:
+        gla_tau = 0.3
+    elif imbalance_ratio < 1.5:
+        gla_tau = 0.5
+    elif imbalance_ratio < 2.5:
+        gla_tau = 0.7
+    else:
+        gla_tau = 1.0
+
+    log_print(f"Auto-adjusted tau={gla_tau:.2f} (imbalance_ratio={imbalance_ratio:.2f})\n", log_file)
+    return gla_tau
+
+
+def gla_params_binary(train_label_path, target_key, gla_tau, log_file=None):
+    if train_label_path:
+        import json
+        with open(train_label_path, 'r', encoding='utf-8') as f:
+            train_labels = json.load(f)
+        if isinstance(train_labels, dict):
+            items = list(train_labels.values())
+        else:
+            items = train_labels
+
+        neg_count = sum(1 for item in items if item.get(target_key) == 0)
+        pos_count = sum(1 for item in items if item.get(target_key) == 1)
+        missing_count = sum(1 for item in items if item.get(target_key, -1) == -1)
+        total_binary = neg_count + pos_count
+
+        epsilon = 1e-8
+        if total_binary > 0:
+            p_neg = (neg_count + epsilon) / (total_binary + 2 * epsilon)
+            p_pos = (pos_count + epsilon) / (total_binary + 2 * epsilon)
+        else:
+            p_neg = 0.5
+            p_pos = 0.5
+
+        log_print(
+            f"Training set - {target_key}: Negative={neg_count} ({p_neg:.2%}), Positive={pos_count} ({p_pos:.2%}), Missing={missing_count}\n",
+            log_file
+        )
+
+        gla_tau = _auto_gla_tau(p_neg, p_pos, gla_tau, log_file=log_file)
+        log_print(f"GLA parameters for {target_key}: p_neg={p_neg:.4f}, p_pos={p_pos:.4f}, tau={gla_tau:.2f}\n", log_file)
+        log_print(f"Logit adjustment magnitude: {abs(gla_tau * (np.log(p_pos) - np.log(p_neg))):.4f}\n", log_file)
+    else:
+        p_neg = 0.5
+        p_pos = 0.5
+        gla_tau = gla_tau if gla_tau is not None else 0.5
+
+    return p_neg, p_pos, gla_tau
+
+
 def gla_params(train_label_path, gla_tau, log_file=None):
     # 统计训练集类别频率用于GLA损失函数
     if train_label_path:
@@ -82,12 +145,12 @@ def gla_params(train_label_path, gla_tau, log_file=None):
             items = list(train_labels.values())
         else:
             items = train_labels
-        
+
         # 统计良恶性样本数量
         benign_count = sum(1 for item in items if item.get('malignancy') == 0)
         malignant_count = sum(1 for item in items if item.get('malignancy') == 1)
         total_malignancy = benign_count + malignant_count
-        
+
         # 添加数值稳定性保护，防止除零错误
         epsilon = 1e-8
         if total_malignancy > 0:
@@ -96,30 +159,14 @@ def gla_params(train_label_path, gla_tau, log_file=None):
         else:
             p_benign = 0.5
             p_malignant = 0.5
-        
+
         log_print(f"Training set - Benign/Malignant: Benign={benign_count} ({p_benign:.2%}), Malignant={malignant_count} ({p_malignant:.2%})\n", log_file)
-        
-        # 自适应tau策略：根据类别不平衡程度调整
-        imbalance_ratio = max(p_benign, p_malignant) / min(p_benign, p_malignant)
-        
-        if gla_tau is not None:
-            gla_tau = gla_tau
-            log_print(f"Using manual tau={gla_tau:.2f}\n", log_file)
-        else:
-            # 自适应tau公式：
-            if imbalance_ratio < 1.2:  # 几乎平衡 (60:40以内)
-                gla_tau = 0.3
-            elif imbalance_ratio < 1.5:  # 轻度不平衡 (60:40到75:25)
-                gla_tau = 0.5
-            elif imbalance_ratio < 2.5:  # 中度不平衡 (75:25到2.5:1)
-                gla_tau = 0.7
-            else:  # 严重不平衡
-                gla_tau = 1.0
-            log_print(f"Auto-adjusted tau={gla_tau:.2f} (imbalance_ratio={imbalance_ratio:.2f})\n", log_file)
-        
+
+        gla_tau = _auto_gla_tau(p_benign, p_malignant, gla_tau, log_file=log_file)
+
         log_print(f"GLA parameters: p_benign={p_benign:.4f}, p_malignant={p_malignant:.4f}, tau={gla_tau:.2f}\n", log_file)
         log_print(f"Logit adjustment magnitude: {abs(gla_tau * (np.log(p_malignant) - np.log(p_benign))):.4f}\n", log_file)
-        
+
         # 统计TI-RADS类别分布（1-5类）
         tirads_counts = [0] * 5
         for item in items:
@@ -129,7 +176,6 @@ def gla_params(train_label_path, gla_tau, log_file=None):
 
         total_tirads = sum(tirads_counts)
         if total_tirads > 0:
-            # 添加数值稳定性保护，防止除零错误
             p_tirads = torch.tensor([(c + epsilon) / (total_tirads + 5 * epsilon) for c in tirads_counts], dtype=torch.float32)
         else:
             p_tirads = torch.ones(5, dtype=torch.float32) / 5.0

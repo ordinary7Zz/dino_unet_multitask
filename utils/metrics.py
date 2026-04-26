@@ -350,6 +350,27 @@ def multiclass_bootstrap_metrics(probs_list, labels_list, n_boot=2000, ci=0.95, 
 # =========================
 # 模型评估（逐病例 + CI95）
 # =========================
+def _segmentation_results_dict(all_dice_values, all_hd_values):
+    dice_mean, dice_ci95 = bootstrap_ci(all_dice_values)
+    hd95_mean, hd95_ci95 = bootstrap_ci(all_hd_values)
+
+    rounded_dice_values = [round(float(v), 4) for v in all_dice_values]
+    rounded_hd_values = [round(float(v), 4) for v in all_hd_values]
+
+    return {
+        "Dice": {
+            "mean": round(dice_mean, 4),
+            "CI95": (round(dice_ci95[0], 4), round(dice_ci95[1], 4)),
+            "values": rounded_dice_values,
+        },
+        "HD95": {
+            "mean": round(hd95_mean, 4),
+            "CI95": (round(hd95_ci95[0], 4), round(hd95_ci95[1], 4)),
+            "values": rounded_hd_values,
+        },
+    }
+
+
 def evaluate_model(net, dataloader, device, threshold=0.5):
     """
     Evaluate segmentation model with:
@@ -367,23 +388,18 @@ def evaluate_model(net, dataloader, device, threshold=0.5):
 
     all_dice_values = []
     all_hd_values = []
-
-    # For classification
     all_malignancy_probs = []
     all_malignancy_labels = []
-
     all_tirads_probs = []
     all_tirads_labels = []
 
     for batch in tqdm(dataloader, desc="Evaluating Model", leave=False):
-        # 兼容不同 batch 格式，并收集分类标签/概率
         if isinstance(batch, dict):
             image = batch["image"]
             mask_true = batch["label"]
             malignancy_labels = batch.get('malignancy', None)
             tirads_labels = batch.get('tirads', None)
         else:
-            # 支持 (image, label, malignancy, tirads)
             if len(batch) >= 4:
                 image, mask_true, malignancy_labels, tirads_labels = batch[0], batch[1], batch[2], batch[3]
             else:
@@ -396,15 +412,12 @@ def evaluate_model(net, dataloader, device, threshold=0.5):
         with torch.no_grad():
             outputs = net(image)
 
-            # 支持多输出 (mask, malignancy_logits, tirads_logits)
             if isinstance(outputs, (list, tuple)):
                 mask_pred = outputs[0]
 
-                # collect malignancy
                 if len(outputs) > 1 and malignancy_labels is not None:
                     malignancy_logits = outputs[1]
                     malignancy_labels = malignancy_labels.to(device)
-                    # valid mask
                     valid_m = (malignancy_labels != -1)
                     if valid_m.any():
                         mal_pred = malignancy_logits[valid_m]
@@ -414,7 +427,6 @@ def evaluate_model(net, dataloader, device, threshold=0.5):
                         all_malignancy_probs.extend(mal_probs.detach().cpu().numpy().tolist())
                         all_malignancy_labels.extend(malignancy_labels[valid_m].cpu().numpy().tolist())
 
-                # collect tirads
                 if len(outputs) > 2 and tirads_labels is not None:
                     tirads_logits = outputs[2]
                     tirads_labels = tirads_labels.to(device)
@@ -431,54 +443,25 @@ def evaluate_model(net, dataloader, device, threshold=0.5):
             mask_pred_binary = (mask_pred > 0.5).float()
 
         batch_size = image.size(0)
-
-        # 逐病例计算 Dice / HD95
         for i in range(batch_size):
             pred_i = mask_pred_binary[i]
             true_i = (mask_true[i] > 0.5).float()
+            all_dice_values.append(dice_calculator(pred_i, true_i).item())
 
-            # Dice
-            dice_i = dice_calculator(pred_i, true_i).item()
-            all_dice_values.append(dice_i)
-
-            # HD95
             try:
-                hd_i = hd_calculator(pred_i, true_i).item()
-                all_hd_values.append(hd_i)
+                all_hd_values.append(hd_calculator(pred_i, true_i).item())
             except Exception as e:
                 print(f"[Warning] HD95 failed on sample {i}: {e}")
 
     net.train()
 
-    # =========================
-    # 计算 mean + CI95
-    # =========================
-    dice_mean, dice_ci95 = bootstrap_ci(all_dice_values)
-    hd95_mean, hd95_ci95 = bootstrap_ci(all_hd_values)
+    results = _segmentation_results_dict(all_dice_values, all_hd_values)
+    results["Malignancy"] = {}
+    results["TIRADS"] = {}
 
-    # classification bootstrap
     malignancy_metrics_ci = classification_bootstrap_metrics(all_malignancy_probs, all_malignancy_labels, threshold=threshold)
     tirads_metrics_ci = multiclass_bootstrap_metrics(all_tirads_probs, all_tirads_labels)
 
-    rounded_dice_values = [round(float(v), 4) for v in all_dice_values]
-    rounded_hd_values = [round(float(v), 4) for v in all_hd_values]
-
-    results = {
-        "Dice": {
-            "mean": round(dice_mean, 4),
-            "CI95": (round(dice_ci95[0], 4), round(dice_ci95[1], 4)),
-            "values": rounded_dice_values,
-        },
-        "HD95": {
-            "mean": round(hd95_mean, 4),
-            "CI95": (round(hd95_ci95[0], 4), round(hd95_ci95[1], 4)),
-            "values": rounded_hd_values,
-        },
-        "Malignancy": {},
-        "TIRADS": {},
-    }
-
-    # 填充良/恶性结果（包含均值与 CI）
     for k, v in malignancy_metrics_ci.items():
         mean_v, (low_v, high_v) = v
         results['Malignancy'][k] = {
@@ -486,10 +469,81 @@ def evaluate_model(net, dataloader, device, threshold=0.5):
             'CI95': (round(low_v, 4), round(high_v, 4)),
         }
 
-    # 填充 TIRADS 结果
     for k, v in tirads_metrics_ci.items():
         mean_v, (low_v, high_v) = v
         results['TIRADS'][k] = {
+            'mean': round(mean_v, 4),
+            'CI95': (round(low_v, 4), round(high_v, 4)),
+        }
+
+    return results
+
+
+def evaluate_model_binary_target(net, dataloader, device, threshold=0.5, target_field='target', target_name='BinaryTarget'):
+    net.eval()
+
+    dice_calculator = Dice()
+    hd_calculator = HD95()
+
+    all_dice_values = []
+    all_hd_values = []
+    all_target_probs = []
+    all_target_labels = []
+
+    for batch in tqdm(dataloader, desc="Evaluating Model", leave=False):
+        if isinstance(batch, dict):
+            image = batch["image"]
+            mask_true = batch["label"]
+            target_labels = batch.get(target_field, None)
+        else:
+            image, mask_true = batch[0], batch[1]
+            target_labels = batch[2] if len(batch) >= 3 else None
+
+        image = image.to(device)
+        mask_true = mask_true.to(device)
+
+        with torch.no_grad():
+            outputs = net(image)
+
+            if isinstance(outputs, (list, tuple)):
+                mask_pred = outputs[0]
+                if len(outputs) > 1 and target_labels is not None:
+                    target_logits = outputs[1]
+                    target_labels = target_labels.to(device)
+                    valid = (target_labels != -1)
+                    if valid.any():
+                        target_pred = target_logits[valid]
+                        if target_pred.dim() == 1:
+                            target_pred = target_pred.unsqueeze(1)
+                        target_probs = torch.sigmoid(target_pred).squeeze(1)
+                        all_target_probs.extend(target_probs.detach().cpu().numpy().tolist())
+                        all_target_labels.extend(target_labels[valid].cpu().numpy().tolist())
+            else:
+                mask_pred = outputs
+
+            mask_pred = torch.sigmoid(mask_pred)
+            mask_pred_binary = (mask_pred > 0.5).float()
+
+        batch_size = image.size(0)
+        for i in range(batch_size):
+            pred_i = mask_pred_binary[i]
+            true_i = (mask_true[i] > 0.5).float()
+            all_dice_values.append(dice_calculator(pred_i, true_i).item())
+
+            try:
+                all_hd_values.append(hd_calculator(pred_i, true_i).item())
+            except Exception as e:
+                print(f"[Warning] HD95 failed on sample {i}: {e}")
+
+    net.train()
+
+    results = _segmentation_results_dict(all_dice_values, all_hd_values)
+    results[target_name] = {}
+
+    binary_metrics_ci = classification_bootstrap_metrics(all_target_probs, all_target_labels, threshold=threshold)
+    for k, v in binary_metrics_ci.items():
+        mean_v, (low_v, high_v) = v
+        results[target_name][k] = {
             'mean': round(mean_v, 4),
             'CI95': (round(low_v, 4), round(high_v, 4)),
         }
