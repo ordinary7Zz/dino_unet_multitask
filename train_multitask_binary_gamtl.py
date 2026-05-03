@@ -16,7 +16,8 @@ from dataset import MultiTaskDataset
 from dino_unet_multitask import DINOv3_S_UNet_MULTITASK
 from utils.metrics import evaluate_model_binary_target
 from utils.loss import structure_loss, benign_malignant_loss_gla
-from utils.utils import gla_params_binary, log_print
+from utils.binary_stats import gla_params_binary
+from utils.utils import log_print
 
 parser = argparse.ArgumentParser("DINOV3-UNet with GA-MTL for generic binary classification")
 parser.add_argument("--method", type=str, required=True)

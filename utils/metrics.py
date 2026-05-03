@@ -656,19 +656,23 @@ def compute_youden_threshold(
     dataloader,
     device,
     thresholds: Optional[np.ndarray] = None,
+    target_field: str = 'malignancy',
 ):
-    """Compute the best malignancy threshold on a validation dataloader via Youden index.
+    """Compute the best binary threshold on a validation dataloader via Youden index.
 
     This function ONLY computes the threshold; it does NOT evaluate test performance.
     Compute it once on the validation set and reuse it across multiple test datasets.
+
+    Args:
+      target_field: label field name in batch dict, e.g. 'malignancy' or 'target'.
 
     Returns:
       threshold_info dict with keys: best_threshold, youden, sensitivity, specificity
     """
     net.eval()
 
-    all_malignancy_probs: List[float] = []
-    all_malignancy_labels: List[int] = []
+    all_target_probs: List[float] = []
+    all_target_labels: List[int] = []
 
     try:
         num_batches = len(dataloader)
@@ -678,20 +682,20 @@ def compute_youden_threshold(
     for batch in tqdm(
         dataloader,
         total=num_batches,
-        desc='Collecting Malignancy Probs (Youden)',
+        desc='Collecting Target Probs (Youden)',
         unit='batch',
         leave=False,
     ):
         try:
             if isinstance(batch, dict):
                 image = batch['image']
-                malignancy_labels = batch['malignancy']
+                target_labels = batch[target_field]
             else:
                 image = batch[0]
-                malignancy_labels = batch[2]
+                target_labels = batch[2]
 
             image = image.to(device=device)
-            malignancy_labels = malignancy_labels.to(device=device)
+            target_labels = target_labels.to(device=device)
 
             with torch.no_grad():
                 outputs = net(image)
@@ -699,30 +703,30 @@ def compute_youden_threshold(
                 if not isinstance(outputs, (list, tuple)):
                     continue
 
-                malignancy_pred = outputs[1]
+                target_pred = outputs[1]
 
-                valid_mal_mask = (malignancy_labels != -1)
-                if not valid_mal_mask.any():
+                valid_mask = (target_labels != -1)
+                if not valid_mask.any():
                     continue
 
-                valid_mal_pred = malignancy_pred[valid_mal_mask]
-                valid_mal_labels = malignancy_labels[valid_mal_mask]
+                valid_pred = target_pred[valid_mask]
+                valid_labels = target_labels[valid_mask]
 
-                if valid_mal_pred.dim() == 1:
-                    valid_mal_pred = valid_mal_pred.unsqueeze(1)
-                mal_probs = torch.sigmoid(valid_mal_pred).squeeze(1)
+                if valid_pred.dim() == 1:
+                    valid_pred = valid_pred.unsqueeze(1)
+                target_probs = torch.sigmoid(valid_pred).squeeze(1)
 
-                all_malignancy_probs.extend(mal_probs.detach().cpu().numpy().tolist())
-                all_malignancy_labels.extend(valid_mal_labels.detach().cpu().numpy().tolist())
+                all_target_probs.extend(target_probs.detach().cpu().numpy().tolist())
+                all_target_labels.extend(valid_labels.detach().cpu().numpy().tolist())
         except Exception as e:
-            print(f"Error collecting malignancy probs: {e}")
+            print(f"Error collecting target probs: {e}")
             continue
 
     net.train()
 
     threshold_info = find_best_threshold_by_youden_index(
-        all_malignancy_labels,
-        all_malignancy_probs,
+        all_target_labels,
+        all_target_probs,
         thresholds=thresholds,
     )
 
