@@ -76,3 +76,57 @@ def gla_params_binary(train_label_path, target_key, gla_tau, log_file=None):
         gla_tau = gla_tau if gla_tau is not None else 0.5
 
     return p_neg, p_pos, gla_tau
+
+
+def build_binary_sampler_weights(samples, target_key, log_file=None):
+    neg_count = 0
+    pos_count = 0
+    missing_count = 0
+
+    for sample in samples:
+        target = sample.get('target', -1)
+        if target == 0:
+            neg_count += 1
+        elif target == 1:
+            pos_count += 1
+        else:
+            missing_count += 1
+
+    if neg_count == 0 or pos_count == 0:
+        raise ValueError(
+            f"Cannot build binary sampler weights for {target_key}: "
+            f"negative_count={neg_count}, positive_count={pos_count}. Both classes must exist."
+        )
+
+    neg_weight = 1.0 / float(neg_count)
+    pos_weight = 1.0 / float(pos_count)
+    missing_weight = min(neg_weight, pos_weight)
+
+    sample_weights = []
+    for sample in samples:
+        target = sample.get('target', -1)
+        if target == 0:
+            sample_weights.append(neg_weight)
+        elif target == 1:
+            sample_weights.append(pos_weight)
+        else:
+            sample_weights.append(missing_weight)
+
+    log_print(
+        f"Sampler stats for {target_key}: Negative={neg_count}, Positive={pos_count}, Missing={missing_count}\n",
+        log_file,
+    )
+    log_print(
+        f"Sampler weights for {target_key}: neg_weight={neg_weight:.8f}, pos_weight={pos_weight:.8f}, missing_weight={missing_weight:.8f}\n",
+        log_file,
+    )
+
+    return {
+        'negative_count': neg_count,
+        'positive_count': pos_count,
+        'missing_count': missing_count,
+        'neg_weight': neg_weight,
+        'pos_weight': pos_weight,
+        'missing_weight': missing_weight,
+        'sample_weights': sample_weights,
+    }
