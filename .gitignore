@@ -6,7 +6,6 @@ Malignant_Cls_Model/
 resnet50/
 classification/
 infer/
-logs/
 predictions/
 backup/
 
