@@ -29,5 +29,4 @@ __pycache__/
 *.tmp
 
 # 日志
-*.log
 wandb/
