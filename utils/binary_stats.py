@@ -78,7 +78,10 @@ def gla_params_binary(train_label_path, target_key, gla_tau, log_file=None):
     return p_neg, p_pos, gla_tau
 
 
-def build_binary_sampler_weights(samples, target_key, log_file=None):
+def build_binary_sampler_weights(samples, target_key, pos_fraction=0.3, log_file=None):
+    if not (0.0 < float(pos_fraction) < 1.0):
+        raise ValueError(f"pos_fraction must be in (0, 1), got {pos_fraction}")
+
     neg_count = 0
     pos_count = 0
     missing_count = 0
@@ -98,9 +101,11 @@ def build_binary_sampler_weights(samples, target_key, log_file=None):
             f"negative_count={neg_count}, positive_count={pos_count}. Both classes must exist."
         )
 
-    neg_weight = 1.0 / float(neg_count)
-    pos_weight = 1.0 / float(pos_count)
-    missing_weight = min(neg_weight, pos_weight)
+    valid_count = neg_count + pos_count
+    neg_fraction = 1.0 - float(pos_fraction)
+    pos_weight = float(pos_fraction) / float(pos_count)
+    neg_weight = neg_fraction / float(neg_count)
+    missing_weight = 0.0
 
     sample_weights = []
     for sample in samples:
@@ -112,12 +117,27 @@ def build_binary_sampler_weights(samples, target_key, log_file=None):
         else:
             sample_weights.append(missing_weight)
 
+    expected_pos_draws = valid_count * float(pos_fraction)
+    expected_neg_draws = valid_count * neg_fraction
+
     log_print(
-        f"Sampler stats for {target_key}: Negative={neg_count}, Positive={pos_count}, Missing={missing_count}\n",
+        f"Sampler stats for {target_key}: Negative={neg_count}, Positive={pos_count}, Missing={missing_count}, Valid={valid_count}\n",
+        log_file,
+    )
+    log_print(
+        f"Sampler config for {target_key}: target_pos_fraction={float(pos_fraction):.4f}, target_neg_fraction={neg_fraction:.4f}\n",
         log_file,
     )
     log_print(
         f"Sampler weights for {target_key}: neg_weight={neg_weight:.8f}, pos_weight={pos_weight:.8f}, missing_weight={missing_weight:.8f}\n",
+        log_file,
+    )
+    log_print(
+        f"Expected sampled draws per default epoch for {target_key}: Negative≈{expected_neg_draws:.1f}, Positive≈{expected_pos_draws:.1f}\n",
+        log_file,
+    )
+    log_print(
+        f"Expected repeat factor per default epoch for {target_key}: neg≈{expected_neg_draws / neg_count:.2f}x, pos≈{expected_pos_draws / pos_count:.2f}x\n",
         log_file,
     )
 
@@ -125,6 +145,9 @@ def build_binary_sampler_weights(samples, target_key, log_file=None):
         'negative_count': neg_count,
         'positive_count': pos_count,
         'missing_count': missing_count,
+        'valid_count': valid_count,
+        'target_pos_fraction': float(pos_fraction),
+        'target_neg_fraction': neg_fraction,
         'neg_weight': neg_weight,
         'pos_weight': pos_weight,
         'missing_weight': missing_weight,

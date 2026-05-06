@@ -63,7 +63,9 @@ parser.add_argument('--steps_per_epoch', type=int, default=None,
                     help='Number of optimizer steps per epoch. If None, use len(dataloader)//len(schedule).')
 parser.add_argument('--use_amp', action='store_true', help='Use torch.cuda.amp mixed precision')
 parser.add_argument('--sampler_num_samples', type=int, default=None,
-                    help='Number of samples drawn by WeightedRandomSampler. If None, use len(dataset).')
+                    help='Number of samples drawn by WeightedRandomSampler. If None, use the number of valid classification labels.')
+parser.add_argument('--sampler_pos_fraction', type=float, default=0.3,
+                    help='Target positive-class fraction for WeightedRandomSampler. Must be in (0,1). Default: 0.3')
 
 args = parser.parse_args()
 args.dino_pretrained = str(args.dino_pretrained).lower() in ('true', '1', 'yes', 'y')
@@ -185,15 +187,20 @@ def main(args):
             mode='train',
             target_key=args.target_key,
         )
-        sampler_stats = build_binary_sampler_weights(dataset.samples, args.target_key, log_file=log_file)
-        sampler_num_samples = args.sampler_num_samples if args.sampler_num_samples is not None else len(dataset)
+        sampler_stats = build_binary_sampler_weights(
+            dataset.samples,
+            args.target_key,
+            pos_fraction=args.sampler_pos_fraction,
+            log_file=log_file,
+        )
+        sampler_num_samples = args.sampler_num_samples if args.sampler_num_samples is not None else sampler_stats['valid_count']
         sampler = WeightedRandomSampler(
             weights=torch.DoubleTensor(sampler_stats['sample_weights']),
             num_samples=sampler_num_samples,
             replacement=True,
         )
         log_print(
-            f"Using WeightedRandomSampler: replacement=True, num_samples={sampler_num_samples}\n",
+            f"Using WeightedRandomSampler: replacement=True, num_samples={sampler_num_samples}, pos_fraction={args.sampler_pos_fraction:.4f}\n",
             log_file,
         )
         dataloader = DataLoader(dataset, batch_size=args.batch_size, sampler=sampler, num_workers=8, drop_last=True)
