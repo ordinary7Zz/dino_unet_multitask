@@ -74,3 +74,25 @@ Testing on FTCPTC...
   FTCPTC - Dice: 0.8698, HD95: 7.4961
   FTCPTC - FTCPTC: Acc=0.6841, Prec=0.5612, Rec=0.1411, F1=0.2246, AUROC=0.6357, AUPRC=0.4709, ECE=0.2864
 Epoch:26: seg_loss(avg):0.3700, cls_loss(avg):0.0545
+Epoch:27: seg_loss(avg):0.3577, cls_loss(avg):0.0494
+Epoch:28: seg_loss(avg):0.3535, cls_loss(avg):0.0314
+Epoch:29: seg_loss(avg):0.3598, cls_loss(avg):0.0369
+Epoch:30: seg_loss(avg):0.3505, cls_loss(avg):0.0220
+Saved checkpoint at epoch 30
+
+Validating epoch 30 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8765, HD95: 7.7936
+  FTCPTC - FTCPTC: Acc=0.6841, Prec=0.6930, Rec=0.0553, F1=0.1019, AUROC=0.5984, AUPRC=0.4388, ECE=0.3052
+Epoch:31: seg_loss(avg):0.3495, cls_loss(avg):0.0342
+Epoch:32: seg_loss(avg):0.3345, cls_loss(avg):0.0218
+Epoch:33: seg_loss(avg):0.3437, cls_loss(avg):0.0182
+Epoch:34: seg_loss(avg):0.3225, cls_loss(avg):0.0165
+Epoch:35: seg_loss(avg):0.3386, cls_loss(avg):0.0130
+Saved checkpoint at epoch 35
+
+Validating epoch 35 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8748, HD95: 8.1456
+  FTCPTC - FTCPTC: Acc=0.6818, Prec=0.6091, Rec=0.0670, F1=0.1202, AUROC=0.5865, AUPRC=0.4146, ECE=0.3104
+Epoch:36: seg_loss(avg):0.3270, cls_loss(avg):0.0067
