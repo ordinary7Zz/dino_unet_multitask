@@ -1,0 +1,56 @@
+Training started at Sat Jan 10 23:42:43 2026
+Method: dino_unet
+Dataset: diff_size_train_multitask_dataset4
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 448 x 448
+DINO pretrained: True
+Use Dilation: False
+Training set - Benign/Malignant: Benign=25859 (73.49%), Malignant=9327 (26.51%)
+Auto-adjusted tau=1.00 (imbalance_ratio=2.77)
+GLA parameters: p_benign=0.7349, p_malignant=0.2651, tau=1.00
+Logit adjustment magnitude: 1.0197
+Training set - TI-RADS distribution (1-5): [52, 892, 4931, 7230, 4307]
+TI-RADS probabilities: [0.0029864460229873657, 0.05122903734445572, 0.28319549560546875, 0.4152308702468872, 0.24735814332962036]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm', 'tirads']
+steps_per_epoch (optimizer steps): 977
+Error occurred: CUDA out of memory. Tried to allocate 56.00 MiB. GPU 2 has a total capacity of 47.54 GiB of which 28.00 MiB is free. Process 924446 has 32.22 GiB memory in use. Process 380065 has 11.91 GiB memory in use. Process 1085116 has 3.34 GiB memory in use. Of the allocated memory 3.01 GiB is allocated by PyTorch, and 17.04 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask_gamtl.py", line 301, in main
+    pred_seg, pred_bm, pred_ti = model(x)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dino_unet_multitask.py", line 141, in forward
+    all_features = self.dino(x)  # 获取所有层次的特征
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/timm/models/_features.py", line 476, in forward
+    features = self.model.forward_intermediates(
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/timm/models/eva.py", line 953, in forward_intermediates
+    x = blk(x, rope=rot_pos_embed)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/timm/models/eva.py", line 392, in forward
+    x = x + self.drop_path2(self.gamma_2 * self.mlp(self.norm2(x)))
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/timm/layers/mlp.py", line 48, in forward
+    x = self.fc1(x)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/miniconda3/envs/pyradio/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 56.00 MiB. GPU 2 has a total capacity of 47.54 GiB of which 28.00 MiB is free. Process 924446 has 32.22 GiB memory in use. Process 380065 has 11.91 GiB memory in use. Process 1085116 has 3.34 GiB memory in use. Of the allocated memory 3.01 GiB is allocated by PyTorch, and 17.04 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+

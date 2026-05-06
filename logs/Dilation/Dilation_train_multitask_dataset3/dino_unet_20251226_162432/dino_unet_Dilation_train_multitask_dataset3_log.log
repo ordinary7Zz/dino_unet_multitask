@@ -1,0 +1,425 @@
+Training started at Fri Dec 26 16:24:32 2025
+Method: dino_unet
+Dataset: Dilation_train_multitask_dataset3
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: True
+Training set - Benign/Malignant: Benign=10415 (58.60%), Malignant=7359 (41.40%)
+Auto-adjusted tau=0.50 (imbalance_ratio=1.42)
+GLA parameters: p_benign=0.5860, p_malignant=0.4140, tau=0.50
+Logit adjustment magnitude: 0.1737
+Training set - TI-RADS distribution (1-5): [0, 0, 0, 0, 0]
+TI-RADS probabilities: [0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm']
+steps_per_epoch (optimizer steps): 740
+Epoch:1: seg_loss(avg):0.6142, bm_loss(avg):0.5021, tirads_loss(avg):0.0000
+Epoch:2: seg_loss(avg):0.4736, bm_loss(avg):0.4097, tirads_loss(avg):0.0000
+Epoch:3: seg_loss(avg):0.4463, bm_loss(avg):0.3651, tirads_loss(avg):0.0000
+Epoch:4: seg_loss(avg):0.4394, bm_loss(avg):0.3502, tirads_loss(avg):0.0000
+Epoch:5: seg_loss(avg):0.4269, bm_loss(avg):0.3270, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8631, HD95: 13.7414
+  TN3K - BM: Acc=0.7476, Prec=0.6484, Rec=0.7500, F1=0.6955, AUROC=0.8159, AUPRC=0.7526
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7286, HD95: 28.4365
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8750, HD95: 6.8472
+  ThyroidXL - BM: Acc=0.7526, Prec=0.9234, Rec=0.5093, F1=0.6565, AUROC=0.9310, AUPRC=0.9128
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7897, HD95: 16.6926
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8193, HD95: 12.7318
+  TN5K - BM: Acc=0.8970, Prec=0.9099, Rec=0.9535, F1=0.9312, AUROC=0.9385, AUPRC=0.9755
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:6: seg_loss(avg):0.4171, bm_loss(avg):0.3043, tirads_loss(avg):0.0000
+Epoch:7: seg_loss(avg):0.4090, bm_loss(avg):0.2883, tirads_loss(avg):0.0000
+Epoch:8: seg_loss(avg):0.4022, bm_loss(avg):0.2785, tirads_loss(avg):0.0000
+Epoch:9: seg_loss(avg):0.3949, bm_loss(avg):0.2612, tirads_loss(avg):0.0000
+Epoch:10: seg_loss(avg):0.3996, bm_loss(avg):0.2502, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8674, HD95: 13.4449
+  TN3K - BM: Acc=0.6808, Prec=0.5568, Rec=0.8305, F1=0.6667, AUROC=0.8117, AUPRC=0.7592
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7228, HD95: 28.7461
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8778, HD95: 6.5785
+  ThyroidXL - BM: Acc=0.8526, Prec=0.8364, Rec=0.8485, F1=0.8424, AUROC=0.9332, AUPRC=0.9132
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8127, HD95: 14.0208
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8385, HD95: 9.5117
+  TN5K - BM: Acc=0.8830, Prec=0.8896, Rec=0.9590, F1=0.9230, AUROC=0.9433, AUPRC=0.9777
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:11: seg_loss(avg):0.3908, bm_loss(avg):0.2360, tirads_loss(avg):0.0000
+Epoch:12: seg_loss(avg):0.3861, bm_loss(avg):0.2309, tirads_loss(avg):0.0000
+Epoch:13: seg_loss(avg):0.3807, bm_loss(avg):0.2103, tirads_loss(avg):0.0000
+Epoch:14: seg_loss(avg):0.3720, bm_loss(avg):0.1920, tirads_loss(avg):0.0000
+Epoch:15: seg_loss(avg):0.3723, bm_loss(avg):0.1891, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 15
+
+Validating epoch 15 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8623, HD95: 13.0336
+  TN3K - BM: Acc=0.6987, Prec=0.5934, Rec=0.6864, F1=0.6365, AUROC=0.7689, AUPRC=0.7247
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7877, HD95: 20.6433
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8830, HD95: 6.1250
+  ThyroidXL - BM: Acc=0.7847, Prec=0.9127, Rec=0.5928, F1=0.7188, AUROC=0.9287, AUPRC=0.9147
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7992, HD95: 15.3849
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8331, HD95: 10.6964
+  TN5K - BM: Acc=0.8870, Prec=0.9292, Rec=0.9152, F1=0.9221, AUROC=0.9439, AUPRC=0.9774
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:16: seg_loss(avg):0.3742, bm_loss(avg):0.1711, tirads_loss(avg):0.0000
+Epoch:17: seg_loss(avg):0.3665, bm_loss(avg):0.1597, tirads_loss(avg):0.0000
+Epoch:18: seg_loss(avg):0.3633, bm_loss(avg):0.1516, tirads_loss(avg):0.0000
+Epoch:19: seg_loss(avg):0.3610, bm_loss(avg):0.1400, tirads_loss(avg):0.0000
+Epoch:20: seg_loss(avg):0.3571, bm_loss(avg):0.1279, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8724, HD95: 12.5072
+  TN3K - BM: Acc=0.7101, Prec=0.5942, Rec=0.7754, F1=0.6728, AUROC=0.8055, AUPRC=0.7452
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7760, HD95: 20.6132
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8825, HD95: 6.3210
+  ThyroidXL - BM: Acc=0.8364, Prec=0.8584, Rec=0.7753, F1=0.8147, AUROC=0.9268, AUPRC=0.9087
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8191, HD95: 13.3190
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8397, HD95: 9.6454
+  TN5K - BM: Acc=0.8990, Prec=0.9257, Rec=0.9371, F1=0.9313, AUROC=0.9534, AUPRC=0.9811
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:21: seg_loss(avg):0.3526, bm_loss(avg):0.1236, tirads_loss(avg):0.0000
+Epoch:22: seg_loss(avg):0.3491, bm_loss(avg):0.1085, tirads_loss(avg):0.0000
+Epoch:23: seg_loss(avg):0.3476, bm_loss(avg):0.1009, tirads_loss(avg):0.0000
+Epoch:24: seg_loss(avg):0.3459, bm_loss(avg):0.0896, tirads_loss(avg):0.0000
+Epoch:25: seg_loss(avg):0.3436, bm_loss(avg):0.0946, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 25
+
+Validating epoch 25 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8731, HD95: 11.8740
+  TN3K - BM: Acc=0.7068, Prec=0.5972, Rec=0.7288, F1=0.6565, AUROC=0.8000, AUPRC=0.7430
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7874, HD95: 19.5123
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8818, HD95: 6.2390
+  ThyroidXL - BM: Acc=0.8172, Prec=0.8899, Rec=0.6918, F1=0.7784, AUROC=0.9244, AUPRC=0.9081
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8266, HD95: 12.7024
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8396, HD95: 9.7151
+  TN5K - BM: Acc=0.8980, Prec=0.9314, Rec=0.9289, F1=0.9301, AUROC=0.9500, AUPRC=0.9802
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:26: seg_loss(avg):0.3361, bm_loss(avg):0.0796, tirads_loss(avg):0.0000
+Epoch:27: seg_loss(avg):0.3376, bm_loss(avg):0.0745, tirads_loss(avg):0.0000
+Epoch:28: seg_loss(avg):0.3319, bm_loss(avg):0.0589, tirads_loss(avg):0.0000
+Epoch:29: seg_loss(avg):0.3299, bm_loss(avg):0.0596, tirads_loss(avg):0.0000
+Epoch:30: seg_loss(avg):0.3271, bm_loss(avg):0.0456, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 30
+
+Validating epoch 30 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8791, HD95: 11.2652
+  TN3K - BM: Acc=0.7492, Prec=0.6444, Rec=0.7754, F1=0.7038, AUROC=0.8231, AUPRC=0.7688
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7859, HD95: 20.3459
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8865, HD95: 5.9394
+  ThyroidXL - BM: Acc=0.8388, Prec=0.8601, Rec=0.7794, F1=0.8177, AUROC=0.9281, AUPRC=0.9097
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8279, HD95: 12.2292
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8462, HD95: 9.4646
+  TN5K - BM: Acc=0.9070, Prec=0.9311, Rec=0.9425, F1=0.9368, AUROC=0.9580, AUPRC=0.9833
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:31: seg_loss(avg):0.3201, bm_loss(avg):0.0441, tirads_loss(avg):0.0000
+Epoch:32: seg_loss(avg):0.3169, bm_loss(avg):0.0424, tirads_loss(avg):0.0000
+Epoch:33: seg_loss(avg):0.3145, bm_loss(avg):0.0368, tirads_loss(avg):0.0000
+Epoch:34: seg_loss(avg):0.3120, bm_loss(avg):0.0330, tirads_loss(avg):0.0000
+Epoch:35: seg_loss(avg):0.3086, bm_loss(avg):0.0262, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 35
+
+Validating epoch 35 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8783, HD95: 10.8063
+  TN3K - BM: Acc=0.7085, Prec=0.5899, Rec=0.7924, F1=0.6763, AUROC=0.8081, AUPRC=0.7450
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7788, HD95: 20.1600
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8873, HD95: 5.8716
+  ThyroidXL - BM: Acc=0.8531, Prec=0.8737, Rec=0.7990, F1=0.8347, AUROC=0.9353, AUPRC=0.9214
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8269, HD95: 12.0723
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8463, HD95: 9.6475
+  TN5K - BM: Acc=0.8960, Prec=0.9098, Rec=0.9521, F1=0.9305, AUROC=0.9487, AUPRC=0.9791
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:36: seg_loss(avg):0.3086, bm_loss(avg):0.0225, tirads_loss(avg):0.0000
+Epoch:37: seg_loss(avg):0.3062, bm_loss(avg):0.0188, tirads_loss(avg):0.0000
+Epoch:38: seg_loss(avg):0.3041, bm_loss(avg):0.0194, tirads_loss(avg):0.0000
+Epoch:39: seg_loss(avg):0.2994, bm_loss(avg):0.0167, tirads_loss(avg):0.0000
+Epoch:40: seg_loss(avg):0.2991, bm_loss(avg):0.0182, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 40
+
+Validating epoch 40 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8825, HD95: 10.8581
+  TN3K - BM: Acc=0.7362, Prec=0.6360, Rec=0.7331, F1=0.6811, AUROC=0.7967, AUPRC=0.7480
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7758, HD95: 20.2233
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8891, HD95: 5.7737
+  ThyroidXL - BM: Acc=0.8378, Prec=0.8959, Rec=0.7361, F1=0.8081, AUROC=0.9325, AUPRC=0.9202
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8251, HD95: 12.4256
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8467, HD95: 9.1823
+  TN5K - BM: Acc=0.9080, Prec=0.9383, Rec=0.9357, F1=0.9370, AUROC=0.9545, AUPRC=0.9815
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:41: seg_loss(avg):0.2934, bm_loss(avg):0.0152, tirads_loss(avg):0.0000
+Epoch:42: seg_loss(avg):0.2937, bm_loss(avg):0.0159, tirads_loss(avg):0.0000
+Epoch:43: seg_loss(avg):0.2908, bm_loss(avg):0.0116, tirads_loss(avg):0.0000
+Epoch:44: seg_loss(avg):0.2898, bm_loss(avg):0.0085, tirads_loss(avg):0.0000
+Epoch:45: seg_loss(avg):0.2895, bm_loss(avg):0.0101, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 45
+
+Validating epoch 45 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8816, HD95: 10.7827
+  TN3K - BM: Acc=0.7248, Prec=0.6151, Rec=0.7585, F1=0.6793, AUROC=0.8077, AUPRC=0.7543
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7710, HD95: 20.0368
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8888, HD95: 5.7469
+  ThyroidXL - BM: Acc=0.8421, Prec=0.8791, Rec=0.7649, F1=0.8181, AUROC=0.9316, AUPRC=0.9177
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8263, HD95: 12.2491
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8461, HD95: 9.3039
+  TN5K - BM: Acc=0.9050, Prec=0.9392, Rec=0.9302, F1=0.9347, AUROC=0.9524, AUPRC=0.9806
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:46: seg_loss(avg):0.2860, bm_loss(avg):0.0065, tirads_loss(avg):0.0000
+Epoch:47: seg_loss(avg):0.2852, bm_loss(avg):0.0076, tirads_loss(avg):0.0000
+Epoch:48: seg_loss(avg):0.2881, bm_loss(avg):0.0083, tirads_loss(avg):0.0000
+Epoch:49: seg_loss(avg):0.2846, bm_loss(avg):0.0085, tirads_loss(avg):0.0000
+Epoch:50: seg_loss(avg):0.2847, bm_loss(avg):0.0105, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 50
+
+Validating epoch 50 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8821, HD95: 10.7836
+  TN3K - BM: Acc=0.7329, Prec=0.6268, Rec=0.7542, F1=0.6846, AUROC=0.8090, AUPRC=0.7533
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7707, HD95: 20.1419
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8892, HD95: 5.7337
+  ThyroidXL - BM: Acc=0.8421, Prec=0.8846, Rec=0.7588, F1=0.8169, AUROC=0.9328, AUPRC=0.9185
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8269, HD95: 12.3137
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8462, HD95: 9.2840
+  TN5K - BM: Acc=0.9030, Prec=0.9378, Rec=0.9289, F1=0.9333, AUROC=0.9526, AUPRC=0.9807
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+
+========== Evaluation Summary (All Test Records) ==========
+
+Dataset: TN3K
+Eval epochs: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Dice per eval: [0.8631, 0.8674, 0.8623, 0.8724, 0.8731, 0.8791, 0.8783, 0.8825, 0.8816, 0.8821]
+HD95 per eval: [np.float64(13.7414), np.float64(13.4449), np.float64(13.0336), np.float64(12.5072), np.float64(11.874), np.float64(11.2652), np.float64(10.8063), np.float64(10.8581), np.float64(10.7827), np.float64(10.7836)]
+Best Dice: 0.8825 at epoch 40
+Best HD95: 10.7827 at epoch 45
+
+BM metrics per eval:
+  Acc:  [np.float64(0.7476), np.float64(0.6808), np.float64(0.6987), np.float64(0.7101), np.float64(0.7068), np.float64(0.7492), np.float64(0.7085), np.float64(0.7362), np.float64(0.7248), np.float64(0.7329)]
+  Prec: [0.6484, 0.5568, 0.5934, 0.5942, 0.5972, 0.6444, 0.5899, 0.636, 0.6151, 0.6268]
+  Rec:  [0.75, 0.8305, 0.6864, 0.7754, 0.7288, 0.7754, 0.7924, 0.7331, 0.7585, 0.7542]
+  F1:   [0.6955, 0.6667, 0.6365, 0.6728, 0.6565, 0.7038, 0.6763, 0.6811, 0.6793, 0.6846]
+  AUROC:[0.8159, 0.8117, 0.7689, 0.8055, 0.8, 0.8231, 0.8081, 0.7967, 0.8077, 0.809]
+  AUPRC:[0.7526, 0.7592, 0.7247, 0.7452, 0.743, 0.7688, 0.745, 0.748, 0.7543, 0.7533]
+Best BM F1: 0.7038 at epoch 30
+
+TI-RADS metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUC:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best TI-RADS F1: 0.0000 at epoch 5
+
+Dataset: DDTI
+Eval epochs: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Dice per eval: [0.7286, 0.7228, 0.7877, 0.776, 0.7874, 0.7859, 0.7788, 0.7758, 0.771, 0.7707]
+HD95 per eval: [np.float64(28.4365), np.float64(28.7461), np.float64(20.6433), np.float64(20.6132), np.float64(19.5123), np.float64(20.3459), np.float64(20.16), np.float64(20.2233), np.float64(20.0368), np.float64(20.1419)]
+Best Dice: 0.7877 at epoch 15
+Best HD95: 19.5123 at epoch 25
+
+BM metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUROC:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUPRC:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best BM F1: 0.0000 at epoch 5
+
+TI-RADS metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUC:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best TI-RADS F1: 0.0000 at epoch 5
+
+Dataset: ThyroidXL
+Eval epochs: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Dice per eval: [0.875, 0.8778, 0.883, 0.8825, 0.8818, 0.8865, 0.8873, 0.8891, 0.8888, 0.8892]
+HD95 per eval: [np.float64(6.8472), np.float64(6.5785), np.float64(6.125), np.float64(6.321), np.float64(6.239), np.float64(5.9394), np.float64(5.8716), np.float64(5.7737), np.float64(5.7469), np.float64(5.7337)]
+Best Dice: 0.8892 at epoch 50
+Best HD95: 5.7337 at epoch 50
+
+BM metrics per eval:
+  Acc:  [np.float64(0.7526), np.float64(0.8526), np.float64(0.7847), np.float64(0.8364), np.float64(0.8172), np.float64(0.8388), np.float64(0.8531), np.float64(0.8378), np.float64(0.8421), np.float64(0.8421)]
+  Prec: [0.9234, 0.8364, 0.9127, 0.8584, 0.8899, 0.8601, 0.8737, 0.8959, 0.8791, 0.8846]
+  Rec:  [0.5093, 0.8485, 0.5928, 0.7753, 0.6918, 0.7794, 0.799, 0.7361, 0.7649, 0.7588]
+  F1:   [0.6565, 0.8424, 0.7188, 0.8147, 0.7784, 0.8177, 0.8347, 0.8081, 0.8181, 0.8169]
+  AUROC:[0.931, 0.9332, 0.9287, 0.9268, 0.9244, 0.9281, 0.9353, 0.9325, 0.9316, 0.9328]
+  AUPRC:[0.9128, 0.9132, 0.9147, 0.9087, 0.9081, 0.9097, 0.9214, 0.9202, 0.9177, 0.9185]
+Best BM F1: 0.8424 at epoch 10
+
+TI-RADS metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUC:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best TI-RADS F1: 0.0000 at epoch 5
+
+Dataset: PKTN
+Eval epochs: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Dice per eval: [0.7897, 0.8127, 0.7992, 0.8191, 0.8266, 0.8279, 0.8269, 0.8251, 0.8263, 0.8269]
+HD95 per eval: [np.float64(16.6926), np.float64(14.0208), np.float64(15.3849), np.float64(13.319), np.float64(12.7024), np.float64(12.2292), np.float64(12.0723), np.float64(12.4256), np.float64(12.2491), np.float64(12.3137)]
+Best Dice: 0.8279 at epoch 30
+Best HD95: 12.0723 at epoch 35
+
+BM metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUROC:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUPRC:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best BM F1: 0.0000 at epoch 5
+
+TI-RADS metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUC:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best TI-RADS F1: 0.0000 at epoch 5
+
+Dataset: TN5K
+Eval epochs: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Dice per eval: [0.8193, 0.8385, 0.8331, 0.8397, 0.8396, 0.8462, 0.8463, 0.8467, 0.8461, 0.8462]
+HD95 per eval: [np.float64(12.7318), np.float64(9.5117), np.float64(10.6964), np.float64(9.6454), np.float64(9.7151), np.float64(9.4646), np.float64(9.6475), np.float64(9.1823), np.float64(9.3039), np.float64(9.284)]
+Best Dice: 0.8467 at epoch 40
+Best HD95: 9.1823 at epoch 40
+
+BM metrics per eval:
+  Acc:  [np.float64(0.897), np.float64(0.883), np.float64(0.887), np.float64(0.899), np.float64(0.898), np.float64(0.907), np.float64(0.896), np.float64(0.908), np.float64(0.905), np.float64(0.903)]
+  Prec: [0.9099, 0.8896, 0.9292, 0.9257, 0.9314, 0.9311, 0.9098, 0.9383, 0.9392, 0.9378]
+  Rec:  [0.9535, 0.959, 0.9152, 0.9371, 0.9289, 0.9425, 0.9521, 0.9357, 0.9302, 0.9289]
+  F1:   [0.9312, 0.923, 0.9221, 0.9313, 0.9301, 0.9368, 0.9305, 0.937, 0.9347, 0.9333]
+  AUROC:[0.9385, 0.9433, 0.9439, 0.9534, 0.95, 0.958, 0.9487, 0.9545, 0.9524, 0.9526]
+  AUPRC:[0.9755, 0.9777, 0.9774, 0.9811, 0.9802, 0.9833, 0.9791, 0.9815, 0.9806, 0.9807]
+Best BM F1: 0.9370 at epoch 40
+
+TI-RADS metrics per eval:
+  Acc:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  AUC:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best TI-RADS F1: 0.0000 at epoch 5
+
+==========================================================
+
+========== Training Completed ==========
+Training completed at Fri Dec 26 22:04:42 2025

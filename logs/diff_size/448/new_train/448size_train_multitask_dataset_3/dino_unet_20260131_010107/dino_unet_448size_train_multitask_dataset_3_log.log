@@ -1,0 +1,18 @@
+Training started at Sat Jan 31 01:01:07 2026
+Method: dino_unet
+Dataset: 448size_train_multitask_dataset_3
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 448 x 448
+DINO pretrained: True
+Use Dilation: False
+Training set - Benign/Malignant: Benign=8848 (58.56%), Malignant=6261 (41.44%)
+Auto-adjusted tau=0.50 (imbalance_ratio=1.41)
+GLA parameters: p_benign=0.5856, p_malignant=0.4144, tau=0.50
+Logit adjustment magnitude: 0.1729
+Training set - TI-RADS distribution (1-5): [0, 0, 0, 0, 0]
+TI-RADS probabilities: [0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm']
+steps_per_epoch (optimizer steps): 629

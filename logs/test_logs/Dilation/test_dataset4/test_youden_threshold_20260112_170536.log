@@ -1,0 +1,51 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: checkpoints/dino_unet_multitask_dataset4.pth
+Save path: ./predictions/test_dataset4
+Save results: false
+Test dataset names: ['Cine-clip']
+Val image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/images/
+Val gt path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/masks/
+Val label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/dataset4_label.json
+Loading validation dataset with MultiTaskDataset using size: 224x224
+Validation dataset loaded: 35186 images found
+Loading model...
+Successfully loaded checkpoint from checkpoints/dino_unet_multitask_dataset4.pth
+
+Computing malignancy threshold on validation set (Youden)...
+Youden Best Threshold (val): 0.986978, Youden: 0.824654, Sensitivity: 0.895036, Specificity: 0.929618
+
+Created base save directory: ./predictions/test_dataset4
+
+Processing dataset 1/1
+Processing dataset: Cine-clipImage path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Cine-clip/output/images/GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Cine-clip/output/masks/Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Cine-clip/cine_clip_labels.jsonSave path: ./predictions/test_dataset4/Cine-clipFound 17412 files in image directory
+Found 17412 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 17412 images found
+Calculating evaluation metrics for dataset: Cine-clip
+Using malignancy threshold (from val): 0.5
+Dice: mean=0.6952, CI95=(0.6911, 0.6993)
+HD95: mean=19.9898, CI95=(19.6649, 20.3143)
+Youden Best Threshold (from val): 0.986978, Youden (val): 0.824654, Sensitivity (val): 0.895036, Specificity (val): 0.929618
+Malignancy Used Threshold (on test): 0.5000
+Malignancy Metrics:
+ - accuracy: mean=0.7495, CI95=(0.7433, 0.7559)
+ - auprc: mean=0.4765, CI95=(0.4545, 0.4986)
+ - auroc: mean=0.7726, CI95=(0.7606, 0.7853)
+ - f1: mean=0.3741, CI95=(0.3597, 0.3883)
+ - precision: mean=0.2606, CI95=(0.2488, 0.2723)
+ - recall: mean=0.6629, CI95=(0.6420, 0.6840)
+ - sensitivity: mean=0.6629, CI95=(0.6420, 0.6840)
+ - specificity: mean=0.7605, CI95=(0.7540, 0.7674)
+ - youden: mean=0.4235, CI95=(0.4019, 0.4445)
+TIRADS Metrics:
+ - accuracy: mean=0.3994, CI95=(0.3924, 0.4067)
+ - auc: mean=0.5173, CI95=(0.5076, 0.5281)
+ - f1: mean=0.2170, CI95=(0.2128, 0.2213)
+ - precision: mean=0.2611, CI95=(0.2561, 0.2662)
+ - recall: mean=0.2234, CI95=(0.2196, 0.2274)
+Dataset Cine-clip processing completed.
+All datasets processed in 236.49 seconds

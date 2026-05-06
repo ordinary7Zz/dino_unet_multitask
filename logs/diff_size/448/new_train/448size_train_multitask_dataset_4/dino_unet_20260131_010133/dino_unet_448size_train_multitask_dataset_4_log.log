@@ -1,0 +1,73 @@
+Training started at Sat Jan 31 01:01:33 2026
+Method: dino_unet
+Dataset: 448size_train_multitask_dataset_4
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 448 x 448
+DINO pretrained: True
+Use Dilation: False
+Training set - Benign/Malignant: Benign=18138 (70.97%), Malignant=7419 (29.03%)
+Auto-adjusted tau=0.70 (imbalance_ratio=2.44)
+GLA parameters: p_benign=0.7097, p_malignant=0.2903, tau=0.70
+Logit adjustment magnitude: 0.6258
+Training set - TI-RADS distribution (1-5): [30, 544, 3013, 4304, 2557]
+TI-RADS probabilities: [0.0028713629581034184, 0.05206738039851189, 0.28838056325912476, 0.4119448661804199, 0.24473583698272705]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm', 'tirads']
+steps_per_epoch (optimizer steps): 709
+Error occurred: CUDA out of memory. Tried to allocate 294.00 MiB. GPU 0 has a total capacity of 47.54 GiB of which 188.19 MiB is free. Process 2941039 has 11.69 GiB memory in use. Process 126486 has 1.57 GiB memory in use. Process 662100 has 9.37 GiB memory in use. Process 662809 has 9.37 GiB memory in use. Process 663583 has 9.37 GiB memory in use. Process 664248 has 5.94 GiB memory in use. Of the allocated memory 5.61 GiB is allocated by PyTorch, and 16.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask_gamtl.py", line 301, in main
+    pred_seg, pred_bm, pred_ti = model(x)
+                                 ^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dino_unet_multitask.py", line 156, in forward
+    x = self.up1(x, x1)
+        ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dino_unet_multitask.py", line 66, in forward
+    return self.conv(x)
+           ^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dino_unet_multitask.py", line 44, in forward
+    return self.double_conv(x)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/container.py", line 219, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/modules/normalization.py", line 288, in forward
+    return F.group_norm(
+           ^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/nn/functional.py", line 2606, in group_norm
+    return torch.group_norm(input, num_groups, weight, bias, eps, torch.backends.cudnn.enabled)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 294.00 MiB. GPU 0 has a total capacity of 47.54 GiB of which 188.19 MiB is free. Process 2941039 has 11.69 GiB memory in use. Process 126486 has 1.57 GiB memory in use. Process 662100 has 9.37 GiB memory in use. Process 662809 has 9.37 GiB memory in use. Process 663583 has 9.37 GiB memory in use. Process 664248 has 5.94 GiB memory in use. Of the allocated memory 5.61 GiB is allocated by PyTorch, and 16.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+

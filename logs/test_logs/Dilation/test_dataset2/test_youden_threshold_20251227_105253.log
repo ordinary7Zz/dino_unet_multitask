@@ -1,0 +1,640 @@
+Using device: cuda
+CUDA visible devices: 2
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: True
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/Dilation/Dilation_train_multitask_dataset2/20251226_154618/dino_unet_Dilation_train_multitask_dataset2_epoch_50.pth
+Save path: ./predictions/test_dataset2
+Save results: true
+Test dataset names: ['TN3K', 'DDTI', 'ThyroidXL', 'PKTN', 'TN5K']
+Val image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/images/
+Val gt path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/masks/
+Val label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/dataset2_label.json
+Loading validation dataset with MultiTaskDataset using size: 224x224
+Validation dataset loaded: 14274 images found
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/Dilation/Dilation_train_multitask_dataset2/20251226_154618/dino_unet_Dilation_train_multitask_dataset2_epoch_50.pth
+
+Computing malignancy threshold on validation set (Youden)...
+Youden Best Threshold (val): 0.223477, Youden: 0.997059, Sensitivity: 0.998978, Specificity: 0.998082
+
+Created base save directory: ./predictions/test_dataset2
+
+Processing dataset 1/5
+Processing dataset: TN3K
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/tn3k_test_label.json
+Save path: ./predictions/test_dataset2/TN3K
+Found 614 files in image directory
+Found 614 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 614 images found
+Calculating evaluation metrics for dataset: TN3K
+Using malignancy threshold (from val): 0.223477
+Dice: mean=0.8347, CI95=(0.8208, 0.8480)
+HD95: mean=11.5464, CI95=(9.8800, 13.2655)
+Youden Best Threshold (from val): 0.223477, Youden (val): 0.997059, Sensitivity (val): 0.998978, Specificity (val): 0.998082
+Malignancy Used Threshold (on test): 0.2235
+Malignancy Metrics:
+ - accuracy: mean=0.7164, CI95=(0.6808, 0.7524)
+ - auprc: mean=0.7103, CI95=(0.6478, 0.7675)
+ - auroc: mean=0.7761, CI95=(0.7378, 0.8140)
+ - f1: mean=0.6712, CI95=(0.6242, 0.7176)
+ - precision: mean=0.6054, CI95=(0.5472, 0.6610)
+ - recall: mean=0.7541, CI95=(0.6972, 0.8103)
+ - sensitivity: mean=0.7541, CI95=(0.6972, 0.8103)
+ - specificity: mean=0.6929, CI95=(0.6469, 0.7376)
+ - youden: mean=0.4470, CI95=(0.3747, 0.5169)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Error saving prediction for 0000.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0012.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0024.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0036.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0048.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0060.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0072.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0084.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0096.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0108.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0120.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0132.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0144.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0156.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0168.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0180.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0192.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0204.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0216.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0228.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0240.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0252.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0264.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0276.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0288.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0300.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0312.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0324.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0336.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0348.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0360.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0372.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0384.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0396.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0408.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0420.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0432.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0444.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0456.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0468.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0480.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0492.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0504.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0516.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0528.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0540.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0552.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0564.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0576.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0588.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0600.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 0612.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Dataset TN3K processing completed.
+
+Processing dataset 2/5
+Processing dataset: DDTI
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/DDTI_label.json
+Save path: ./predictions/test_dataset2/DDTI
+Found 637 files in image directory
+Found 637 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 637 images found
+Calculating evaluation metrics for dataset: DDTI
+Using malignancy threshold (from val): 0.223477
+Dice: mean=0.7412, CI95=(0.7210, 0.7600)
+HD95: mean=19.3461, CI95=(17.5485, 21.2400)
+Youden Best Threshold (from val): 0.223477, Youden (val): 0.997059, Sensitivity (val): 0.998978, Specificity (val): 0.998082
+Malignancy Used Threshold (on test): 0.2235
+Malignancy Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auprc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auroc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+ - sensitivity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - specificity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - youden: mean=0.0000, CI95=(0.0000, 0.0000)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Error saving prediction for 1.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10023.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10039.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10064.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10089.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10110.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10130.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10152.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10170.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10191.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10206.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10225.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10281.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10436.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 10458.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 111.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 141.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 163.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 2.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20024.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20040.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20065.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20091.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20112.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20131.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20153.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20171.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20192.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20207.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20228.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20324.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20437.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 20461.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 220.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 245.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 257.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 269.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 280.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 293.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 304.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 316.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 329.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 343.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 355.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 367.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 379.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 392.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 404.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 42.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 439.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 460.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 479.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 71.PNG: Image must be 2D (grayscale, RGB, or RGBA).
+Dataset DDTI processing completed.
+
+Processing dataset 3/5
+Processing dataset: ThyroidXL
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/thyroidxl_test_labels.json
+Save path: ./predictions/test_dataset2/ThyroidXL
+Found 2094 files in image directory
+Found 2094 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 2094 images found
+Calculating evaluation metrics for dataset: ThyroidXL
+Using malignancy threshold (from val): 0.223477
+Dice: mean=0.8716, CI95=(0.8668, 0.8761)
+HD95: mean=5.7658, CI95=(5.3242, 6.2446)
+Youden Best Threshold (from val): 0.223477, Youden (val): 0.997059, Sensitivity (val): 0.998978, Specificity (val): 0.998082
+Malignancy Used Threshold (on test): 0.2235
+Malignancy Metrics:
+ - accuracy: mean=0.8414, CI95=(0.8258, 0.8565)
+ - auprc: mean=0.9216, CI95=(0.9078, 0.9342)
+ - auroc: mean=0.9246, CI95=(0.9127, 0.9356)
+ - f1: mean=0.8144, CI95=(0.7947, 0.8333)
+ - precision: mean=0.8917, CI95=(0.8710, 0.9123)
+ - recall: mean=0.7495, CI95=(0.7228, 0.7758)
+ - sensitivity: mean=0.7495, CI95=(0.7228, 0.7758)
+ - specificity: mean=0.9211, CI95=(0.9059, 0.9366)
+ - youden: mean=0.6706, CI95=(0.6394, 0.7013)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Error saving prediction for 00000126_418A6BA8_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000142_03684A2F_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000163_55F77811_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000178_289580EB_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000205_9E0E706F_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000217_317663B6_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000222_DB987D32_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000243_7EBF11B1_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000260_CF3D8B2C_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000280_2A3D7D61_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000283_B5D5F401_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000302_0AF19AB9_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000315_9669CCE7_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000323_6189E8C0_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000361_52AED74F_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000381_F96012FE_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000443_AA9E1EBE_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000448_313822E9_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000476_20D454A6_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000485_BEF99CA7_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000505_0454B825_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000520_B76EC652_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000534_779BD51E_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000563_9CAC89B7_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000589_192CA04E_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000647_ABA708BB_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000682_6663D4AF_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000699_831EC04E_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000711_D0879A96_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000733_8EDCC530_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000771_95B2ABEE_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000802_61073704_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000829_28019433_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000850_6F31EFA5_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000885_07F63CF0_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000905_3286BC28_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000929_ED89B9BF_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00000950_52A07D80_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001008_59574176_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001062_461E8103_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001124_E8A841E9_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001135_F52EB20F_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001148_04680E82_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001167_999CF6DF_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001187_64AC3899_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001210_570C98E0_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001226_D9B1E7C4_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001256_863736E5_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001282_03ACBDCC_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001293_813B611E_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001308_F5E678F2_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001332_2AB4C293_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001366_52BD4C45_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001393_305FB760_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001420_F84D5765_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001437_7482D3E9_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001451_6B8027EF_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001479_08BE09D3_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001492_2F5F1009_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001516_02F2317F_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001534_E2A97B55_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001563_63EB5F64_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001605_43AB45C7_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001619_E35D9572_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001643_EBA53479_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001661_DFB42A89_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001712_3D34406A_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001763_47C5BE56_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001781_F848CCC3_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001815_24285359_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001850_C4BEA7A7_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001875_7AF5A6F7_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001945_526CC881_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001977_5A0A5085_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00001992_61A4EFDE_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002003_7BA1046A_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002016_87956E19_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002061_C2D3F18C_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002094_67143155_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002129_D9F54843_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002161_D75ECE39_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002186_48B70337_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002224_9FC840F5_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002245_02796AD1_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002274_641475DD_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002293_646CE7A8_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002308_A75690CA_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002350_37D40B04_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002354_7AF5D6F6_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002366_74907821_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002390_46DCE659_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002443_88385AE9_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002504_0F58A204_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002511_511EEAC1_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002528_CE8A0185_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002545_12572091_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002577_A8303621_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002592_DBE21353_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002622_19D22C7D_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002649_BEEC06E5_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002668_75C72D41_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002710_3B792B66_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002725_C8BEC865_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002755_21A9F342_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002781_2002DCEB_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002798_ADDB8DEB_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002838_1E638EAB_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002865_B8DE59B3_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002872_C140400F_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002879_EF70293E_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002910_442298D7_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002916_9C31B943_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002944_298A5D72_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002967_49086536_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00002986_A3E79CE1_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003018_37E78482_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003053_CAEFA474_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003067_2BAB039A_4.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003086_61902F5D_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003112_0C41744B_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003121_9FBF2052_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003137_1AFFD525_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003172_6F93B53C_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003182_F5255D63_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003208_5D923033_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003236_ECD79AC9_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003250_2D4FA83F_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003303_8485A68F_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003323_27ABDC90_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003341_6BEA9D78_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003355_590B16DA_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003369_15A89118_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003384_565FD8D2_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003397_B38CAA34_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003403_D4DCB231_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003437_3F0A05AC_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003504_ED9935D9_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003524_11B65B6C_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003543_72DC16F8_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003552_7EBA651F_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003576_556D904F_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003612_313702FF_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003628_90111DCD_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003686_38878E8D_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003710_DD0A44F2_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003724_2745D7DD_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003779_10FF755C_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003827_2EFE0ED0_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003852_B49C8016_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003878_9DECA25E_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003894_C9D1D7F2_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003926_0D3F4BDA_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003947_08DD11D8_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003958_74088AB4_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00003999_0F8C761D_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004018_9282E7C3_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004048_1323B6CC_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004060_AB7BE821_6.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004097_26A82AB5_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004183_FCEF0477_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004239_855AF150_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004321_2C5961FA_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004424_B36D6A16_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004540_0906DD1C_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004553_B23717DA_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004568_A62101C2_2.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004585_94E9BAE3_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004605_38FF5AAF_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004634_2A0CC25C_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004664_B48C5628_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004701_A0F66973_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004719_6542FB10_0.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004727_6FDAE621_3.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004746_ADA57696_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 00004763_719DFABB_1.png: Image must be 2D (grayscale, RGB, or RGBA).
+Dataset ThyroidXL processing completed.
+
+Processing dataset 4/5
+Processing dataset: PKTN
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/PKTN_processed_label.json
+Save path: ./predictions/test_dataset2/PKTN
+Found 1005 files in image directory
+Found 1005 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 1005 images found
+Calculating evaluation metrics for dataset: PKTN
+Using malignancy threshold (from val): 0.223477
+Dice: mean=0.7919, CI95=(0.7797, 0.8031)
+HD95: mean=12.8686, CI95=(11.5712, 14.2619)
+Youden Best Threshold (from val): 0.223477, Youden (val): 0.997059, Sensitivity (val): 0.998978, Specificity (val): 0.998082
+Malignancy Used Threshold (on test): 0.2235
+Malignancy Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auprc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auroc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+ - sensitivity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - specificity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - youden: mean=0.0000, CI95=(0.0000, 0.0000)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Error saving prediction for Img_1.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_1009.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_111.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_122.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_133.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_144.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_155.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_166.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_177.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_188.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_199.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_209.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_22.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_230.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_241.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_252.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_263.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_274.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_285.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_296.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_306.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_317.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_328.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_34.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_353.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_364.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_375.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_386.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_397.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_407.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_418.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_429.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_44.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_450.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_461.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_472.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_483.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_494.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_504.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_515.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_526.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_537.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_548.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_559.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_57.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_580.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_591.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_601.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_612.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_623.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_634.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_645.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_656.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_667.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_678.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_689.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_7.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_71.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_720.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_731.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_742.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_753.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_764.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_775.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_786.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_797.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_807.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_818.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_829.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_84.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_850.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_861.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_872.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_883.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_894.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_904.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_915.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_926.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_937.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_948.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_959.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_97.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_980.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for Img_991.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Dataset PKTN processing completed.
+
+Processing dataset 5/5
+Processing dataset: TN5K
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/TN5K_test_label.json
+Save path: ./predictions/test_dataset2/TN5K
+Found 1000 files in image directory
+Found 1000 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 1000 images found
+Calculating evaluation metrics for dataset: TN5K
+Using malignancy threshold (from val): 0.223477
+Dice: mean=0.7575, CI95=(0.7441, 0.7704)
+HD95: mean=13.0492, CI95=(11.7217, 14.4072)
+Youden Best Threshold (from val): 0.223477, Youden (val): 0.997059, Sensitivity (val): 0.998978, Specificity (val): 0.998082
+Malignancy Used Threshold (on test): 0.2235
+Malignancy Metrics:
+ - accuracy: mean=0.8193, CI95=(0.7960, 0.8430)
+ - auprc: mean=0.9352, CI95=(0.9123, 0.9550)
+ - auroc: mean=0.8679, CI95=(0.8437, 0.8913)
+ - f1: mean=0.8756, CI95=(0.8575, 0.8931)
+ - precision: mean=0.8810, CI95=(0.8575, 0.9031)
+ - recall: mean=0.8704, CI95=(0.8458, 0.8938)
+ - sensitivity: mean=0.8704, CI95=(0.8458, 0.8938)
+ - specificity: mean=0.6802, CI95=(0.6255, 0.7349)
+ - youden: mean=0.5506, CI95=(0.4895, 0.6120)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Error saving prediction for 000001.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000060.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000137.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000190.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000244.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000361.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000415.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000461.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000554.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000634.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000695.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000759.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000802.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000852.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000914.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 000985.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001046.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001094.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001154.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001214.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001263.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001300.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001347.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001411.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001482.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001556.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001610.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001665.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001697.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001762.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001785.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001831.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001886.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 001944.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002005.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002069.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002110.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002179.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002238.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002286.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002343.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002382.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002483.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002551.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002606.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002665.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002701.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002749.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002813.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002878.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 002945.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003010.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003077.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003139.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003219.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003273.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003358.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003443.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003510.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003597.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003670.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003758.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003804.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003846.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003906.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 003961.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004046.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004099.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004147.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004213.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004287.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004336.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004382.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004419.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004465.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004506.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004574.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004637.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004678.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004740.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004788.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004850.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004959.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Error saving prediction for 004993.jpg: Image must be 2D (grayscale, RGB, or RGBA).
+Dataset TN5K processing completed.
+All datasets processed in 104.36 seconds

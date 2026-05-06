@@ -1,0 +1,35 @@
+Training started at Thu Dec 11 21:03:55 2025
+Method: dino_unet
+Dataset: train_multitask_dataset4
+Epochs: 50
+Learning Rate: 0.0001
+Batch Size: 12
+Train Image Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/images/
+Train Mask Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/masks/
+Number of test datasets: 5
+Test Dataset 1: TN3K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Test Dataset 2: DDTI
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Test Dataset 3: ThyroidXL
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Test Dataset 4: PKTN
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Test Dataset 5: TN5K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Using device: cuda
+Training set - Benign/Malignant: Benign=25859 (73.49%), Malignant=9327 (26.51%)
+Auto-adjusted tau=1.00 (imbalance_ratio=2.77)
+GLA parameters: p_benign=0.7349, p_malignant=0.2651, tau=1.00
+Recall boost: 1.50 (additional weight on malignant samples)
+Logit adjustment magnitude: 1.0197
+Training set - TI-RADS distribution: [0, 52, 892, 4931, 7230]
+TI-RADS probabilities: [0.0, 0.00396795105189085, 0.06806562095880508, 0.376268595457077, 0.551697850227356]
+Seg Weight: 1.0
+Benign Malignant Weight: 1.5
+TIRADS Weight: 1.0

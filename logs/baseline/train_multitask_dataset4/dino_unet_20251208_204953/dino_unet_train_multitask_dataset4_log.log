@@ -1,0 +1,49 @@
+Training started at Mon Dec  8 20:49:53 2025
+Method: dino_unet
+Dataset: train_multitask_dataset4
+Epochs: 50
+Learning Rate: 0.0001
+Batch Size: 12
+Train Image Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/images/
+Train Mask Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/masks/
+Number of test datasets: 5
+Test Dataset 1: TN3K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Test Dataset 2: DDTI
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Test Dataset 3: ThyroidXL
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Test Dataset 4: PKTN
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Test Dataset 5: TN5K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Using device: cuda
+Seg Weight: 1.0
+Benign Malignant Weight: 2.0
+TIRADS Weight: 1.0
+Error occurred: CUDA error: device-side assert triggered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask.py", line 169, in main
+    loss.backward()
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/autograd/__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/autograd/graph.py", line 769, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: device-side assert triggered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+

@@ -1,0 +1,33 @@
+Training started at Wed May  6 20:40:31 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC_sampler_segcls_pf02_ns6000
+Epochs: 50
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Sampler stats for FTCPTC: Negative=10559, Positive=787, Missing=134, Valid=11346
+Sampler config for FTCPTC: target_pos_fraction=0.2000, target_neg_fraction=0.8000
+Sampler weights for FTCPTC: neg_weight=0.00007576, pos_weight=0.00025413, missing_weight=0.00000000
+Expected sampled draws per default epoch for FTCPTC: Negative≈9076.8, Positive≈2269.2
+Expected repeat factor per default epoch for FTCPTC: neg≈0.86x, pos≈2.88x
+Using WeightedRandomSampler: replacement=True, num_samples=6000, pos_fraction=0.2000
+First sample: filename=2016/刘惠银/刘惠银_01_0001_0001.jpg, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/2016/刘惠银/刘惠银_01_0001_0001.jpg, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/2016/刘惠银/刘惠银_01_0001_0001.png, target=-1
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 250
+Epoch:1: seg_loss(avg):0.7859, cls_loss(avg):0.5025
+Epoch:2: seg_loss(avg):0.6186, cls_loss(avg):0.5037
+Epoch:3: seg_loss(avg):0.5536, cls_loss(avg):0.4617
+Epoch:4: seg_loss(avg):0.5421, cls_loss(avg):0.4205
+Epoch:5: seg_loss(avg):0.5423, cls_loss(avg):0.4255
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8338, HD95: 9.9694
+  FTCPTC - FTCPTC: Acc=0.6740, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.5880, AUPRC=0.3882, ECE=0.2755
+Epoch:6: seg_loss(avg):0.4903, cls_loss(avg):0.3967
+Epoch:7: seg_loss(avg):0.4814, cls_loss(avg):0.3550

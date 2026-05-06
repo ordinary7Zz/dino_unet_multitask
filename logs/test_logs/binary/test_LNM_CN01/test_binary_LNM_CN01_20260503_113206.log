@@ -1,0 +1,67 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_LNM_CN01/20260430_003927/dino_unet_train_multitask_LNM_CN01_LNM_CN01_epoch_50.pth
+Save path: ./predictions/binary/test_LNM_CN01
+Save results: false
+Test dataset names: ['LNM_CN01']
+Target key: LNM_CN01
+Threshold malignancy (fixed): 0.5
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_LNM_CN01/20260430_003927/dino_unet_train_multitask_LNM_CN01_LNM_CN01_epoch_50.pth
+
+Using fixed LNM_CN01 threshold: 0.5000 (--threshold_malignancy)
+
+Created base save directory: ./predictions/binary/test_LNM_CN01
+
+Processing dataset 1/1
+Processing dataset: LNM_CN01
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json
+Save path: ./predictions/binary/test_LNM_CN01/LNM_CN01
+Found 16 files in image directory
+Found 10 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 500 images found
+Calculating evaluation metrics for dataset: LNM_CN01
+Using LNM_CN01 threshold: 0.5
+Dice: mean=0.8791, CI95=(0.8671, 0.8903)
+HD95: mean=7.2521, CI95=(5.9348, 8.6661)
+LNM_CN01 Threshold (fixed): 0.5000
+LNM_CN01 Used Threshold (on test): 0.5000
+LNM_CN01 Metrics:
+ - accuracy: mean=0.5926, CI95=(0.5500, 0.6360)
+ - auprc: mean=0.6500, CI95=(0.5935, 0.7040)
+ - auroc: mean=0.5882, CI95=(0.5357, 0.6370)
+ - ece: mean=0.3913, CI95=(0.3474, 0.4333)
+ - f1: mean=0.3923, CI95=(0.3281, 0.4602)
+ - precision: mean=0.7691, CI95=(0.6756, 0.8537)
+ - recall: mean=0.2639, CI95=(0.2121, 0.3219)
+ - sensitivity: mean=0.2639, CI95=(0.2121, 0.3219)
+ - specificity: mean=0.9208, CI95=(0.8861, 0.9535)
+ - youden: mean=0.1848, CI95=(0.1200, 0.2512)
+Dataset LNM_CN01 processing completed.
+
+================================================================================
+SUMMARY: All Datasets (with CI95 for each metric)
+================================================================================
+
+--- LNM_CN01 ---
+  Dice: mean=0.8791, CI95=(0.8671, 0.8903)
+  HD95: mean=7.2521, CI95=(5.9348, 8.6661)
+  LNM_CN01:
+    accuracy: mean=0.5926, CI95=(0.5500, 0.6360)
+    auprc: mean=0.6500, CI95=(0.5935, 0.7040)
+    auroc: mean=0.5882, CI95=(0.5357, 0.6370)
+    ece: mean=0.3913, CI95=(0.3474, 0.4333)
+    f1: mean=0.3923, CI95=(0.3281, 0.4602)
+    precision: mean=0.7691, CI95=(0.6756, 0.8537)
+    recall: mean=0.2639, CI95=(0.2121, 0.3219)
+    sensitivity: mean=0.2639, CI95=(0.2121, 0.3219)
+    specificity: mean=0.9208, CI95=(0.8861, 0.9535)
+    youden: mean=0.1848, CI95=(0.1200, 0.2512)
+
+Results saved to: ./logs/test_logs/binary/test_LNM_CN01/test_binary_LNM_CN01_20260503_113206_results.json

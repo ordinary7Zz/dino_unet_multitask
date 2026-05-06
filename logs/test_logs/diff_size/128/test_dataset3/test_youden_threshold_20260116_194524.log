@@ -1,0 +1,18 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 128 x 128
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/diff_size/128/128size_train_multitask_dataset3/20260114_150312/dino_unet_128size_train_multitask_dataset3_epoch_50.pth
+Save path: ./predictions/test_dataset3
+Save results: false
+Test dataset names: ['TN3K', 'DDTI', 'ThyroidXL', 'PKTN', 'TN5K', 'test_dataset3']
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/diff_size/128/128size_train_multitask_dataset3/20260114_150312/dino_unet_128size_train_multitask_dataset3_epoch_50.pth
+
+Val image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_3/images/
+Val gt path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_3/masks/
+Val label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_3/dataset3_label.json
+Loading validation dataset with MultiTaskDataset using size: 128x128
+Validation dataset loaded: 17774 images found
+Computing malignancy threshold on validation set (Youden)...

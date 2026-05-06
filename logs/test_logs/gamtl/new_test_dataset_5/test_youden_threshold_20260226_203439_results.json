@@ -1,0 +1,7 @@
+[
+  {
+    "dataset": "DDTI_Classification",
+    "Dice": {
+      "mean": 0.04729999974370003,
+      "CI95": [
+        

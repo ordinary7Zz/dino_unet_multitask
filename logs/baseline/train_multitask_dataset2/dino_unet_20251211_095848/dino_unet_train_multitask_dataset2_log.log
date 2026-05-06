@@ -1,0 +1,114 @@
+Training started at Thu Dec 11 09:58:48 2025
+Method: dino_unet
+Dataset: train_multitask_dataset2
+Epochs: 50
+Learning Rate: 0.0001
+Batch Size: 12
+Train Image Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/images/
+Train Mask Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/masks/
+Number of test datasets: 5
+Test Dataset 1: TN3K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Test Dataset 2: DDTI
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Test Dataset 3: ThyroidXL
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Test Dataset 4: PKTN
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Test Dataset 5: TN5K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Using device: cuda
+Training set: Benign=9383, Malignant=4891
+Malignancy pos_weight: 2.8776 (to improve Recall)
+Seg Weight: 1.0
+Benign Malignant Weight: 1.0
+TIRADS Weight: 1.0
+Epoch:1: loss:1.975520, seg_loss:0.7132, bm_loss:0.5944, ti_loss:0.0000
+Epoch:2: loss:1.319995, seg_loss:0.4490, bm_loss:0.4295, ti_loss:0.0000
+Epoch:3: loss:1.130384, seg_loss:0.5199, bm_loss:0.8634, ti_loss:0.0000
+Epoch:4: loss:1.048301, seg_loss:0.4565, bm_loss:0.8105, ti_loss:0.0000
+Epoch:5: loss:0.997896, seg_loss:0.4521, bm_loss:1.1937, ti_loss:0.0000
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8484, HD95: 15.4723
+  TN3K - Benign/Malignant: Acc=0.6466, Prec=0.5295, Rec=0.3534, F1=0.4106, AUC=0.7908
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.8003, HD95: 19.8976
+  DDTI - Benign/Malignant: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8654, HD95: 8.1494
+  ThyroidXL - Benign/Malignant: Acc=0.8574, Prec=0.7594, Rec=0.7525, F1=0.7409, AUC=0.9289
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7676, HD95: 21.3998
+  PKTN - Benign/Malignant: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7402, HD95: 19.7073
+  TN5K - Benign/Malignant: Acc=0.7790, Prec=0.6931, Rec=0.6365, F1=0.6263, AUC=0.8388
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:6: loss:0.957956, seg_loss:0.4392, bm_loss:0.5711, ti_loss:0.0000
+Epoch:7: loss:0.918480, seg_loss:0.6393, bm_loss:0.3886, ti_loss:0.0000
+Epoch:8: loss:0.891872, seg_loss:0.3279, bm_loss:0.1792, ti_loss:0.0000
+Epoch:9: loss:0.878344, seg_loss:0.5010, bm_loss:0.2489, ti_loss:0.0000
+Epoch:10: loss:0.812272, seg_loss:0.4740, bm_loss:0.2367, ti_loss:0.0000
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8611, HD95: 15.3933
+  TN3K - Benign/Malignant: Acc=0.4886, Prec=0.5570, Rec=0.3217, F1=0.3618, AUC=0.7328
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7629, HD95: 26.3871
+  DDTI - Benign/Malignant: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8723, HD95: 7.3857
+  ThyroidXL - Benign/Malignant: Acc=0.8459, Prec=0.7432, Rec=0.7268, F1=0.7150, AUC=0.9245
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7940, HD95: 18.3934
+  PKTN - Benign/Malignant: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7767, HD95: 15.7548
+  TN5K - Benign/Malignant: Acc=0.7670, Prec=0.6959, Rec=0.6419, F1=0.6214, AUC=0.7969
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:11: loss:0.779216, seg_loss:0.3566, bm_loss:0.5908, ti_loss:0.0000
+Epoch:12: loss:0.743959, seg_loss:0.3947, bm_loss:0.3333, ti_loss:0.0000
+Epoch:13: loss:0.716634, seg_loss:0.3896, bm_loss:0.3443, ti_loss:0.0000
+Epoch:14: loss:0.672783, seg_loss:0.4092, bm_loss:1.0903, ti_loss:0.0000
+Epoch:15: loss:0.667726, seg_loss:0.5046, bm_loss:0.1988, ti_loss:0.0000
+Saved checkpoint at epoch 15
+
+Validating epoch 15 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8628, HD95: 14.7078
+  TN3K - Benign/Malignant: Acc=0.6319, Prec=0.5285, Rec=0.3453, F1=0.4023, AUC=0.7731
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7707, HD95: 23.9450
+  DDTI - Benign/Malignant: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8775, HD95: 7.1590
+  ThyroidXL - Benign/Malignant: Acc=0.8488, Prec=0.7654, Rec=0.7470, F1=0.7354, AUC=0.9294
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7834, HD95: 19.6699
+  PKTN - Benign/Malignant: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7669, HD95: 18.5131
+  TN5K - Benign/Malignant: Acc=0.7880, Prec=0.7204, Rec=0.6611, F1=0.6462, AUC=0.7972
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000

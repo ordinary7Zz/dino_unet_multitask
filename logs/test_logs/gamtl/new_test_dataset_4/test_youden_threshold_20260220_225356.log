@@ -1,0 +1,83 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/gamtl/dino_unet_gamtl_train_multitask_dataset_4_epoch_50.pth
+Save path: ./predictions/new_test_dataset_4
+Save results: false
+Test dataset names: ['DDTI_Classification', 'TN3K', 'ThyroidXL', 'TN5K']
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/gamtl/dino_unet_gamtl_train_multitask_dataset_4_epoch_50.pth
+
+Using user-provided malignancy threshold: 0.5000
+
+Warning: Number of test image paths (4) and mask paths (3) do not match.
+Using the minimum number of pairs.
+Created base save directory: ./predictions/new_test_dataset_4
+
+Processing dataset 1/3
+Processing dataset: DDTI_ClassificationImage path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/test/images/GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/masks/Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/test/DDTI_Classification_test_label.jsonSave path: ./predictions/new_test_dataset_4/DDTI_ClassificationFound 349 files in image directory
+Found 614 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 349 images found
+Calculating evaluation metrics for dataset: DDTI_Classification
+Using malignancy threshold (from val): 0.5
+Dice: mean=0.2958, CI95=(0.2717, 0.3185)
+HD95: mean=54.0098, CI95=(51.6384, 56.3999)
+Using user-provided threshold: 0.5000
+Malignancy Used Threshold (on test): 0.5000
+Malignancy Metrics:
+ - accuracy: mean=0.5813, CI95=(0.5301, 0.6332)
+ - auprc: mean=0.1148, CI95=(0.0809, 0.1532)
+ - auroc: mean=0.4368, CI95=(0.3514, 0.5221)
+ - f1: mean=0.1186, CI95=(0.0559, 0.1899)
+ - precision: mean=0.0818, CI95=(0.0376, 0.1339)
+ - recall: mean=0.2199, CI95=(0.1042, 0.3489)
+ - sensitivity: mean=0.2199, CI95=(0.1042, 0.3489)
+ - specificity: mean=0.6347, CI95=(0.5814, 0.6893)
+ - youden: mean=-0.1454, CI95=(-0.2779, -0.0044)
+TIRADS Metrics:
+ - accuracy: mean=0.3929, CI95=(0.3410, 0.4441)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.2542, CI95=(0.2059, 0.3060)
+ - precision: mean=0.3928, CI95=(0.2112, 0.5186)
+ - recall: mean=0.3305, CI95=(0.2591, 0.3992)
+Dataset DDTI_Classification processing completed.
+
+Processing dataset 2/3
+Processing dataset: TN3KImage path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/images/GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/masks/Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/TN3K_test_label.jsonSave path: ./predictions/new_test_dataset_4/TN3KFound 614 files in image directory
+Found 2090 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 614 images found
+Calculating evaluation metrics for dataset: TN3K
+Using malignancy threshold (from val): 0.5
+Dice: mean=0.2477, CI95=(0.2319, 0.2640)
+HD95: mean=55.3117, CI95=(53.3314, 57.2271)
+Using user-provided threshold: 0.5000
+Malignancy Used Threshold (on test): 0.5000
+Malignancy Metrics:
+ - accuracy: mean=0.6009, CI95=(0.5619, 0.6385)
+ - auprc: mean=0.5914, CI95=(0.5218, 0.6578)
+ - auroc: mean=0.7148, CI95=(0.6752, 0.7554)
+ - f1: mean=0.6222, CI95=(0.5762, 0.6657)
+ - precision: mean=0.4892, CI95=(0.4400, 0.5374)
+ - recall: mean=0.8559, CI95=(0.8091, 0.9008)
+ - sensitivity: mean=0.8559, CI95=(0.8091, 0.9008)
+ - specificity: mean=0.4416, CI95=(0.3927, 0.4915)
+ - youden: mean=0.2975, CI95=(0.2307, 0.3647)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Dataset TN3K processing completed.
+
+Processing dataset 3/3
+Processing dataset: ThyroidXLImage path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/images/GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/test/masks/Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/ThyroidXL_test_label.jsonSave path: ./predictions/new_test_dataset_4/ThyroidXLFound 2090 files in image directory
+Found 1000 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 2090 images found
+Calculating evaluation metrics for dataset: ThyroidXL
+Using malignancy threshold (from val): 0.5

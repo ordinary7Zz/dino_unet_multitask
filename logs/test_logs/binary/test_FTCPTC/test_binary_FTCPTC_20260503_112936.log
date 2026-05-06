@@ -1,0 +1,67 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_FTCPTC/20260430_003910/dino_unet_train_multitask_FTCPTC_FTCPTC_epoch_50.pth
+Save path: ./predictions/binary/test_FTCPTC
+Save results: false
+Test dataset names: ['FTCPTC']
+Target key: FTCPTC
+Threshold malignancy (fixed): 0.5
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_FTCPTC/20260430_003910/dino_unet_train_multitask_FTCPTC_FTCPTC_epoch_50.pth
+
+Using fixed FTCPTC threshold: 0.5000 (--threshold_malignancy)
+
+Created base save directory: ./predictions/binary/test_FTCPTC
+
+Processing dataset 1/1
+Processing dataset: FTCPTC
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json
+Save path: ./predictions/binary/test_FTCPTC/FTCPTC
+Found 16 files in image directory
+Found 10 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224
+Dataset loaded: 500 images found
+Calculating evaluation metrics for dataset: FTCPTC
+Using FTCPTC threshold: 0.5
+Dice: mean=0.8838, CI95=(0.8717, 0.8954)
+HD95: mean=6.9764, CI95=(5.7331, 8.3301)
+FTCPTC Threshold (fixed): 0.5000
+FTCPTC Used Threshold (on test): 0.5000
+FTCPTC Metrics:
+ - accuracy: mean=0.6938, CI95=(0.6540, 0.7340)
+ - auprc: mean=0.4512, CI95=(0.3778, 0.5237)
+ - auroc: mean=0.5862, CI95=(0.5318, 0.6401)
+ - ece: mean=0.3044, CI95=(0.2646, 0.3443)
+ - f1: mean=0.1532, CI95=(0.0837, 0.2280)
+ - precision: mean=0.7748, CI95=(0.5625, 0.9474)
+ - recall: mean=0.0854, CI95=(0.0449, 0.1314)
+ - sensitivity: mean=0.0854, CI95=(0.0449, 0.1314)
+ - specificity: mean=0.9880, CI95=(0.9755, 0.9971)
+ - youden: mean=0.0735, CI95=(0.0299, 0.1207)
+Dataset FTCPTC processing completed.
+
+================================================================================
+SUMMARY: All Datasets (with CI95 for each metric)
+================================================================================
+
+--- FTCPTC ---
+  Dice: mean=0.8838, CI95=(0.8717, 0.8954)
+  HD95: mean=6.9764, CI95=(5.7331, 8.3301)
+  FTCPTC:
+    accuracy: mean=0.6938, CI95=(0.6540, 0.7340)
+    auprc: mean=0.4512, CI95=(0.3778, 0.5237)
+    auroc: mean=0.5862, CI95=(0.5318, 0.6401)
+    ece: mean=0.3044, CI95=(0.2646, 0.3443)
+    f1: mean=0.1532, CI95=(0.0837, 0.2280)
+    precision: mean=0.7748, CI95=(0.5625, 0.9474)
+    recall: mean=0.0854, CI95=(0.0449, 0.1314)
+    sensitivity: mean=0.0854, CI95=(0.0449, 0.1314)
+    specificity: mean=0.9880, CI95=(0.9755, 0.9971)
+    youden: mean=0.0735, CI95=(0.0299, 0.1207)
+
+Results saved to: ./logs/test_logs/binary/test_FTCPTC/test_binary_FTCPTC_20260503_112936_results.json

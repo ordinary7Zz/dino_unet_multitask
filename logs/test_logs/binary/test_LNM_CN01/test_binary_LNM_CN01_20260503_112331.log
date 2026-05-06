@@ -1,0 +1,12 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_LNM_CN01/YOUR_TIMESTAMP/dino_unet_train_multitask_LNM_CN01_LNM_CN01_epoch_50.pth
+Save path: ./predictions/binary/test_LNM_CN01
+Save results: false
+Test dataset names: ['LNM_CN01']
+Target key: LNM_CN01
+Threshold malignancy (fixed): 0.5
+Loading model...

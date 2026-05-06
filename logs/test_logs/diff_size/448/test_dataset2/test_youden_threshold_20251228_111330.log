@@ -1,0 +1,192 @@
+Using device: cuda:0
+CUDA visible devices: 0
+Image size: 448 x 448
+DINO pretrained: True
+DINO Dilation: False
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/diff_size/448/diff_size_train_multitask_dataset2/20251227_104535/dino_unet_diff_size_train_multitask_dataset2_epoch_50.pth
+Save path: ./predictions/test_dataset2
+Save results: false
+Test dataset names: ['TN3K', 'DDTI', 'ThyroidXL', 'PKTN', 'TN5K']
+Val image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/images/
+Val gt path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/masks/
+Val label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/dataset2_label.json
+Loading validation dataset with MultiTaskDataset using size: 448x448
+Validation dataset loaded: 14274 images found
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/diff_size/448/diff_size_train_multitask_dataset2/20251227_104535/dino_unet_diff_size_train_multitask_dataset2_epoch_50.pth
+
+Computing malignancy threshold on validation set (Youden)...
+Youden Best Threshold (val): 0.593857, Youden: 0.993779, Sensitivity: 0.995911, Specificity: 0.997868
+
+Created base save directory: ./predictions/test_dataset2
+
+Processing dataset 1/5
+Processing dataset: TN3K
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/tn3k_test_label.json
+Save path: ./predictions/test_dataset2/TN3K
+Found 614 files in image directory
+Found 614 files in mask directory
+Loading dataset with MultiTaskDataset using size: 448x448
+Dataset loaded: 614 images found
+Calculating evaluation metrics for dataset: TN3K
+Using malignancy threshold (from val): 0.593857
+Dice: mean=0.8581, CI95=(0.8461, 0.8699)
+HD95: mean=19.0974, CI95=(16.1215, 22.2981)
+Youden Best Threshold (from val): 0.593857, Youden (val): 0.993779, Sensitivity (val): 0.995911, Specificity (val): 0.997868
+Malignancy Used Threshold (on test): 0.5939
+Malignancy Metrics:
+ - accuracy: mean=0.7438, CI95=(0.7101, 0.7785)
+ - auprc: mean=0.6834, CI95=(0.6141, 0.7510)
+ - auroc: mean=0.7996, CI95=(0.7638, 0.8348)
+ - f1: mean=0.6976, CI95=(0.6534, 0.7409)
+ - precision: mean=0.6384, CI95=(0.5830, 0.6934)
+ - recall: mean=0.7701, CI95=(0.7156, 0.8243)
+ - sensitivity: mean=0.7701, CI95=(0.7156, 0.8243)
+ - specificity: mean=0.7274, CI95=(0.6814, 0.7726)
+ - youden: mean=0.4975, CI95=(0.4288, 0.5673)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Dataset TN3K processing completed.
+
+Processing dataset 2/5
+Processing dataset: DDTI
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/DDTI_label.json
+Save path: ./predictions/test_dataset2/DDTI
+Found 637 files in image directory
+Found 637 files in mask directory
+Loading dataset with MultiTaskDataset using size: 448x448
+Dataset loaded: 637 images found
+Calculating evaluation metrics for dataset: DDTI
+Using malignancy threshold (from val): 0.593857
+Dice: mean=0.7695, CI95=(0.7522, 0.7869)
+HD95: mean=35.1770, CI95=(31.8057, 38.5375)
+Youden Best Threshold (from val): 0.593857, Youden (val): 0.993779, Sensitivity (val): 0.995911, Specificity (val): 0.997868
+Malignancy Used Threshold (on test): 0.5939
+Malignancy Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auprc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auroc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+ - sensitivity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - specificity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - youden: mean=0.0000, CI95=(0.0000, 0.0000)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Dataset DDTI processing completed.
+
+Processing dataset 3/5
+Processing dataset: ThyroidXL
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/thyroidxl_test_labels.json
+Save path: ./predictions/test_dataset2/ThyroidXL
+Found 2094 files in image directory
+Found 2094 files in mask directory
+Loading dataset with MultiTaskDataset using size: 448x448
+Dataset loaded: 2094 images found
+Calculating evaluation metrics for dataset: ThyroidXL
+Using malignancy threshold (from val): 0.593857
+Dice: mean=0.8824, CI95=(0.8776, 0.8868)
+HD95: mean=10.1434, CI95=(9.2752, 11.1236)
+Youden Best Threshold (from val): 0.593857, Youden (val): 0.993779, Sensitivity (val): 0.995911, Specificity (val): 0.997868
+Malignancy Used Threshold (on test): 0.5939
+Malignancy Metrics:
+ - accuracy: mean=0.8453, CI95=(0.8301, 0.8603)
+ - auprc: mean=0.9092, CI95=(0.8867, 0.9290)
+ - auroc: mean=0.9305, CI95=(0.9190, 0.9412)
+ - f1: mean=0.8202, CI95=(0.8012, 0.8388)
+ - precision: mean=0.8909, CI95=(0.8699, 0.9110)
+ - recall: mean=0.7600, CI95=(0.7322, 0.7866)
+ - sensitivity: mean=0.7600, CI95=(0.7322, 0.7866)
+ - specificity: mean=0.9193, CI95=(0.9033, 0.9345)
+ - youden: mean=0.6793, CI95=(0.6483, 0.7095)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Dataset ThyroidXL processing completed.
+
+Processing dataset 4/5
+Processing dataset: PKTN
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/PKTN_processed_label.json
+Save path: ./predictions/test_dataset2/PKTN
+Found 1005 files in image directory
+Found 1005 files in mask directory
+Loading dataset with MultiTaskDataset using size: 448x448
+Dataset loaded: 1005 images found
+Calculating evaluation metrics for dataset: PKTN
+Using malignancy threshold (from val): 0.593857
+Dice: mean=0.8157, CI95=(0.8047, 0.8264)
+HD95: mean=22.3677, CI95=(19.9227, 24.9056)
+Youden Best Threshold (from val): 0.593857, Youden (val): 0.993779, Sensitivity (val): 0.995911, Specificity (val): 0.997868
+Malignancy Used Threshold (on test): 0.5939
+Malignancy Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auprc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auroc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+ - sensitivity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - specificity: mean=0.0000, CI95=(0.0000, 0.0000)
+ - youden: mean=0.0000, CI95=(0.0000, 0.0000)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Dataset PKTN processing completed.
+
+Processing dataset 5/5
+Processing dataset: TN5K
+Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/TN5K_test_label.json
+Save path: ./predictions/test_dataset2/TN5K
+Found 1000 files in image directory
+Found 1000 files in mask directory
+Loading dataset with MultiTaskDataset using size: 448x448
+Dataset loaded: 1000 images found
+Calculating evaluation metrics for dataset: TN5K
+Using malignancy threshold (from val): 0.593857
+Dice: mean=0.7919, CI95=(0.7792, 0.8038)
+HD95: mean=22.4352, CI95=(19.8496, 25.1937)
+Youden Best Threshold (from val): 0.593857, Youden (val): 0.993779, Sensitivity (val): 0.995911, Specificity (val): 0.997868
+Malignancy Used Threshold (on test): 0.5939
+Malignancy Metrics:
+ - accuracy: mean=0.8272, CI95=(0.8030, 0.8510)
+ - auprc: mean=0.9491, CI95=(0.9294, 0.9653)
+ - auroc: mean=0.8860, CI95=(0.8629, 0.9078)
+ - f1: mean=0.8770, CI95=(0.8586, 0.8950)
+ - precision: mean=0.9140, CI95=(0.8916, 0.9339)
+ - recall: mean=0.8430, CI95=(0.8166, 0.8686)
+ - sensitivity: mean=0.8430, CI95=(0.8166, 0.8686)
+ - specificity: mean=0.7842, CI95=(0.7341, 0.8308)
+ - youden: mean=0.6272, CI95=(0.5712, 0.6821)
+TIRADS Metrics:
+ - accuracy: mean=0.0000, CI95=(0.0000, 0.0000)
+ - auc: mean=0.0000, CI95=(0.0000, 0.0000)
+ - f1: mean=0.0000, CI95=(0.0000, 0.0000)
+ - precision: mean=0.0000, CI95=(0.0000, 0.0000)
+ - recall: mean=0.0000, CI95=(0.0000, 0.0000)
+Dataset TN5K processing completed.
+All datasets processed in 221.95 seconds

@@ -1,0 +1,26 @@
+Using device: cuda:1
+CUDA visible devices: 1
+Image size: 224 x 224
+DINO pretrained: True
+DINO Dilation: True
+Checkpoint path: /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/Dilation/Dilation_train_multitask_dataset4/20260110_234352/dino_unet_Dilation_train_multitask_dataset4_epoch_50.pth
+Save path: ./predictions/test_dataset4
+Save results: false
+Test dataset names: ['Cine-clip']
+Val image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/images/
+Val gt path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/masks/
+Val label path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/dataset4_label.json
+Loading validation dataset with MultiTaskDataset using size: 224x224
+Validation dataset loaded: 35186 images found
+Loading model...
+Successfully loaded checkpoint from /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/Dilation/Dilation_train_multitask_dataset4/20260110_234352/dino_unet_Dilation_train_multitask_dataset4_epoch_50.pth
+
+Computing malignancy threshold on validation set (Youden)...
+Youden Best Threshold (val): 0.679151, Youden: 0.999262, Sensitivity: 0.999571, Specificity: 0.999691
+
+Created base save directory: ./predictions/test_dataset4
+
+Processing dataset 1/1
+Processing dataset: Cine-clipImage path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Cine-clip/output/images/GT path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Cine-clip/output/masks/Label path: NoneSave path: ./predictions/test_dataset4/Cine-clipFound 17412 files in image directory
+Found 17412 files in mask directory
+Loading dataset with MultiTaskDataset using size: 224x224

@@ -1,0 +1,338 @@
+Training started at Mon Dec  8 20:57:55 2025
+Method: dino_unet
+Dataset: train_multitask_dataset4
+Epochs: 50
+Learning Rate: 0.0001
+Batch Size: 12
+Train Image Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/images/
+Train Mask Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_4/masks/
+Number of test datasets: 5
+Test Dataset 1: TN3K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Test Dataset 2: DDTI
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Test Dataset 3: ThyroidXL
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Test Dataset 4: PKTN
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Test Dataset 5: TN5K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Using device: cuda
+Seg Weight: 1.0
+Benign Malignant Weight: 2.0
+TIRADS Weight: 1.0
+Epoch:1: loss:2.024820, seg_loss:0.5353, bm_loss:0.1971, ti_loss:0.1857
+Epoch:2: loss:1.071152, seg_loss:0.5347, bm_loss:0.1705, ti_loss:0.0090
+Epoch:3: loss:0.892208, seg_loss:0.2996, bm_loss:0.1987, ti_loss:0.0709
+Epoch:4: loss:0.819681, seg_loss:0.3211, bm_loss:0.1177, ti_loss:0.0101
+Epoch:5: loss:0.755225, seg_loss:0.5594, bm_loss:0.3905, ti_loss:0.0019
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8604, HD95: 62.9948
+  TN3K - Benign/Malignant Accuracy: 0.7313, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7720, HD95: 68.2803
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8714, HD95: 29.4168
+  ThyroidXL - Benign/Malignant Accuracy: 0.8364, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7943, HD95: 69.3771
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8158, HD95: 69.8641
+  TN5K - Benign/Malignant Accuracy: 0.8830, TI-RADS Accuracy: 0.0000
+Epoch:6: loss:0.708617, seg_loss:0.2842, bm_loss:0.0450, ti_loss:0.0016
+Epoch:7: loss:0.666195, seg_loss:0.3250, bm_loss:0.0502, ti_loss:0.0005
+Epoch:8: loss:0.620659, seg_loss:0.2911, bm_loss:0.0878, ti_loss:0.0316
+Epoch:9: loss:0.587339, seg_loss:0.4534, bm_loss:0.0261, ti_loss:0.0037
+Epoch:10: loss:0.556885, seg_loss:0.3339, bm_loss:0.0430, ti_loss:0.0024
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8499, HD95: 65.2227
+  TN3K - Benign/Malignant Accuracy: 0.7345, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7972, HD95: 62.3934
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8721, HD95: 28.3986
+  ThyroidXL - Benign/Malignant Accuracy: 0.8455, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7933, HD95: 65.7285
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8217, HD95: 63.0003
+  TN5K - Benign/Malignant Accuracy: 0.8720, TI-RADS Accuracy: 0.0000
+Epoch:11: loss:0.530622, seg_loss:0.3204, bm_loss:0.0995, ti_loss:0.0383
+Epoch:12: loss:0.505328, seg_loss:0.3535, bm_loss:0.0436, ti_loss:0.0001
+Epoch:13: loss:0.469983, seg_loss:0.2067, bm_loss:0.0597, ti_loss:0.0016
+Epoch:14: loss:0.455458, seg_loss:0.2432, bm_loss:0.0455, ti_loss:0.0001
+Epoch:15: loss:0.427978, seg_loss:0.2274, bm_loss:0.0068, ti_loss:0.0001
+Saved checkpoint at epoch 15
+
+Validating epoch 15 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8704, HD95: 63.2310
+  TN3K - Benign/Malignant Accuracy: 0.7492, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7654, HD95: 72.8583
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8820, HD95: 23.2234
+  ThyroidXL - Benign/Malignant Accuracy: 0.8053, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8090, HD95: 66.4301
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8327, HD95: 61.2076
+  TN5K - Benign/Malignant Accuracy: 0.8700, TI-RADS Accuracy: 0.0000
+Epoch:16: loss:0.419130, seg_loss:0.3930, bm_loss:0.0366, ti_loss:0.0006
+Epoch:17: loss:0.388156, seg_loss:0.2573, bm_loss:0.0267, ti_loss:0.0000
+Epoch:18: loss:0.372601, seg_loss:0.2446, bm_loss:0.0041, ti_loss:0.5139
+Epoch:19: loss:0.352390, seg_loss:0.2511, bm_loss:0.0977, ti_loss:0.0003
+Epoch:20: loss:0.342465, seg_loss:0.2063, bm_loss:0.0894, ti_loss:0.0007
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8682, HD95: 59.4881
+  TN3K - Benign/Malignant Accuracy: 0.7117, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7650, HD95: 77.5935
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8817, HD95: 21.9397
+  ThyroidXL - Benign/Malignant Accuracy: 0.8172, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8053, HD95: 67.1637
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8318, HD95: 65.7877
+  TN5K - Benign/Malignant Accuracy: 0.8770, TI-RADS Accuracy: 0.0000
+Epoch:21: loss:0.320824, seg_loss:0.4864, bm_loss:0.0004, ti_loss:0.0000
+Epoch:22: loss:0.320217, seg_loss:0.2538, bm_loss:0.0008, ti_loss:0.0000
+Epoch:23: loss:0.300251, seg_loss:0.2524, bm_loss:0.1140, ti_loss:0.0001
+Epoch:24: loss:0.291970, seg_loss:0.2058, bm_loss:0.0143, ti_loss:0.0000
+Epoch:25: loss:0.279467, seg_loss:0.2421, bm_loss:0.0013, ti_loss:0.0000
+Saved checkpoint at epoch 25
+
+Validating epoch 25 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8697, HD95: 59.1189
+  TN3K - Benign/Malignant Accuracy: 0.7264, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7734, HD95: 73.2662
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8842, HD95: 20.0000
+  ThyroidXL - Benign/Malignant Accuracy: 0.8100, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8143, HD95: 64.4190
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8324, HD95: 64.0594
+  TN5K - Benign/Malignant Accuracy: 0.8860, TI-RADS Accuracy: 0.0000
+Epoch:26: loss:0.261291, seg_loss:0.2051, bm_loss:0.0018, ti_loss:0.0000
+Epoch:27: loss:0.259785, seg_loss:0.3018, bm_loss:0.0116, ti_loss:0.0000
+Epoch:28: loss:0.244310, seg_loss:0.2603, bm_loss:0.0001, ti_loss:0.0000
+Epoch:29: loss:0.238946, seg_loss:0.1784, bm_loss:0.0007, ti_loss:0.0000
+Epoch:30: loss:0.230934, seg_loss:0.2232, bm_loss:0.0009, ti_loss:0.0000
+Saved checkpoint at epoch 30
+
+Validating epoch 30 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8650, HD95: 56.7392
+  TN3K - Benign/Malignant Accuracy: 0.7166, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7624, HD95: 77.3866
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8839, HD95: 19.9249
+  ThyroidXL - Benign/Malignant Accuracy: 0.8254, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8062, HD95: 65.4971
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8357, HD95: 62.0983
+  TN5K - Benign/Malignant Accuracy: 0.8820, TI-RADS Accuracy: 0.0000
+Epoch:31: loss:0.226158, seg_loss:0.1506, bm_loss:0.0000, ti_loss:0.0007
+Epoch:32: loss:0.217071, seg_loss:0.2402, bm_loss:0.0003, ti_loss:0.0000
+Epoch:33: loss:0.207540, seg_loss:0.2223, bm_loss:0.0001, ti_loss:0.0000
+Epoch:34: loss:0.202051, seg_loss:0.1978, bm_loss:0.0000, ti_loss:0.0000
+Epoch:35: loss:0.195661, seg_loss:0.1976, bm_loss:0.0044, ti_loss:0.0000
+Saved checkpoint at epoch 35
+
+Validating epoch 35 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8666, HD95: 57.8540
+  TN3K - Benign/Malignant Accuracy: 0.7345, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7754, HD95: 71.5762
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8848, HD95: 19.8166
+  ThyroidXL - Benign/Malignant Accuracy: 0.8239, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8130, HD95: 64.2084
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8359, HD95: 59.4512
+  TN5K - Benign/Malignant Accuracy: 0.8930, TI-RADS Accuracy: 0.0000
+Epoch:36: loss:0.191018, seg_loss:0.2061, bm_loss:0.0006, ti_loss:0.0000
+Epoch:37: loss:0.184373, seg_loss:0.1265, bm_loss:0.0002, ti_loss:0.0000
+Epoch:38: loss:0.177276, seg_loss:0.1931, bm_loss:0.0002, ti_loss:0.0000
+Epoch:39: loss:0.175377, seg_loss:0.1602, bm_loss:0.0001, ti_loss:0.0000
+Epoch:40: loss:0.171695, seg_loss:0.1603, bm_loss:0.0001, ti_loss:0.0000
+Saved checkpoint at epoch 40
+
+Validating epoch 40 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8702, HD95: 54.7152
+  TN3K - Benign/Malignant Accuracy: 0.7443, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7707, HD95: 72.1658
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8857, HD95: 19.5238
+  ThyroidXL - Benign/Malignant Accuracy: 0.8373, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8140, HD95: 63.0473
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8411, HD95: 52.4642
+  TN5K - Benign/Malignant Accuracy: 0.8990, TI-RADS Accuracy: 0.0000
+Epoch:41: loss:0.167459, seg_loss:0.1514, bm_loss:0.0000, ti_loss:0.0000
+Epoch:42: loss:0.163764, seg_loss:0.1664, bm_loss:0.0001, ti_loss:0.0001
+Epoch:43: loss:0.161067, seg_loss:0.1319, bm_loss:0.0000, ti_loss:0.0000
+Epoch:44: loss:0.158270, seg_loss:0.1347, bm_loss:0.0000, ti_loss:0.0000
+Epoch:45: loss:0.156444, seg_loss:0.1257, bm_loss:0.0000, ti_loss:0.0000
+Saved checkpoint at epoch 45
+
+Validating epoch 45 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8717, HD95: 53.4933
+  TN3K - Benign/Malignant Accuracy: 0.7410, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7689, HD95: 74.6347
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8860, HD95: 18.4038
+  ThyroidXL - Benign/Malignant Accuracy: 0.8325, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8150, HD95: 62.9936
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8400, HD95: 57.0320
+  TN5K - Benign/Malignant Accuracy: 0.9060, TI-RADS Accuracy: 0.0000
+Epoch:46: loss:0.154889, seg_loss:0.1306, bm_loss:0.0000, ti_loss:0.0000
+Epoch:47: loss:0.153788, seg_loss:0.1598, bm_loss:0.0000, ti_loss:0.0000
+Epoch:48: loss:0.152824, seg_loss:0.1424, bm_loss:0.0000, ti_loss:0.0000
+Epoch:49: loss:0.151874, seg_loss:0.1792, bm_loss:0.0000, ti_loss:0.0000
+Epoch:50: loss:0.151834, seg_loss:0.1488, bm_loss:0.0000, ti_loss:0.0000
+Saved checkpoint at epoch 50
+
+Validating epoch 50 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8706, HD95: 55.1726
+  TN3K - Benign/Malignant Accuracy: 0.7410, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7705, HD95: 74.4110
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8857, HD95: 19.0000
+  ThyroidXL - Benign/Malignant Accuracy: 0.8402, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.8142, HD95: 62.6884
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.8395, HD95: 56.6059
+  TN5K - Benign/Malignant Accuracy: 0.9080, TI-RADS Accuracy: 0.0000
+
+========== Training Completed ==========
+Training completed at Tue Dec  9 05:28:56 2025
+
+===== Dice Scores Summary =====
+Dataset: TN3K
+Dice scores per epoch: [0.8604, 0.8499, 0.8704, 0.8682, 0.8697, 0.865, 0.8666, 0.8702, 0.8717, 0.8706]
+Best Dice: 0.8717 at epoch 9
+
+Dataset: DDTI
+Dice scores per epoch: [0.772, 0.7972, 0.7654, 0.765, 0.7734, 0.7624, 0.7754, 0.7707, 0.7689, 0.7705]
+Best Dice: 0.7972 at epoch 2
+
+Dataset: ThyroidXL
+Dice scores per epoch: [0.8714, 0.8721, 0.882, 0.8817, 0.8842, 0.8839, 0.8848, 0.8857, 0.886, 0.8857]
+Best Dice: 0.8860 at epoch 9
+
+Dataset: PKTN
+Dice scores per epoch: [0.7943, 0.7933, 0.809, 0.8053, 0.8143, 0.8062, 0.813, 0.814, 0.815, 0.8142]
+Best Dice: 0.8150 at epoch 9
+
+Dataset: TN5K
+Dice scores per epoch: [0.8158, 0.8217, 0.8327, 0.8318, 0.8324, 0.8357, 0.8359, 0.8411, 0.84, 0.8395]
+Best Dice: 0.8411 at epoch 8
+
+===== HD95 Scores Summary =====
+Dataset: TN3K
+HD95 scores per epoch: [62.9948, 65.2227, 63.231, 59.4881, 59.1189, 56.7392, 57.854, 54.7152, 53.4933, 55.1726]
+Best HD95: 53.4933 at epoch 9
+
+Dataset: DDTI
+HD95 scores per epoch: [68.2803, 62.3934, 72.8583, 77.5935, 73.2662, 77.3866, 71.5762, 72.1658, 74.6347, 74.411]
+Best HD95: 62.3934 at epoch 2
+
+Dataset: ThyroidXL
+HD95 scores per epoch: [29.4168, 28.3986, 23.2234, 21.9397, 20.0, 19.9249, 19.8166, 19.5238, 18.4038, 19.0]
+Best HD95: 18.4038 at epoch 9
+
+Dataset: PKTN
+HD95 scores per epoch: [69.3771, 65.7285, 66.4301, 67.1637, 64.419, 65.4971, 64.2084, 63.0473, 62.9936, 62.6884]
+Best HD95: 62.6884 at epoch 10
+
+Dataset: TN5K
+HD95 scores per epoch: [69.8641, 63.0003, 61.2076, 65.7877, 64.0594, 62.0983, 59.4512, 52.4642, 57.032, 56.6059]
+Best HD95: 52.4642 at epoch 8
+
+
+===== Benign/Malignant Accuracy Summary =====
+Dataset: TN3K
+Accuracy scores per epoch: [0.7313, 0.7345, 0.7492, 0.7117, 0.7264, 0.7166, 0.7345, 0.7443, 0.741, 0.741]
+Best Accuracy: 0.7492 at epoch 3
+Dataset: DDTI
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Dataset: ThyroidXL
+Accuracy scores per epoch: [0.8364, 0.8455, 0.8053, 0.8172, 0.81, 0.8254, 0.8239, 0.8373, 0.8325, 0.8402]
+Best Accuracy: 0.8455 at epoch 2
+Dataset: PKTN
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Dataset: TN5K
+Accuracy scores per epoch: [0.883, 0.872, 0.87, 0.877, 0.886, 0.882, 0.893, 0.899, 0.906, 0.908]
+Best Accuracy: 0.9080 at epoch 10
+
+===== TI-RADS Accuracy Summary =====
+Dataset: TN3K
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Dataset: DDTI
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Dataset: ThyroidXL
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Dataset: PKTN
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Dataset: TN5K
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1

@@ -1,0 +1,200 @@
+Training started at Mon Dec  8 10:14:44 2025
+Method: dino_unet
+Dataset: train_multitask_dataset2
+Epochs: 50
+Learning Rate: 0.0001
+Batch Size: 12
+Train Image Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/images/
+Train Mask Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/masks/
+Number of test datasets: 5
+Test Dataset 1: TN3K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Test Dataset 2: DDTI
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/DDTI/2_preprocessed_data/stage1/p_mask/
+Test Dataset 3: ThyroidXL
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyroidXL/test/masks/
+Test Dataset 4: PKTN
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/PKTN_processed/masks/
+Test Dataset 5: TN5K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/images/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN5K_processed/test/masks/
+Using device: cuda
+Seg Weight: 1.0
+Benign Malignant Weight: 2.0
+TIRADS Weight: 1.0
+Epoch:1: loss:1.940675, seg_loss:0.5933, bm_loss:0.3764, ti_loss:0.0000
+Epoch:2: loss:1.357578, seg_loss:0.4939, bm_loss:0.2172, ti_loss:0.0000
+Saved checkpoint at epoch 2
+
+Validating epoch 2 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8446, HD95: 77.5024
+  TN3K - Benign/Malignant Accuracy: 0.7280, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7583, HD95: 75.4563
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8517, HD95: 33.6932
+  ThyroidXL - Benign/Malignant Accuracy: 0.8134, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7430, HD95: 86.4503
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7361, HD95: 75.7338
+  TN5K - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Epoch:3: loss:1.204527, seg_loss:0.5008, bm_loss:0.3196, ti_loss:0.0000
+Epoch:4: loss:1.137776, seg_loss:0.4724, bm_loss:0.5742, ti_loss:0.0000
+Saved checkpoint at epoch 4
+
+Validating epoch 4 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8494, HD95: 72.3377
+  TN3K - Benign/Malignant Accuracy: 0.7378, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.8011, HD95: 69.2492
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8628, HD95: 33.4587
+  ThyroidXL - Benign/Malignant Accuracy: 0.8268, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7644, HD95: 96.0901
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7311, HD95: 84.0496
+  TN5K - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Epoch:5: loss:1.068354, seg_loss:0.4004, bm_loss:0.1897, ti_loss:0.0000
+Epoch:6: loss:1.015485, seg_loss:0.4537, bm_loss:0.2696, ti_loss:0.0000
+Saved checkpoint at epoch 6
+
+Validating epoch 6 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8580, HD95: 65.2862
+  TN3K - Benign/Malignant Accuracy: 0.6857, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7819, HD95: 71.2039
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8693, HD95: 26.9492
+  ThyroidXL - Benign/Malignant Accuracy: 0.8517, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7776, HD95: 72.1114
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7531, HD95: 66.3954
+  TN5K - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Epoch:7: loss:0.950793, seg_loss:0.4743, bm_loss:0.4846, ti_loss:0.0000
+Epoch:8: loss:0.912362, seg_loss:0.6369, bm_loss:0.1274, ti_loss:0.0000
+Saved checkpoint at epoch 8
+
+Validating epoch 8 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8515, HD95: 67.2827
+  TN3K - Benign/Malignant Accuracy: 0.7068, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7779, HD95: 76.3758
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8687, HD95: 27.3832
+  ThyroidXL - Benign/Malignant Accuracy: 0.8426, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7768, HD95: 76.0715
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7523, HD95: 77.9372
+  TN5K - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Epoch:9: loss:0.867214, seg_loss:0.3162, bm_loss:0.1069, ti_loss:0.0000
+Epoch:10: loss:0.828479, seg_loss:0.3887, bm_loss:0.3012, ti_loss:0.0000
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8656, HD95: 63.2417
+  TN3K - Benign/Malignant Accuracy: 0.6824, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7837, HD95: 73.8935
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8751, HD95: 22.9681
+  ThyroidXL - Benign/Malignant Accuracy: 0.8225, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7709, HD95: 80.8659
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7570, HD95: 77.5393
+  TN5K - Benign/Malignant Accuracy: 0.7670, TI-RADS Accuracy: 0.0000
+Epoch:11: loss:0.773637, seg_loss:0.4084, bm_loss:0.0619, ti_loss:0.0000
+Epoch:12: loss:0.732508, seg_loss:0.3417, bm_loss:0.1248, ti_loss:0.0000
+Saved checkpoint at epoch 12
+
+Validating epoch 12 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8632, HD95: 55.4808
+  TN3K - Benign/Malignant Accuracy: 0.7150, TI-RADS Accuracy: 0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7859, HD95: 72.7325
+  DDTI - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8723, HD95: 22.3782
+  ThyroidXL - Benign/Malignant Accuracy: 0.8416, TI-RADS Accuracy: 0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7944, HD95: 62.9946
+  PKTN - Benign/Malignant Accuracy: 0.0000, TI-RADS Accuracy: 0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7602, HD95: 68.7414
+  TN5K - Benign/Malignant Accuracy: 0.7940, TI-RADS Accuracy: 0.0000
+Error occurred: Caught FileNotFoundError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 104, in __getitem__
+    image = self.rgb_loader(self.images[idx])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 124, in rgb_loader
+    with open(path, 'rb') as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/images/dataset2_00003078_2B981985_0.png'
+
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask.py", line 129, in main
+    for i, batch in enumerate(dataloader):
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dinov3/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 104, in __getitem__
+    image = self.rgb_loader(self.images[idx])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 124, in rgb_loader
+    with open(path, 'rb') as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_2/images/dataset2_00003078_2B981985_0.png'
+
+

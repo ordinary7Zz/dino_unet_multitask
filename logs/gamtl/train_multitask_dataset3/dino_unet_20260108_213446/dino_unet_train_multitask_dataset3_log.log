@@ -1,0 +1,48 @@
+Training started at Thu Jan  8 21:34:46 2026
+Method: dino_unet
+Dataset: train_multitask_dataset3
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Training set - Benign/Malignant: Benign=10415 (58.60%), Malignant=7359 (41.40%)
+Auto-adjusted tau=0.50 (imbalance_ratio=1.42)
+GLA parameters: p_benign=0.5860, p_malignant=0.4140, tau=0.50
+Logit adjustment magnitude: 0.1737
+Training set - TI-RADS distribution (1-5): [0, 0, 0, 0, 0]
+TI-RADS probabilities: [0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm']
+steps_per_epoch (optimizer steps): 740
+Epoch:1: seg_loss(avg):0.6242, bm_loss(avg):0.5725, tirads_loss(avg):0.0000
+Epoch:2: seg_loss(avg):0.4713, bm_loss(avg):0.4174, tirads_loss(avg):0.0000
+Epoch:3: seg_loss(avg):0.4354, bm_loss(avg):0.3740, tirads_loss(avg):0.0000
+Epoch:4: seg_loss(avg):0.4247, bm_loss(avg):0.3581, tirads_loss(avg):0.0000
+Epoch:5: seg_loss(avg):0.4181, bm_loss(avg):0.3296, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8153, HD95: 14.0774
+  TN3K - BM: Acc=0.7396, Prec=0.6524, Rec=0.6912, F1=0.6707, AUROC=0.7995, AUPRC=0.7406
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+  DDTI - Dice: 0.7206, HD95: 24.4612
+  DDTI - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  DDTI - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on ThyroidXL...
+  ThyroidXL - Dice: 0.8559, HD95: 6.8902
+  ThyroidXL - BM: Acc=0.8152, Prec=0.9000, Rec=0.6773, F1=0.7728, AUROC=0.9284, AUPRC=0.9140
+  ThyroidXL - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on PKTN...
+  PKTN - Dice: 0.7744, HD95: 16.1940
+  PKTN - BM: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.0000, AUPRC=0.0000
+  PKTN - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on TN5K...
+  TN5K - Dice: 0.7900, HD95: 10.5249
+  TN5K - BM: Acc=0.9039, Prec=0.9158, Rec=0.9564, F1=0.9356, AUROC=0.9429, AUPRC=0.9758
+  TN5K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Epoch:6: seg_loss(avg):0.4088, bm_loss(avg):0.3025, tirads_loss(avg):0.0000
+Epoch:7: seg_loss(avg):0.4020, bm_loss(avg):0.2916, tirads_loss(avg):0.0000

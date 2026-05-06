@@ -1,0 +1,95 @@
+Training started at Fri Jan 30 12:54:31 2026
+Method: dino_unet
+Dataset: gamtl_train_multitask_dataset_1
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Training set - Benign/Malignant: Benign=1965 (48.83%), Malignant=2059 (51.17%)
+Auto-adjusted tau=0.30 (imbalance_ratio=1.05)
+GLA parameters: p_benign=0.4883, p_malignant=0.5117, tau=0.30
+Logit adjustment magnitude: 0.0140
+Training set - TI-RADS distribution (1-5): [0, 0, 0, 0, 0]
+TI-RADS probabilities: [0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224, 0.20000000298023224]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm']
+steps_per_epoch (optimizer steps): 167
+Epoch:1: seg_loss(avg):0.8842, bm_loss(avg):0.6785, tirads_loss(avg):0.0000
+Epoch:2: seg_loss(avg):0.6747, bm_loss(avg):0.5475, tirads_loss(avg):0.0000
+Epoch:3: seg_loss(avg):0.5845, bm_loss(avg):0.4701, tirads_loss(avg):0.0000
+Epoch:4: seg_loss(avg):0.5665, bm_loss(avg):0.4012, tirads_loss(avg):0.0000
+Epoch:5: seg_loss(avg):0.5476, bm_loss(avg):0.3766, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 5
+Epoch:6: seg_loss(avg):0.5303, bm_loss(avg):0.3679, tirads_loss(avg):0.0000
+Epoch:7: seg_loss(avg):0.5199, bm_loss(avg):0.3412, tirads_loss(avg):0.0000
+Epoch:8: seg_loss(avg):0.5022, bm_loss(avg):0.3036, tirads_loss(avg):0.0000
+Epoch:9: seg_loss(avg):0.4905, bm_loss(avg):0.3098, tirads_loss(avg):0.0000
+Epoch:10: seg_loss(avg):0.4842, bm_loss(avg):0.2652, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 10
+Epoch:11: seg_loss(avg):0.4806, bm_loss(avg):0.2396, tirads_loss(avg):0.0000
+Epoch:12: seg_loss(avg):0.4772, bm_loss(avg):0.2318, tirads_loss(avg):0.0000
+Epoch:13: seg_loss(avg):0.4589, bm_loss(avg):0.2217, tirads_loss(avg):0.0000
+Epoch:14: seg_loss(avg):0.4625, bm_loss(avg):0.1918, tirads_loss(avg):0.0000
+Epoch:15: seg_loss(avg):0.4537, bm_loss(avg):0.1818, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 15
+Epoch:16: seg_loss(avg):0.4512, bm_loss(avg):0.1796, tirads_loss(avg):0.0000
+Epoch:17: seg_loss(avg):0.4481, bm_loss(avg):0.1481, tirads_loss(avg):0.0000
+Epoch:18: seg_loss(avg):0.4461, bm_loss(avg):0.1449, tirads_loss(avg):0.0000
+Epoch:19: seg_loss(avg):0.4184, bm_loss(avg):0.1290, tirads_loss(avg):0.0000
+Epoch:20: seg_loss(avg):0.4171, bm_loss(avg):0.1115, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 20
+Epoch:21: seg_loss(avg):0.4159, bm_loss(avg):0.1157, tirads_loss(avg):0.0000
+Epoch:22: seg_loss(avg):0.4092, bm_loss(avg):0.1025, tirads_loss(avg):0.0000
+Epoch:23: seg_loss(avg):0.4051, bm_loss(avg):0.0839, tirads_loss(avg):0.0000
+Epoch:24: seg_loss(avg):0.3960, bm_loss(avg):0.0917, tirads_loss(avg):0.0000
+Epoch:25: seg_loss(avg):0.3895, bm_loss(avg):0.0872, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 25
+Epoch:26: seg_loss(avg):0.3801, bm_loss(avg):0.0607, tirads_loss(avg):0.0000
+Epoch:27: seg_loss(avg):0.3689, bm_loss(avg):0.0628, tirads_loss(avg):0.0000
+Epoch:28: seg_loss(avg):0.3760, bm_loss(avg):0.0645, tirads_loss(avg):0.0000
+Epoch:29: seg_loss(avg):0.3618, bm_loss(avg):0.0405, tirads_loss(avg):0.0000
+Epoch:30: seg_loss(avg):0.3595, bm_loss(avg):0.0500, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 30
+Epoch:31: seg_loss(avg):0.3543, bm_loss(avg):0.0573, tirads_loss(avg):0.0000
+Epoch:32: seg_loss(avg):0.3536, bm_loss(avg):0.0284, tirads_loss(avg):0.0000
+Epoch:33: seg_loss(avg):0.3424, bm_loss(avg):0.0401, tirads_loss(avg):0.0000
+Epoch:34: seg_loss(avg):0.3392, bm_loss(avg):0.0391, tirads_loss(avg):0.0000
+Epoch:35: seg_loss(avg):0.3387, bm_loss(avg):0.0322, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 35
+Epoch:36: seg_loss(avg):0.3274, bm_loss(avg):0.0225, tirads_loss(avg):0.0000
+Epoch:37: seg_loss(avg):0.3320, bm_loss(avg):0.0267, tirads_loss(avg):0.0000
+Epoch:38: seg_loss(avg):0.3225, bm_loss(avg):0.0220, tirads_loss(avg):0.0000
+Epoch:39: seg_loss(avg):0.3179, bm_loss(avg):0.0282, tirads_loss(avg):0.0000
+Epoch:40: seg_loss(avg):0.3152, bm_loss(avg):0.0134, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 40
+Epoch:41: seg_loss(avg):0.3122, bm_loss(avg):0.0100, tirads_loss(avg):0.0000
+Epoch:42: seg_loss(avg):0.3064, bm_loss(avg):0.0259, tirads_loss(avg):0.0000
+Epoch:43: seg_loss(avg):0.3110, bm_loss(avg):0.0055, tirads_loss(avg):0.0000
+Epoch:44: seg_loss(avg):0.3044, bm_loss(avg):0.0154, tirads_loss(avg):0.0000
+Epoch:45: seg_loss(avg):0.3061, bm_loss(avg):0.0159, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 45
+Epoch:46: seg_loss(avg):0.2975, bm_loss(avg):0.0200, tirads_loss(avg):0.0000
+Epoch:47: seg_loss(avg):0.3039, bm_loss(avg):0.0111, tirads_loss(avg):0.0000
+Epoch:48: seg_loss(avg):0.3007, bm_loss(avg):0.0120, tirads_loss(avg):0.0000
+Epoch:49: seg_loss(avg):0.2962, bm_loss(avg):0.0175, tirads_loss(avg):0.0000
+Epoch:50: seg_loss(avg):0.2964, bm_loss(avg):0.0095, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 50
+
+Validating epoch 50 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8224, HD95: 13.5421
+  TN3K - BM: Acc=0.8404, Prec=0.8376, Rec=0.8309, F1=0.8340, AUROC=0.9103, AUPRC=0.9002
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI...
+Error occurred: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI/valid/DDTI_valid_label.json'
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask_gamtl.py", line 380, in main
+    test_dataset = MultiTaskDataset(img_path, mask_path, test_label_path, args.img_size, mode='test')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 75, in __init__
+    with open(label_json_path, 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI/valid/DDTI_valid_label.json'
+

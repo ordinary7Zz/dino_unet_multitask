@@ -1,0 +1,95 @@
+Training started at Sat Feb 21 01:25:36 2026
+Method: dino_unet
+Dataset: gamtl_train_multitask_dataset_5
+Epochs: 50
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Training set - Benign/Malignant: Benign=9058 (59.00%), Malignant=6295 (41.00%)
+Auto-adjusted tau=0.50 (imbalance_ratio=1.44)
+GLA parameters: p_benign=0.5900, p_malignant=0.4100, tau=0.50
+Logit adjustment magnitude: 0.1819
+Training set - TI-RADS distribution (1-5): [0, 29, 15, 166, 34]
+TI-RADS probabilities: [4.09836053982815e-11, 0.11885245889425278, 0.06147541105747223, 0.6803278923034668, 0.13934426009655]
+Loss weights: seg=1.0, bm=1.0, tirads=1.0
+GA-MTL schedule per optimizer step: ['seg', 'bm']
+steps_per_epoch (optimizer steps): 639
+Epoch:1: seg_loss(avg):0.6189, bm_loss(avg):0.5776, tirads_loss(avg):0.0000
+Epoch:2: seg_loss(avg):0.4883, bm_loss(avg):0.4277, tirads_loss(avg):0.0000
+Epoch:3: seg_loss(avg):0.4554, bm_loss(avg):0.3817, tirads_loss(avg):0.0000
+Epoch:4: seg_loss(avg):0.4389, bm_loss(avg):0.3463, tirads_loss(avg):0.0000
+Epoch:5: seg_loss(avg):0.4306, bm_loss(avg):0.3301, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 5
+Epoch:6: seg_loss(avg):0.4225, bm_loss(avg):0.3113, tirads_loss(avg):0.0000
+Epoch:7: seg_loss(avg):0.4191, bm_loss(avg):0.3031, tirads_loss(avg):0.0000
+Epoch:8: seg_loss(avg):0.4139, bm_loss(avg):0.2749, tirads_loss(avg):0.0000
+Epoch:9: seg_loss(avg):0.4093, bm_loss(avg):0.2595, tirads_loss(avg):0.0000
+Epoch:10: seg_loss(avg):0.4035, bm_loss(avg):0.2478, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 10
+Epoch:11: seg_loss(avg):0.3913, bm_loss(avg):0.2407, tirads_loss(avg):0.0000
+Epoch:12: seg_loss(avg):0.3965, bm_loss(avg):0.2169, tirads_loss(avg):0.0000
+Epoch:13: seg_loss(avg):0.3914, bm_loss(avg):0.2112, tirads_loss(avg):0.0000
+Epoch:14: seg_loss(avg):0.3869, bm_loss(avg):0.2035, tirads_loss(avg):0.0000
+Epoch:15: seg_loss(avg):0.3779, bm_loss(avg):0.1775, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 15
+Epoch:16: seg_loss(avg):0.3793, bm_loss(avg):0.1690, tirads_loss(avg):0.0000
+Epoch:17: seg_loss(avg):0.3759, bm_loss(avg):0.1532, tirads_loss(avg):0.0000
+Epoch:18: seg_loss(avg):0.3704, bm_loss(avg):0.1452, tirads_loss(avg):0.0000
+Epoch:19: seg_loss(avg):0.3658, bm_loss(avg):0.1318, tirads_loss(avg):0.0000
+Epoch:20: seg_loss(avg):0.3606, bm_loss(avg):0.1308, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 20
+Epoch:21: seg_loss(avg):0.3591, bm_loss(avg):0.1109, tirads_loss(avg):0.0000
+Epoch:22: seg_loss(avg):0.3590, bm_loss(avg):0.1103, tirads_loss(avg):0.0000
+Epoch:23: seg_loss(avg):0.3493, bm_loss(avg):0.0895, tirads_loss(avg):0.0000
+Epoch:24: seg_loss(avg):0.3508, bm_loss(avg):0.0868, tirads_loss(avg):0.0000
+Epoch:25: seg_loss(avg):0.3437, bm_loss(avg):0.0741, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 25
+Epoch:26: seg_loss(avg):0.3470, bm_loss(avg):0.0752, tirads_loss(avg):0.0000
+Epoch:27: seg_loss(avg):0.3410, bm_loss(avg):0.0620, tirads_loss(avg):0.0000
+Epoch:28: seg_loss(avg):0.3334, bm_loss(avg):0.0583, tirads_loss(avg):0.0000
+Epoch:29: seg_loss(avg):0.3319, bm_loss(avg):0.0555, tirads_loss(avg):0.0000
+Epoch:30: seg_loss(avg):0.3246, bm_loss(avg):0.0449, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 30
+Epoch:31: seg_loss(avg):0.3227, bm_loss(avg):0.0375, tirads_loss(avg):0.0000
+Epoch:32: seg_loss(avg):0.3211, bm_loss(avg):0.0378, tirads_loss(avg):0.0000
+Epoch:33: seg_loss(avg):0.3171, bm_loss(avg):0.0269, tirads_loss(avg):0.0000
+Epoch:34: seg_loss(avg):0.3141, bm_loss(avg):0.0380, tirads_loss(avg):0.0000
+Epoch:35: seg_loss(avg):0.3112, bm_loss(avg):0.0194, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 35
+Epoch:36: seg_loss(avg):0.3077, bm_loss(avg):0.0248, tirads_loss(avg):0.0000
+Epoch:37: seg_loss(avg):0.3060, bm_loss(avg):0.0206, tirads_loss(avg):0.0000
+Epoch:38: seg_loss(avg):0.3015, bm_loss(avg):0.0206, tirads_loss(avg):0.0000
+Epoch:39: seg_loss(avg):0.2976, bm_loss(avg):0.0122, tirads_loss(avg):0.0000
+Epoch:40: seg_loss(avg):0.2955, bm_loss(avg):0.0170, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 40
+Epoch:41: seg_loss(avg):0.2922, bm_loss(avg):0.0189, tirads_loss(avg):0.0000
+Epoch:42: seg_loss(avg):0.2912, bm_loss(avg):0.0171, tirads_loss(avg):0.0000
+Epoch:43: seg_loss(avg):0.2881, bm_loss(avg):0.0109, tirads_loss(avg):0.0000
+Epoch:44: seg_loss(avg):0.2851, bm_loss(avg):0.0092, tirads_loss(avg):0.0000
+Epoch:45: seg_loss(avg):0.2860, bm_loss(avg):0.0117, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 45
+Epoch:46: seg_loss(avg):0.2872, bm_loss(avg):0.0087, tirads_loss(avg):0.0000
+Epoch:47: seg_loss(avg):0.2832, bm_loss(avg):0.0083, tirads_loss(avg):0.0000
+Epoch:48: seg_loss(avg):0.2829, bm_loss(avg):0.0062, tirads_loss(avg):0.0000
+Epoch:49: seg_loss(avg):0.2821, bm_loss(avg):0.0108, tirads_loss(avg):0.0000
+Epoch:50: seg_loss(avg):0.2846, bm_loss(avg):0.0077, tirads_loss(avg):0.0000
+Saved checkpoint at epoch 50
+
+Validating epoch 50 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8248, HD95: 13.7158
+  TN3K - BM: Acc=0.8407, Prec=0.8380, Rec=0.8313, F1=0.8344, AUROC=0.9166, AUPRC=0.9181
+  TN3K - TI-RADS: Acc=0.0000, Prec=0.0000, Rec=0.0000, F1=0.0000, AUC=0.0000
+Testing on DDTI_Classification...
+Error occurred: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/valid/images/'
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask_gamtl.py", line 380, in main
+    test_dataset = MultiTaskDataset(img_path, mask_path, test_label_path, args.img_size, mode='test')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 69, in __init__
+    self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png') or f.endswith('.PNG')]
+                                           ^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/valid/images/'
+

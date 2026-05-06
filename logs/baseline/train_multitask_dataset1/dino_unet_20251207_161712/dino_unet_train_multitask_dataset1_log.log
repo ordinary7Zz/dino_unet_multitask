@@ -1,0 +1,387 @@
+Training started at Sun Dec  7 16:17:12 2025
+Method: dino_unet
+Dataset: train_multitask_dataset1
+Epochs: 50
+Learning Rate: 0.0001
+Batch Size: 12
+Train Image Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_1/images/
+Train Mask Path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multitask/dataset_1/masks/
+Number of test datasets: 1
+Test Dataset 1: TN3K
+  Image path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-image/
+  Mask path: /mnt/wangbd8/workspace/DataSets/ThyroidAgent/TN3K/test-mask/
+Using device: cuda
+Epoch:1: loss:1.543095
+Saved checkpoint at epoch 1
+
+Validating epoch 1 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8304, HD95: 79.3458
+  TN3K - Benign/Malignant Accuracy: 0.6743, TI-RADS Accuracy: 0.0000
+Epoch:2: loss:1.120748
+Saved checkpoint at epoch 2
+
+Validating epoch 2 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8600, HD95: 71.9228
+  TN3K - Benign/Malignant Accuracy: 0.7248, TI-RADS Accuracy: 0.0000
+Epoch:3: loss:0.977272
+Saved checkpoint at epoch 3
+
+Validating epoch 3 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8619, HD95: 62.2887
+  TN3K - Benign/Malignant Accuracy: 0.7020, TI-RADS Accuracy: 0.0000
+Epoch:4: loss:0.913578
+Saved checkpoint at epoch 4
+
+Validating epoch 4 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8657, HD95: 66.5700
+  TN3K - Benign/Malignant Accuracy: 0.6971, TI-RADS Accuracy: 0.0000
+Epoch:5: loss:0.842185
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8663, HD95: 57.7188
+  TN3K - Benign/Malignant Accuracy: 0.7427, TI-RADS Accuracy: 0.0000
+Epoch:6: loss:0.802620
+Saved checkpoint at epoch 6
+
+Validating epoch 6 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8612, HD95: 65.2378
+  TN3K - Benign/Malignant Accuracy: 0.7264, TI-RADS Accuracy: 0.0000
+Epoch:7: loss:0.749610
+Saved checkpoint at epoch 7
+
+Validating epoch 7 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8588, HD95: 69.0441
+  TN3K - Benign/Malignant Accuracy: 0.6922, TI-RADS Accuracy: 0.0000
+Epoch:8: loss:0.718774
+Saved checkpoint at epoch 8
+
+Validating epoch 8 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8729, HD95: 56.2815
+  TN3K - Benign/Malignant Accuracy: 0.6629, TI-RADS Accuracy: 0.0000
+Epoch:9: loss:0.688462
+Saved checkpoint at epoch 9
+
+Validating epoch 9 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8680, HD95: 58.6511
+  TN3K - Benign/Malignant Accuracy: 0.6922, TI-RADS Accuracy: 0.0000
+Epoch:10: loss:0.638291
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8729, HD95: 55.3156
+  TN3K - Benign/Malignant Accuracy: 0.7068, TI-RADS Accuracy: 0.0000
+Epoch:11: loss:0.600695
+Saved checkpoint at epoch 11
+
+Validating epoch 11 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8676, HD95: 66.4140
+  TN3K - Benign/Malignant Accuracy: 0.7199, TI-RADS Accuracy: 0.0000
+Epoch:12: loss:0.585997
+Saved checkpoint at epoch 12
+
+Validating epoch 12 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8645, HD95: 63.0014
+  TN3K - Benign/Malignant Accuracy: 0.6189, TI-RADS Accuracy: 0.0000
+Epoch:13: loss:0.571203
+Saved checkpoint at epoch 13
+
+Validating epoch 13 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8744, HD95: 56.3223
+  TN3K - Benign/Malignant Accuracy: 0.7182, TI-RADS Accuracy: 0.0000
+Epoch:14: loss:0.540940
+Saved checkpoint at epoch 14
+
+Validating epoch 14 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8549, HD95: 68.2114
+  TN3K - Benign/Malignant Accuracy: 0.7052, TI-RADS Accuracy: 0.0000
+Epoch:15: loss:0.510789
+Saved checkpoint at epoch 15
+
+Validating epoch 15 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8669, HD95: 58.1821
+  TN3K - Benign/Malignant Accuracy: 0.6857, TI-RADS Accuracy: 0.0000
+Epoch:16: loss:0.505091
+Saved checkpoint at epoch 16
+
+Validating epoch 16 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8707, HD95: 56.9833
+  TN3K - Benign/Malignant Accuracy: 0.7052, TI-RADS Accuracy: 0.0000
+Epoch:17: loss:0.480794
+Saved checkpoint at epoch 17
+
+Validating epoch 17 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8697, HD95: 65.6040
+  TN3K - Benign/Malignant Accuracy: 0.7182, TI-RADS Accuracy: 0.0000
+Epoch:18: loss:0.473070
+Saved checkpoint at epoch 18
+
+Validating epoch 18 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8689, HD95: 66.1257
+  TN3K - Benign/Malignant Accuracy: 0.7068, TI-RADS Accuracy: 0.0000
+Epoch:19: loss:0.449650
+Saved checkpoint at epoch 19
+
+Validating epoch 19 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8743, HD95: 68.3908
+  TN3K - Benign/Malignant Accuracy: 0.6792, TI-RADS Accuracy: 0.0000
+Epoch:20: loss:0.452187
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8722, HD95: 65.8512
+  TN3K - Benign/Malignant Accuracy: 0.6938, TI-RADS Accuracy: 0.0000
+Epoch:21: loss:0.436191
+Saved checkpoint at epoch 21
+
+Validating epoch 21 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8748, HD95: 60.6883
+  TN3K - Benign/Malignant Accuracy: 0.7280, TI-RADS Accuracy: 0.0000
+Epoch:22: loss:0.418651
+Saved checkpoint at epoch 22
+
+Validating epoch 22 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8688, HD95: 58.4050
+  TN3K - Benign/Malignant Accuracy: 0.7068, TI-RADS Accuracy: 0.0000
+Epoch:23: loss:0.398047
+Saved checkpoint at epoch 23
+
+Validating epoch 23 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8746, HD95: 53.1711
+  TN3K - Benign/Malignant Accuracy: 0.6987, TI-RADS Accuracy: 0.0000
+Epoch:24: loss:0.383537
+Saved checkpoint at epoch 24
+
+Validating epoch 24 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8719, HD95: 58.4596
+  TN3K - Benign/Malignant Accuracy: 0.7166, TI-RADS Accuracy: 0.0000
+Epoch:25: loss:0.369973
+Saved checkpoint at epoch 25
+
+Validating epoch 25 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8739, HD95: 57.2249
+  TN3K - Benign/Malignant Accuracy: 0.7329, TI-RADS Accuracy: 0.0000
+Epoch:26: loss:0.357146
+Saved checkpoint at epoch 26
+
+Validating epoch 26 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8719, HD95: 63.4554
+  TN3K - Benign/Malignant Accuracy: 0.6889, TI-RADS Accuracy: 0.0000
+Epoch:27: loss:0.349137
+Saved checkpoint at epoch 27
+
+Validating epoch 27 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8762, HD95: 54.5989
+  TN3K - Benign/Malignant Accuracy: 0.6694, TI-RADS Accuracy: 0.0000
+Epoch:28: loss:0.328785
+Saved checkpoint at epoch 28
+
+Validating epoch 28 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8763, HD95: 59.2711
+  TN3K - Benign/Malignant Accuracy: 0.6629, TI-RADS Accuracy: 0.0000
+Epoch:29: loss:0.328571
+Saved checkpoint at epoch 29
+
+Validating epoch 29 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8723, HD95: 57.2788
+  TN3K - Benign/Malignant Accuracy: 0.6889, TI-RADS Accuracy: 0.0000
+Epoch:30: loss:0.336487
+Saved checkpoint at epoch 30
+
+Validating epoch 30 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8704, HD95: 56.0690
+  TN3K - Benign/Malignant Accuracy: 0.6987, TI-RADS Accuracy: 0.0000
+Epoch:31: loss:0.320754
+Saved checkpoint at epoch 31
+
+Validating epoch 31 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8820, HD95: 51.0500
+  TN3K - Benign/Malignant Accuracy: 0.7296, TI-RADS Accuracy: 0.0000
+Epoch:32: loss:0.291974
+Saved checkpoint at epoch 32
+
+Validating epoch 32 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8812, HD95: 54.4285
+  TN3K - Benign/Malignant Accuracy: 0.7248, TI-RADS Accuracy: 0.0000
+Epoch:33: loss:0.291170
+Saved checkpoint at epoch 33
+
+Validating epoch 33 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8807, HD95: 54.4617
+  TN3K - Benign/Malignant Accuracy: 0.7150, TI-RADS Accuracy: 0.0000
+Epoch:34: loss:0.277595
+Saved checkpoint at epoch 34
+
+Validating epoch 34 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8791, HD95: 50.5053
+  TN3K - Benign/Malignant Accuracy: 0.7231, TI-RADS Accuracy: 0.0000
+Epoch:35: loss:0.273009
+Saved checkpoint at epoch 35
+
+Validating epoch 35 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8775, HD95: 53.1080
+  TN3K - Benign/Malignant Accuracy: 0.7248, TI-RADS Accuracy: 0.0000
+Epoch:36: loss:0.261377
+Saved checkpoint at epoch 36
+
+Validating epoch 36 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8797, HD95: 55.0000
+  TN3K - Benign/Malignant Accuracy: 0.7182, TI-RADS Accuracy: 0.0000
+Epoch:37: loss:0.263804
+Saved checkpoint at epoch 37
+
+Validating epoch 37 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8819, HD95: 49.1571
+  TN3K - Benign/Malignant Accuracy: 0.7248, TI-RADS Accuracy: 0.0000
+Epoch:38: loss:0.255515
+Saved checkpoint at epoch 38
+
+Validating epoch 38 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8803, HD95: 54.1548
+  TN3K - Benign/Malignant Accuracy: 0.7182, TI-RADS Accuracy: 0.0000
+Epoch:39: loss:0.246729
+Saved checkpoint at epoch 39
+
+Validating epoch 39 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8809, HD95: 50.5028
+  TN3K - Benign/Malignant Accuracy: 0.7199, TI-RADS Accuracy: 0.0000
+Epoch:40: loss:0.240444
+Saved checkpoint at epoch 40
+
+Validating epoch 40 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8824, HD95: 48.3722
+  TN3K - Benign/Malignant Accuracy: 0.7199, TI-RADS Accuracy: 0.0000
+Epoch:41: loss:0.239786
+Saved checkpoint at epoch 41
+
+Validating epoch 41 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8816, HD95: 51.0435
+  TN3K - Benign/Malignant Accuracy: 0.7378, TI-RADS Accuracy: 0.0000
+Epoch:42: loss:0.237795
+Saved checkpoint at epoch 42
+
+Validating epoch 42 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8811, HD95: 52.1084
+  TN3K - Benign/Malignant Accuracy: 0.7003, TI-RADS Accuracy: 0.0000
+Epoch:43: loss:0.229402
+Saved checkpoint at epoch 43
+
+Validating epoch 43 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8812, HD95: 49.5245
+  TN3K - Benign/Malignant Accuracy: 0.7020, TI-RADS Accuracy: 0.0000
+Epoch:44: loss:0.227956
+Saved checkpoint at epoch 44
+
+Validating epoch 44 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8815, HD95: 50.1972
+  TN3K - Benign/Malignant Accuracy: 0.7117, TI-RADS Accuracy: 0.0000
+Epoch:45: loss:0.220116
+Saved checkpoint at epoch 45
+
+Validating epoch 45 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8823, HD95: 48.2945
+  TN3K - Benign/Malignant Accuracy: 0.7166, TI-RADS Accuracy: 0.0000
+Epoch:46: loss:0.225277
+Saved checkpoint at epoch 46
+
+Validating epoch 46 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8820, HD95: 49.0675
+  TN3K - Benign/Malignant Accuracy: 0.7215, TI-RADS Accuracy: 0.0000
+Epoch:47: loss:0.222462
+Saved checkpoint at epoch 47
+
+Validating epoch 47 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8817, HD95: 48.8547
+  TN3K - Benign/Malignant Accuracy: 0.7101, TI-RADS Accuracy: 0.0000
+Epoch:48: loss:0.218036
+Saved checkpoint at epoch 48
+
+Validating epoch 48 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8820, HD95: 48.5413
+  TN3K - Benign/Malignant Accuracy: 0.7182, TI-RADS Accuracy: 0.0000
+Epoch:49: loss:0.216581
+Saved checkpoint at epoch 49
+
+Validating epoch 49 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8815, HD95: 48.9531
+  TN3K - Benign/Malignant Accuracy: 0.7182, TI-RADS Accuracy: 0.0000
+Epoch:50: loss:0.217266
+Saved checkpoint at epoch 50
+
+Validating epoch 50 on all test datasets...
+Testing on TN3K...
+  TN3K - Dice: 0.8816, HD95: 48.9745
+  TN3K - Benign/Malignant Accuracy: 0.7166, TI-RADS Accuracy: 0.0000
+
+========== Training Completed ==========
+Training completed at Sun Dec  7 17:23:00 2025
+
+===== Dice Scores Summary =====
+Dataset: TN3K
+Dice scores per epoch: [0.8304, 0.86, 0.8619, 0.8657, 0.8663, 0.8612, 0.8588, 0.8729, 0.868, 0.8729, 0.8676, 0.8645, 0.8744, 0.8549, 0.8669, 0.8707, 0.8697, 0.8689, 0.8743, 0.8722, 0.8748, 0.8688, 0.8746, 0.8719, 0.8739, 0.8719, 0.8762, 0.8763, 0.8723, 0.8704, 0.882, 0.8812, 0.8807, 0.8791, 0.8775, 0.8797, 0.8819, 0.8803, 0.8809, 0.8824, 0.8816, 0.8811, 0.8812, 0.8815, 0.8823, 0.882, 0.8817, 0.882, 0.8815, 0.8816]
+Best Dice: 0.8824 at epoch 40
+
+===== HD95 Scores Summary =====
+Dataset: TN3K
+HD95 scores per epoch: [79.3458, 71.9228, 62.2887, 66.57, 57.7188, 65.2378, 69.0441, 56.2815, 58.6511, 55.3156, 66.414, 63.0014, 56.3223, 68.2114, 58.1821, 56.9833, 65.604, 66.1257, 68.3908, 65.8512, 60.6883, 58.405, 53.1711, 58.4596, 57.2249, 63.4554, 54.5989, 59.2711, 57.2788, 56.069, 51.05, 54.4285, 54.4617, 50.5053, 53.108, 55.0, 49.1571, 54.1548, 50.5028, 48.3722, 51.0435, 52.1084, 49.5245, 50.1972, 48.2945, 49.0675, 48.8547, 48.5413, 48.9531, 48.9745]
+
+===== Benign/Malignant Accuracy Summary =====
+Dataset: TN3K
+Accuracy scores per epoch: [0.6743, 0.7248, 0.702, 0.6971, 0.7427, 0.7264, 0.6922, 0.6629, 0.6922, 0.7068, 0.7199, 0.6189, 0.7182, 0.7052, 0.6857, 0.7052, 0.7182, 0.7068, 0.6792, 0.6938, 0.728, 0.7068, 0.6987, 0.7166, 0.7329, 0.6889, 0.6694, 0.6629, 0.6889, 0.6987, 0.7296, 0.7248, 0.715, 0.7231, 0.7248, 0.7182, 0.7248, 0.7182, 0.7199, 0.7199, 0.7378, 0.7003, 0.702, 0.7117, 0.7166, 0.7215, 0.7101, 0.7182, 0.7182, 0.7166]
+Best Accuracy: 0.7427 at epoch 5
+
+===== TI-RADS Accuracy Summary =====
+Dataset: TN3K
+Accuracy scores per epoch: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Best Accuracy: 0.0000 at epoch 1
+Best HD95: 48.2945 at epoch 45
+

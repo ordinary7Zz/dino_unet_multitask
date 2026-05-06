@@ -1,0 +1,76 @@
+Training started at Wed May  6 20:47:37 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC_sampler_clsclsseg_pf02_ns6000
+Epochs: 50
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Sampler stats for FTCPTC: Negative=10559, Positive=787, Missing=134, Valid=11346
+Sampler config for FTCPTC: target_pos_fraction=0.2000, target_neg_fraction=0.8000
+Sampler weights for FTCPTC: neg_weight=0.00007576, pos_weight=0.00025413, missing_weight=0.00000000
+Expected sampled draws per default epoch for FTCPTC: Negative≈9076.8, Positive≈2269.2
+Expected repeat factor per default epoch for FTCPTC: neg≈0.86x, pos≈2.88x
+Using WeightedRandomSampler: replacement=True, num_samples=6000, pos_fraction=0.2000
+First sample: filename=2016/刘惠银/刘惠银_01_0001_0001.jpg, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/2016/刘惠银/刘惠银_01_0001_0001.jpg, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/2016/刘惠银/刘惠银_01_0001_0001.png, target=-1
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['cls', 'cls', 'seg']
+steps_per_epoch (optimizer steps): 166
+Epoch:1: seg_loss(avg):0.8660, cls_loss(avg):0.5182
+Epoch:2: seg_loss(avg):0.7339, cls_loss(avg):0.5117
+Epoch:3: seg_loss(avg):0.5963, cls_loss(avg):0.4974
+Epoch:4: seg_loss(avg):0.5466, cls_loss(avg):0.4901
+Epoch:5: seg_loss(avg):0.5255, cls_loss(avg):0.4797
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8237, HD95: 10.9959
+  FTCPTC - FTCPTC: Acc=0.6740, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.5811, AUPRC=0.3760, ECE=0.1508
+Epoch:6: seg_loss(avg):0.5035, cls_loss(avg):0.4540
+Epoch:7: seg_loss(avg):0.5052, cls_loss(avg):0.4284
+Epoch:8: seg_loss(avg):0.4947, cls_loss(avg):0.3650
+Epoch:9: seg_loss(avg):0.4816, cls_loss(avg):0.3156
+Epoch:10: seg_loss(avg):0.4753, cls_loss(avg):0.3069
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8279, HD95: 10.4317
+  FTCPTC - FTCPTC: Acc=0.6879, Prec=0.6186, Rec=0.1104, F1=0.1865, AUROC=0.5977, AUPRC=0.4520, ECE=0.2614
+Epoch:11: seg_loss(avg):0.4721, cls_loss(avg):0.2343
+Epoch:12: seg_loss(avg):0.4803, cls_loss(avg):0.2001
+Epoch:13: seg_loss(avg):0.4733, cls_loss(avg):0.1833
+Epoch:14: seg_loss(avg):0.4692, cls_loss(avg):0.1553
+Epoch:15: seg_loss(avg):0.4539, cls_loss(avg):0.1496
+Saved checkpoint at epoch 15
+
+Validating epoch 15 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8461, HD95: 8.9757
+  FTCPTC - FTCPTC: Acc=0.6740, Prec=0.4883, Rec=0.0119, F1=0.0232, AUROC=0.5452, AUPRC=0.3659, ECE=0.3145
+Epoch:16: seg_loss(avg):0.4391, cls_loss(avg):0.1171
+Epoch:17: seg_loss(avg):0.4441, cls_loss(avg):0.0957
+Epoch:18: seg_loss(avg):0.4400, cls_loss(avg):0.0811
+Epoch:19: seg_loss(avg):0.4406, cls_loss(avg):0.0879
+Epoch:20: seg_loss(avg):0.4272, cls_loss(avg):0.0633
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8401, HD95: 9.4798
+  FTCPTC - FTCPTC: Acc=0.6718, Prec=0.4595, Rec=0.0365, F1=0.0672, AUROC=0.6070, AUPRC=0.4280, ECE=0.3055
+Epoch:21: seg_loss(avg):0.4268, cls_loss(avg):0.0508
+Epoch:22: seg_loss(avg):0.4243, cls_loss(avg):0.0496
+Epoch:23: seg_loss(avg):0.4204, cls_loss(avg):0.0527
+Epoch:24: seg_loss(avg):0.4150, cls_loss(avg):0.0376
+Epoch:25: seg_loss(avg):0.3950, cls_loss(avg):0.0333
+Saved checkpoint at epoch 25
+
+Validating epoch 25 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8585, HD95: 8.3834
+  FTCPTC - FTCPTC: Acc=0.6760, Prec=0.5239, Rec=0.0672, F1=0.1185, AUROC=0.5668, AUPRC=0.3989, ECE=0.3089
+Epoch:26: seg_loss(avg):0.4056, cls_loss(avg):0.0329
