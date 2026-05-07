@@ -6,13 +6,13 @@ CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
 TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
 TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json"  # 添加分类标签路径
-EPOCH=50
+TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_3000_1000.json"  # 添加分类标签路径
+EPOCH=20
 LR=1e-4
 BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
 CHECKPOINT_INTERVAL=5
-EVAL_INTERVAL=50
+EVAL_INTERVAL=2
 DATASET_NAME="train_multitask_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
