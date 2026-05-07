@@ -1,0 +1,125 @@
+Training started at Wed May  6 22:33:21 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC_sampler_segcls_pf02_ns6000
+Epochs: 20
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Sampler stats for FTCPTC: Negative=10559, Positive=787, Missing=134, Valid=11346
+Sampler config for FTCPTC: target_pos_fraction=0.4000, target_neg_fraction=0.6000
+Sampler weights for FTCPTC: neg_weight=0.00005682, pos_weight=0.00050826, missing_weight=0.00000000
+Expected sampled draws per default epoch for FTCPTC: Negative≈6807.6, Positive≈4538.4
+Expected repeat factor per default epoch for FTCPTC: neg≈0.64x, pos≈5.77x
+Using WeightedRandomSampler: replacement=True, num_samples=6000, pos_fraction=0.4000
+First sample: filename=2016/刘惠银/刘惠银_01_0001_0001.jpg, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/2016/刘惠银/刘惠银_01_0001_0001.jpg, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/2016/刘惠银/刘惠银_01_0001_0001.png, target=-1
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 250
+Epoch:1: seg_loss(avg):0.7924, cls_loss(avg):0.6880
+Epoch:2: seg_loss(avg):0.5978, cls_loss(avg):0.6718
+Saved checkpoint at epoch 2
+
+Validating epoch 2 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8072, HD95: 10.2479
+  FTCPTC - FTCPTC: Acc=0.6740, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.4882, AUPRC=0.3166, ECE=0.0485
+Epoch:3: seg_loss(avg):0.5223, cls_loss(avg):0.6502
+Epoch:4: seg_loss(avg):0.4987, cls_loss(avg):0.6229
+Saved checkpoint at epoch 4
+
+Validating epoch 4 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8410, HD95: 9.3027
+  FTCPTC - FTCPTC: Acc=0.6058, Prec=0.3505, Rec=0.2452, F1=0.2878, AUROC=0.5115, AUPRC=0.3244, ECE=0.1391
+Epoch:5: seg_loss(avg):0.4593, cls_loss(avg):0.5688
+Epoch:6: seg_loss(avg):0.4514, cls_loss(avg):0.5149
+Saved checkpoint at epoch 6
+
+Validating epoch 6 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8335, HD95: 9.7799
+  FTCPTC - FTCPTC: Acc=0.6223, Prec=0.3677, Rec=0.2209, F1=0.2752, AUROC=0.5837, AUPRC=0.3694, ECE=0.1328
+Epoch:7: seg_loss(avg):0.4343, cls_loss(avg):0.4315
+Epoch:8: seg_loss(avg):0.4275, cls_loss(avg):0.3525
+Saved checkpoint at epoch 8
+
+Validating epoch 8 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8404, HD95: 9.9566
+  FTCPTC - FTCPTC: Acc=0.5747, Prec=0.3882, Rec=0.5295, F1=0.4473, AUROC=0.5872, AUPRC=0.3868, ECE=0.3073
+Epoch:9: seg_loss(avg):0.4161, cls_loss(avg):0.2933
+Epoch:10: seg_loss(avg):0.4056, cls_loss(avg):0.2337
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8516, HD95: 8.5322
+  FTCPTC - FTCPTC: Acc=0.6277, Prec=0.3606, Rec=0.1838, F1=0.2428, AUROC=0.6042, AUPRC=0.3797, ECE=0.2668
+Epoch:11: seg_loss(avg):0.3911, cls_loss(avg):0.1666
+Epoch:12: seg_loss(avg):0.3844, cls_loss(avg):0.1232
+Saved checkpoint at epoch 12
+
+Validating epoch 12 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8550, HD95: 8.9574
+  FTCPTC - FTCPTC: Acc=0.6658, Prec=0.4656, Rec=0.1712, F1=0.2495, AUROC=0.5970, AUPRC=0.4068, ECE=0.2940
+Epoch:13: seg_loss(avg):0.3651, cls_loss(avg):0.1032
+Epoch:14: seg_loss(avg):0.3635, cls_loss(avg):0.0715
+Saved checkpoint at epoch 14
+
+Validating epoch 14 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8629, HD95: 7.9355
+  FTCPTC - FTCPTC: Acc=0.6617, Prec=0.3602, Rec=0.0486, F1=0.0853, AUROC=0.5512, AUPRC=0.3748, ECE=0.3216
+Epoch:15: seg_loss(avg):0.3574, cls_loss(avg):0.0596
+Epoch:16: seg_loss(avg):0.3544, cls_loss(avg):0.0548
+Saved checkpoint at epoch 16
+
+Validating epoch 16 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8667, HD95: 7.8119
+  FTCPTC - FTCPTC: Acc=0.6598, Prec=0.2642, Rec=0.0244, F1=0.0445, AUROC=0.5661, AUPRC=0.3829, ECE=0.3294
+Epoch:17: seg_loss(avg):0.3494, cls_loss(avg):0.0338
+Epoch:18: seg_loss(avg):0.3429, cls_loss(avg):0.0306
+Saved checkpoint at epoch 18
+
+Validating epoch 18 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8687, HD95: 8.0461
+  FTCPTC - FTCPTC: Acc=0.6496, Prec=0.2215, Rec=0.0298, F1=0.0523, AUROC=0.5177, AUPRC=0.3550, ECE=0.3347
+Epoch:19: seg_loss(avg):0.3397, cls_loss(avg):0.0248
+Epoch:20: seg_loss(avg):0.3347, cls_loss(avg):0.0299
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8692, HD95: 7.9022
+  FTCPTC - FTCPTC: Acc=0.6578, Prec=0.3296, Rec=0.0484, F1=0.0841, AUROC=0.5303, AUPRC=0.3641, ECE=0.3313
+
+========== Evaluation Summary (All Test Records) ==========
+
+
+Dataset: FTCPTC
+Eval epochs: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+Dice per eval: [0.807200014591217, 0.8410000205039978, 0.8335000276565552, 0.840399980545044, 0.8515999913215637, 0.8550000190734863, 0.8629000186920166, 0.8666999936103821, 0.8687000274658203, 0.8691999912261963]
+HD95 per eval: [10.247900009155273, 9.30270004272461, 9.779899597167969, 9.956600189208984, 8.53219985961914, 8.95740032196045, 7.935500144958496, 7.8119001388549805, 8.046099662780762, 7.902200222015381]
+Best Dice: 0.8692 at epoch 20
+Best HD95: 7.8119 at epoch 16
+
+FTCPTC metrics per eval:
+  Acc:  [0.674, 0.6058, 0.6223, 0.5747, 0.6277, 0.6658, 0.6617, 0.6598, 0.6496, 0.6578]
+  Prec: [0.0, 0.3505, 0.3677, 0.3882, 0.3606, 0.4656, 0.3602, 0.2642, 0.2215, 0.3296]
+  Rec:  [0.0, 0.2452, 0.2209, 0.5295, 0.1838, 0.1712, 0.0486, 0.0244, 0.0298, 0.0484]
+  F1:   [0.0, 0.2878, 0.2752, 0.4473, 0.2428, 0.2495, 0.0853, 0.0445, 0.0523, 0.0841]
+  AUROC:[0.4882, 0.5115, 0.5837, 0.5872, 0.6042, 0.597, 0.5512, 0.5661, 0.5177, 0.5303]
+  AUPRC:[0.3166, 0.3244, 0.3694, 0.3868, 0.3797, 0.4068, 0.3748, 0.3829, 0.355, 0.3641]
+  ECE:  [0.0485, 0.1391, 0.1328, 0.3073, 0.2668, 0.294, 0.3216, 0.3294, 0.3347, 0.3313]
+Best FTCPTC F1: 0.4473 at epoch 8
+
+==========================================================
+
+========== Training Completed ==========
+Training completed at Wed May  6 22:47:56 2026

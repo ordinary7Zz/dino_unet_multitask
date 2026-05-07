@@ -1,0 +1,20 @@
+Training started at Thu May  7 18:21:28 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC
+Epochs: 20
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Error occurred: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_3000_1000.json'
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask_binary_gamtl.py", line 180, in main
+    dataset = MultiTaskDataset(
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 72, in __init__
+    self.label_data = self._load_label_data(label_json_path)
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 106, in _load_label_data
+    with open(label_json_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_3000_1000.json'
+
