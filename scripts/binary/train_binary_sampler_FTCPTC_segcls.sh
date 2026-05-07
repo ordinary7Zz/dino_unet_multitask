@@ -16,7 +16,7 @@ BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
 CHECKPOINT_INTERVAL=5
 EVAL_INTERVAL=5
-CLS_POS_WEIGHT=3
+CLS_POS_WEIGHT=2
 DATASET_NAME="train_multitask_FTCPTC_segcls"
 TASK_SCHEDULE="seg,cls"
 
