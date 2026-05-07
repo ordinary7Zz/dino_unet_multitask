@@ -9,17 +9,16 @@ import time
 import torch
 import torch.optim as opt
 import tensorboardX
-from torch.utils.data import DataLoader, WeightedRandomSampler
+from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import CosineAnnealingLR
 
 from dataset import MultiTaskDataset
 from dino_unet_multitask import DINOv3_S_UNet_MULTITASK
 from utils.metrics import evaluate_model_binary_target
 from utils.loss import structure_loss, benign_malignant_loss
-from utils.binary_stats import build_binary_sampler_weights
 from utils.utils import log_print
 
-parser = argparse.ArgumentParser("DINOV3-UNet with sampler-based multitask binary classification")
+parser = argparse.ArgumentParser("DINOV3-UNet multitask binary classification")
 parser.add_argument("--method", type=str, required=True)
 parser.add_argument("--train_image_path", type=str, required=True,
                     help="path to the training image root")
@@ -62,10 +61,6 @@ parser.add_argument('--task_schedule', type=str, default='seg,cls',
 parser.add_argument('--steps_per_epoch', type=int, default=None,
                     help='Number of optimizer steps per epoch. If None, use len(dataloader)//len(schedule).')
 parser.add_argument('--use_amp', action='store_true', help='Use torch.cuda.amp mixed precision')
-parser.add_argument('--sampler_num_samples', type=int, default=None,
-                    help='Number of samples drawn by WeightedRandomSampler. If None, use the number of valid classification labels.')
-parser.add_argument('--sampler_pos_fraction', type=float, default=0.3,
-                    help='Target positive-class fraction for WeightedRandomSampler. Must be in (0,1). Default: 0.3')
 parser.add_argument('--cls_pos_weight', type=float, default=None,
                     help='Positive class weight for binary BCE loss. Larger values emphasize recall for positive class.')
 
@@ -189,23 +184,11 @@ def main(args):
             mode='train',
             target_key=args.target_key,
         )
-        sampler_stats = build_binary_sampler_weights(
-            dataset.samples,
-            args.target_key,
-            pos_fraction=args.sampler_pos_fraction,
-            log_file=log_file,
-        )
-        sampler_num_samples = args.sampler_num_samples if args.sampler_num_samples is not None else sampler_stats['valid_count']
-        sampler = WeightedRandomSampler(
-            weights=torch.DoubleTensor(sampler_stats['sample_weights']),
-            num_samples=sampler_num_samples,
-            replacement=True,
-        )
+        dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, num_workers=8, drop_last=True)
         log_print(
-            f"Using WeightedRandomSampler: replacement=True, num_samples={sampler_num_samples}, pos_fraction={args.sampler_pos_fraction:.4f}\n",
+            f"Using DataLoader shuffle=True, dataset_size={len(dataset)}, batch_size={args.batch_size}, drop_last=True\n",
             log_file,
         )
-        dataloader = DataLoader(dataset, batch_size=args.batch_size, sampler=sampler, num_workers=8, drop_last=True)
         first_sample = dataset.samples[0]
         log_print(
             f"First sample: filename={first_sample['filename']}, image={first_sample['image_path']}, mask={first_sample['mask_path']}, target={first_sample['target']}\n",

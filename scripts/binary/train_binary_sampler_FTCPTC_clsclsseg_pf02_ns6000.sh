@@ -16,10 +16,8 @@ BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
 CHECKPOINT_INTERVAL=5
 EVAL_INTERVAL=5
-SAMPLER_POS_FRACTION=0.2
-SAMPLER_NUM_SAMPLES=6000
 CLS_POS_WEIGHT=3
-DATASET_NAME="train_multitask_FTCPTC_sampler_clsclsseg_pf02_ns6000"
+DATASET_NAME="train_multitask_FTCPTC_clsclsseg_no_sampler"
 TASK_SCHEDULE="cls,cls,seg"
 
 CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_sampler.py \
@@ -41,6 +39,4 @@ CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_sampl
     --eval_interval $EVAL_INTERVAL \
     --dataset_name "$DATASET_NAME" \
     --task_schedule "$TASK_SCHEDULE" \
-    --sampler_pos_fraction $SAMPLER_POS_FRACTION \
-    --sampler_num_samples $SAMPLER_NUM_SAMPLES \
     --cls_pos_weight $CLS_POS_WEIGHT

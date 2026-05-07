@@ -5,22 +5,24 @@ METHOD="dino_unet"
 TARGET_KEY="FTCPTC"
 TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
 TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json"
+TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_1000_1000.json"
 TEST_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
 TEST_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
 TEST_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
 TEST_DATASET_NAME="FTCPTC"
 EPOCH=20
-LR=1e-4
+LR=1e-5
 BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
 CHECKPOINT_INTERVAL=5
 EVAL_INTERVAL=5
-SAMPLER_POS_FRACTION=0.2
-SAMPLER_NUM_SAMPLES=6000
 CLS_POS_WEIGHT=3
-DATASET_NAME="train_multitask_FTCPTC_sampler_segcls_pf02_ns6000"
+DATASET_NAME="train_multitask_FTCPTC_segcls"
 TASK_SCHEDULE="seg,cls"
+
+# 如果你已经生成了新的重采样标签文件，只需要修改 TRAIN_LABEL_PATH。
+# 例如：
+# TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_labels_ftcptc_2000_1000.json"
 
 CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_sampler.py \
     --cuda_device 0 \
@@ -41,6 +43,4 @@ CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_sampl
     --eval_interval $EVAL_INTERVAL \
     --dataset_name "$DATASET_NAME" \
     --task_schedule "$TASK_SCHEDULE" \
-    --sampler_pos_fraction $SAMPLER_POS_FRACTION \
-    --sampler_num_samples $SAMPLER_NUM_SAMPLES \
     --cls_pos_weight $CLS_POS_WEIGHT
