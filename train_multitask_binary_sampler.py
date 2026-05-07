@@ -66,6 +66,8 @@ parser.add_argument('--sampler_num_samples', type=int, default=None,
                     help='Number of samples drawn by WeightedRandomSampler. If None, use the number of valid classification labels.')
 parser.add_argument('--sampler_pos_fraction', type=float, default=0.3,
                     help='Target positive-class fraction for WeightedRandomSampler. Must be in (0,1). Default: 0.3')
+parser.add_argument('--cls_pos_weight', type=float, default=None,
+                    help='Positive class weight for binary BCE loss. Larger values emphasize recall for positive class.')
 
 args = parser.parse_args()
 args.dino_pretrained = str(args.dino_pretrained).lower() in ('true', '1', 'yes', 'y')
@@ -228,6 +230,7 @@ def main(args):
         seg_weight = 1.0
         cls_weight = 1.0
         log_print(f"Loss weights: seg={seg_weight}, cls={cls_weight}\n", log_file)
+        log_print(f"Classification pos_weight: {args.cls_pos_weight}\n", log_file)
 
         schedule = [t.strip() for t in args.task_schedule.split(',') if t.strip()]
         assert len(schedule) > 0, 'Empty task_schedule'
@@ -279,6 +282,7 @@ def main(args):
                                 loss = cls_weight * benign_malignant_loss(
                                     pred_cls[valid],
                                     y[valid],
+                                    pos_weight=args.cls_pos_weight,
                                 )
                                 cls_loss_sum += float(loss.detach().item())
                                 n_cls += 1

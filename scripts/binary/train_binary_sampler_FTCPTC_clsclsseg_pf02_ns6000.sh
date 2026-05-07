@@ -18,6 +18,7 @@ CHECKPOINT_INTERVAL=5
 EVAL_INTERVAL=5
 SAMPLER_POS_FRACTION=0.2
 SAMPLER_NUM_SAMPLES=6000
+CLS_POS_WEIGHT=3
 DATASET_NAME="train_multitask_FTCPTC_sampler_clsclsseg_pf02_ns6000"
 TASK_SCHEDULE="cls,cls,seg"
 
@@ -41,4 +42,5 @@ CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_sampl
     --dataset_name "$DATASET_NAME" \
     --task_schedule "$TASK_SCHEDULE" \
     --sampler_pos_fraction $SAMPLER_POS_FRACTION \
-    --sampler_num_samples $SAMPLER_NUM_SAMPLES
+    --sampler_num_samples $SAMPLER_NUM_SAMPLES \
+    --cls_pos_weight $CLS_POS_WEIGHT
