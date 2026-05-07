@@ -15,7 +15,7 @@ utils/build_binary_resampled_labels.py
 
 基本用法：
 python utils/build_binary_resampled_labels.py \
-  --input_json train_labels.json \
+  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
   --output_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_3000_1000.json \
   --target_key FTCPTC \
   --num_class0 3000 \
