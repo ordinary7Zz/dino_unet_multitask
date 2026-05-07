@@ -184,6 +184,14 @@ def main(args):
             mode='train',
             target_key=args.target_key,
         )
+        neg_count = sum(1 for sample in dataset.samples if sample.get('target', -1) == 0)
+        pos_count = sum(1 for sample in dataset.samples if sample.get('target', -1) == 1)
+        missing_count = sum(1 for sample in dataset.samples if sample.get('target', -1) not in (0, 1))
+        valid_count = neg_count + pos_count
+        log_print(
+            f"Training label stats for {args.target_key}: Negative={neg_count}, Positive={pos_count}, Missing={missing_count}, Valid={valid_count}\n",
+            log_file,
+        )
         dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, num_workers=8, drop_last=True)
         log_print(
             f"Using DataLoader shuffle=True, dataset_size={len(dataset)}, batch_size={args.batch_size}, drop_last=True\n",
