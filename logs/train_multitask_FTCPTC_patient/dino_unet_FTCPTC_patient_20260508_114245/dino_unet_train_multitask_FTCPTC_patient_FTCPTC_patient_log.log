@@ -1,0 +1,184 @@
+Training started at Fri May  8 11:42:45 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC_patient
+Epochs: 50
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size (patients): 4
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Patient ID depth: 2
+Max images per patient (train only): 8
+Classification pooling: max
+Classification loss mode: gla
+Validation threshold mode: fixed
+Training patient label stats for FTCPTC: Negative=860, Positive=79, Missing=13, Valid=939
+Training patient bag size stats: min=1, max=57, mean=12.06
+Using patient-level DataLoader shuffle=True, patient_count=952, batch_size=4, drop_last=True
+First patient sample: patient_id=2016/刘惠银, num_images=8, target=-1
+Training set - FTCPTC (patient-level, patient_id_depth=2): Negative=860 (91.59%), Positive=79 (8.41%), Missing=13
+Auto-adjusted tau=1.00 (imbalance_ratio=10.89)
+Patient-level GLA parameters for FTCPTC: p_neg=0.9159, p_pos=0.0841, tau=1.00
+Logit adjustment magnitude: 2.3875
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 119
+Eval dataset FTCPTC patient stats: Negative=42, Positive=21, Missing=0, Valid=63
+Eval dataset FTCPTC bag size stats: min=2, max=23, mean=7.94
+Epoch:1: seg_loss(avg):0.9655, cls_loss(avg):0.4912
+Epoch:2: seg_loss(avg):1.1484, cls_loss(avg):0.4463
+Epoch:3: seg_loss(avg):0.8346, cls_loss(avg):0.5146
+Epoch:4: seg_loss(avg):0.5859, cls_loss(avg):0.5103
+Epoch:5: seg_loss(avg):0.5282, cls_loss(avg):0.4352
+Saved checkpoint at epoch 5
+
+Validating epoch 5 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8262, HD95: 9.8727
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.4640, AUPRC=0.3491, ECE=0.2775, Youden=0.0000
+Epoch:6: seg_loss(avg):0.4898, cls_loss(avg):0.4173
+Epoch:7: seg_loss(avg):0.4586, cls_loss(avg):0.4588
+Epoch:8: seg_loss(avg):0.4515, cls_loss(avg):0.4769
+Epoch:9: seg_loss(avg):0.4347, cls_loss(avg):0.4609
+Epoch:10: seg_loss(avg):0.4308, cls_loss(avg):0.5142
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8481, HD95: 8.5743
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.5520, AUPRC=0.4195, ECE=0.2861, Youden=0.0000
+Epoch:11: seg_loss(avg):0.4114, cls_loss(avg):0.4710
+Epoch:12: seg_loss(avg):0.3875, cls_loss(avg):0.4054
+Epoch:13: seg_loss(avg):0.3970, cls_loss(avg):0.4620
+Epoch:14: seg_loss(avg):0.3868, cls_loss(avg):0.4916
+Epoch:15: seg_loss(avg):0.3926, cls_loss(avg):0.4933
+Saved checkpoint at epoch 15
+
+Validating epoch 15 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8545, HD95: 9.0982
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.4533, AUPRC=0.3806, ECE=0.2792, Youden=0.0000
+Epoch:16: seg_loss(avg):0.3720, cls_loss(avg):0.4347
+Epoch:17: seg_loss(avg):0.3583, cls_loss(avg):0.5157
+Epoch:18: seg_loss(avg):0.3512, cls_loss(avg):0.4303
+Epoch:19: seg_loss(avg):0.3522, cls_loss(avg):0.4599
+Epoch:20: seg_loss(avg):0.3435, cls_loss(avg):0.4866
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8737, HD95: 7.2091
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.4660, AUPRC=0.3797, ECE=0.2843, Youden=0.0000
+Epoch:21: seg_loss(avg):0.3345, cls_loss(avg):0.4962
+Epoch:22: seg_loss(avg):0.3408, cls_loss(avg):0.5724
+Epoch:23: seg_loss(avg):0.3320, cls_loss(avg):0.4812
+Epoch:24: seg_loss(avg):0.3195, cls_loss(avg):0.5340
+Epoch:25: seg_loss(avg):0.3150, cls_loss(avg):0.4461
+Saved checkpoint at epoch 25
+
+Validating epoch 25 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8737, HD95: 7.6872
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.4947, AUPRC=0.4058, ECE=0.2779, Youden=0.0000
+Epoch:26: seg_loss(avg):0.3164, cls_loss(avg):0.4649
+Epoch:27: seg_loss(avg):0.3104, cls_loss(avg):0.5093
+Epoch:28: seg_loss(avg):0.3114, cls_loss(avg):0.5412
+Epoch:29: seg_loss(avg):0.2929, cls_loss(avg):0.4650
+Epoch:30: seg_loss(avg):0.3026, cls_loss(avg):0.5593
+Saved checkpoint at epoch 30
+
+Validating epoch 30 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8672, HD95: 7.4926
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.5976, AUPRC=0.4306, ECE=0.2474, Youden=0.0000
+Epoch:31: seg_loss(avg):0.2980, cls_loss(avg):0.4584
+Epoch:32: seg_loss(avg):0.2875, cls_loss(avg):0.4728
+Epoch:33: seg_loss(avg):0.2925, cls_loss(avg):0.4631
+Epoch:34: seg_loss(avg):0.2863, cls_loss(avg):0.4951
+Epoch:35: seg_loss(avg):0.2795, cls_loss(avg):0.4264
+Saved checkpoint at epoch 35
+
+Validating epoch 35 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8749, HD95: 7.3512
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6663, Prec=0.0000, Rec=0.0000, F1=0.0000, AUROC=0.5228, AUPRC=0.3578, ECE=0.3000, Youden=0.0000
+Epoch:36: seg_loss(avg):0.2816, cls_loss(avg):0.4899
+Epoch:37: seg_loss(avg):0.2816, cls_loss(avg):0.5131
+Epoch:38: seg_loss(avg):0.2907, cls_loss(avg):0.4418
+Epoch:39: seg_loss(avg):0.2815, cls_loss(avg):0.3385
+Epoch:40: seg_loss(avg):0.2787, cls_loss(avg):0.2753
+Saved checkpoint at epoch 40
+
+Validating epoch 40 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8790, HD95: 7.0612
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6818, Prec=0.6265, Rec=0.0464, F1=0.0852, AUROC=0.4848, AUPRC=0.3937, ECE=0.3147, Youden=0.0464
+Epoch:41: seg_loss(avg):0.2785, cls_loss(avg):0.4041
+Epoch:42: seg_loss(avg):0.2894, cls_loss(avg):0.3123
+Epoch:43: seg_loss(avg):0.2744, cls_loss(avg):0.3064
+Epoch:44: seg_loss(avg):0.2771, cls_loss(avg):0.3436
+Epoch:45: seg_loss(avg):0.2820, cls_loss(avg):0.2504
+Saved checkpoint at epoch 45
+
+Validating epoch 45 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8811, HD95: 6.8702
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6025, Prec=0.1627, Rec=0.0464, F1=0.0700, AUROC=0.4939, AUPRC=0.3807, ECE=0.3491, Youden=-0.0727
+Epoch:46: seg_loss(avg):0.2758, cls_loss(avg):0.2350
+Epoch:47: seg_loss(avg):0.2775, cls_loss(avg):0.2710
+Epoch:48: seg_loss(avg):0.2731, cls_loss(avg):0.2390
+Epoch:49: seg_loss(avg):0.2757, cls_loss(avg):0.2148
+Epoch:50: seg_loss(avg):0.2736, cls_loss(avg):0.2234
+Saved checkpoint at epoch 50
+
+Validating epoch 50 on all test datasets...
+Using fixed patient-level classification threshold: 0.5000
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8799, HD95: 6.9416
+  FTCPTC - FTCPTC threshold: 0.5000
+  FTCPTC - patient-level FTCPTC: Acc=0.6345, Prec=0.2420, Rec=0.0464, F1=0.0754, AUROC=0.5040, AUPRC=0.3844, ECE=0.3490, Youden=-0.0247
+
+========== Evaluation Summary (Patient-Level Classification) ==========
+
+
+Dataset: FTCPTC
+Eval epochs: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Dice per eval: [0.826200008392334, 0.8481000065803528, 0.8544999957084656, 0.8737000226974487, 0.8737000226974487, 0.8672000169754028, 0.8748999834060669, 0.8790000081062317, 0.8810999989509583, 0.8798999786376953]
+HD95 per eval: [9.872699737548828, 8.574299812316895, 9.098199844360352, 7.209099769592285, 7.68720006942749, 7.492599964141846, 7.351200103759766, 7.061200141906738, 6.870200157165527, 6.9415998458862305]
+Best Dice: 0.8811 at epoch 45
+Best HD95: 6.8702 at epoch 45
+
+FTCPTC patient-level metrics per eval:
+  Acc:  [0.6663, 0.6663, 0.6663, 0.6663, 0.6663, 0.6663, 0.6663, 0.6818, 0.6025, 0.6345]
+  Prec: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6265, 0.1627, 0.242]
+  Rec:  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0464, 0.0464, 0.0464]
+  F1:   [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0852, 0.07, 0.0754]
+  AUROC:[0.464, 0.552, 0.4533, 0.466, 0.4947, 0.5976, 0.5228, 0.4848, 0.4939, 0.504]
+  AUPRC:[0.3491, 0.4195, 0.3806, 0.3797, 0.4058, 0.4306, 0.3578, 0.3937, 0.3807, 0.3844]
+  ECE:  [0.2775, 0.2861, 0.2792, 0.2843, 0.2779, 0.2474, 0.3, 0.3147, 0.3491, 0.349]
+  Youden:[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0464, -0.0727, -0.0247]
+Best FTCPTC patient-level F1: 0.0852 at epoch 40
+
+==========================================================
+
+========== Training Completed ==========
+Training completed at Fri May  8 12:02:20 2026
