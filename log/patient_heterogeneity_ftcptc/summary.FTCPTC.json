@@ -1,0 +1,50 @@
+{
+  "target_key": "FTCPTC",
+  "config": {
+    "patient_id_depth": 2,
+    "min_images_per_patient": 2,
+    "heterogeneity_features": [
+      "mask_area_ratio",
+      "bbox_fill_ratio",
+      "bbox_area_ratio",
+      "largest_component_ratio",
+      "center_x_ratio",
+      "center_y_ratio",
+      "edge_touch_penalty",
+      "masked_intensity_mean",
+      "masked_intensity_std"
+    ],
+    "outlier_z_threshold": 2.5,
+    "outlier_mad_threshold": 3.5,
+    "high_heterogeneity_percentile": 90.0,
+    "max_patients": null
+  },
+  "input_item_count": 11480,
+  "valid_analyzed_item_count": 11368,
+  "audit_drop_count": 112,
+  "audit_drop_reason_counts": {
+    "empty_mask": 112
+  },
+  "total_patient_count": 952,
+  "analyzable_patient_count": 931,
+  "below_min_images_patient_count": 21,
+  "high_heterogeneity_patient_count": 94,
+  "high_heterogeneity_threshold": 0.0840229826591473,
+  "heterogeneity_score_distribution": {
+    "count": 931,
+    "min": 0.0034254190077786222,
+    "median": 0.045206359280534736,
+    "mean": 0.049663258576063914,
+    "p90": 0.0840229826591473,
+    "p95": 0.09874072152127376,
+    "max": 0.1610125478600048
+  },
+  "input_patient_level": {
+    "negative_count": 860,
+    "positive_count": 79,
+    "missing_count": 13,
+    "valid_count": 939,
+    "patient_count": 952,
+    "inconsistent_patients": []
+  }
+}
