@@ -1,0 +1,30 @@
+Training started at Sat May  9 22:13:38 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC_FangDai
+Epochs: 20
+Target Key: FTCPTC
+LR: 1e-05
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+Error occurred: Missing mask files for 159 JSON entries. First relative paths:
+FTC/B_000103587_20130527_US_1_4.png
+FTC/B_000875063_20140218_US_1_5.png
+FTC/B_000875063_20140703_US_1_1.png
+FTC/B_001903385_20130424_US_1_9.png
+FTC/B_001907930_20130826_US_1_10.png
+Traceback (most recent call last):
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/train_multitask_binary_sampler.py", line 179, in main
+    dataset = MultiTaskDataset(
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 75, in __init__
+    self.samples = self._build_samples_from_json()
+  File "/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/dataset.py", line 203, in _build_samples_from_json
+    raise FileNotFoundError(
+FileNotFoundError: Missing mask files for 159 JSON entries. First relative paths:
+FTC/B_000103587_20130527_US_1_4.png
+FTC/B_000875063_20140218_US_1_5.png
+FTC/B_000875063_20140703_US_1_1.png
+FTC/B_001903385_20130424_US_1_9.png
+FTC/B_001907930_20130826_US_1_10.png
+
