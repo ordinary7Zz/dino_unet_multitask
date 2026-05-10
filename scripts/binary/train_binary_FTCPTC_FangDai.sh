@@ -10,10 +10,10 @@ TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Dat
 EPOCH=20
 LR=1e-4
 BATCH_SIZE=12
-CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
-CHECKPOINT_INTERVAL=5
+CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_binary_FTCPTC"
+CHECKPOINT_INTERVAL=2
 EVAL_INTERVAL=2
-DATASET_NAME="train_multitask_binary_FTCPTC/train_multitask_FTCPTC_${Train_DATASET}"
+DATASET_NAME="train_multitask_FTCPTC_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
 # 测试数据集名称数组
