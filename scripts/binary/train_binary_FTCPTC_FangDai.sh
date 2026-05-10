@@ -1,43 +1,39 @@
 #!/bin/bash
 
 # 设置训练参数
-Train_DATASET="FTCPTC"
+Train_DATASET="FangDai"
 CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
-TARGET_KEY="FTCPTC"
-TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
-TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_1000_1000.json"
-EPOCH=30
+TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/"
+TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped_predictions/"
+TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/FangDai_train_labels.json"  # 添加分类标签路径
+EPOCH=20
 LR=1e-4
-BATCH_SIZE=4
+BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
 CHECKPOINT_INTERVAL=5
-EVAL_INTERVAL=5
-DATASET_NAME="train_multitask_${Train_DATASET}_patient"
-TASK_SCHEDULE="seg,cls"
-PATIENT_ID_DEPTH=2
-MAX_IMAGES_PER_PATIENT=8
-CLS_POOLING="max"
-CLS_LOSS="gla"
-FIXED_THRESHOLD=0.5
-VAL_THRESHOLD_MODE="fixed"
+EVAL_INTERVAL=2
+DATASET_NAME="train_multitask_binary_FTCPTC/train_multitask_FTCPTC_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
+# 测试数据集名称数组
 TEST_DATASET_NAMES=(
-    "FTCPTC"
+    "FTCPTC_FangDai"
 )
 
+# 测试图像路径数组
 TEST_IMAGE_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/"
 )
 
+# 测试掩码路径数组
 TEST_MASK_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped_predictions/"
 )
 
+# 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/FangDai_test_labels.json"
 )
 
 # 确保数组长度一致
@@ -68,8 +64,9 @@ for i in "${!TEST_LABEL_PATHS[@]}"; do
     LABEL_PATHS_ARGS="$LABEL_PATHS_ARGS ${TEST_LABEL_PATHS[$i]}"
 done
 
-CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_patient.py \
-    --cuda_device 0 \
+# 执行训练脚本
+python train_multitask_binary_gamtl.py \
+    --cuda_device $CUDA_VISIBLE_DEVICES \
     --method "$METHOD" \
     --train_image_path "$TRAIN_IMAGE_PATH" \
     --train_mask_path "$TRAIN_MASK_PATH" \
@@ -78,7 +75,7 @@ CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_patie
     --test_mask_paths $MASK_PATHS_ARGS \
     --test_label_paths $LABEL_PATHS_ARGS \
     --test_dataset_names $DATASET_NAMES_ARGS \
-    --target_key "$TARGET_KEY" \
+    --target_key "FTCPTC" \
     --epoch $EPOCH \
     --lr $LR \
     --batch_size $BATCH_SIZE \
@@ -86,10 +83,4 @@ CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES" python train_multitask_binary_patie
     --checkpoint_interval $CHECKPOINT_INTERVAL \
     --eval_interval $EVAL_INTERVAL \
     --dataset_name "$DATASET_NAME" \
-    --task_schedule "$TASK_SCHEDULE" \
-    --patient_id_depth $PATIENT_ID_DEPTH \
-    --max_images_per_patient $MAX_IMAGES_PER_PATIENT \
-    --cls_pooling "$CLS_POOLING" \
-    --cls_loss "$CLS_LOSS" \
-    --fixed_threshold $FIXED_THRESHOLD \
-    --val_threshold_mode "$VAL_THRESHOLD_MODE"
+    --task_schedule "seg,cls"

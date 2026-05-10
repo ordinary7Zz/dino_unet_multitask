@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 设置训练参数
-Train_DATASET="LNM_CN01_LymphUs"
+Train_DATASET="LymphUs"
 CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
 TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images/"
@@ -13,7 +13,7 @@ BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
 CHECKPOINT_INTERVAL=2
 EVAL_INTERVAL=2
-DATASET_NAME="train_multitask_${Train_DATASET}"
+DATASET_NAME="train_multitask_binary_LNMCN01/train_multitask_LNMCN01_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
 # 测试数据集名称数组
