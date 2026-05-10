@@ -1,0 +1,123 @@
+Training started at Sun May 10 14:01:52 2026
+Method: dino_unet
+Dataset: train_multitask_LNMCN01_LymphUs
+Epochs: 20
+Target Key: LNM_CN01
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+First sample: filename=10_Benign.png, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images/10_Benign.png, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/masks/10_Benign.png, target=0
+Training set - LNM_CN01: Negative=99 (55.00%), Positive=81 (45.00%), Missing=0
+Auto-adjusted tau=0.50 (imbalance_ratio=1.22)
+GLA parameters for LNM_CN01: p_neg=0.5500, p_pos=0.4500, tau=0.50
+Logit adjustment magnitude: 0.1003
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 7
+Epoch:1: seg_loss(avg):1.3445, cls_loss(avg):0.7395
+Epoch:2: seg_loss(avg):1.2448, cls_loss(avg):0.6562
+Saved checkpoint at epoch 2
+
+Validating epoch 2 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.2173, HD95: 122.2213
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5898, Prec=0.5629, Rec=0.9398, F1=0.7032, AUROC=0.6818, AUPRC=0.7032, ECE=0.1498
+Epoch:3: seg_loss(avg):1.0485, cls_loss(avg):0.5032
+Epoch:4: seg_loss(avg):0.8813, cls_loss(avg):0.3530
+Saved checkpoint at epoch 4
+
+Validating epoch 4 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.7835, HD95: 24.9610
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5953, Prec=0.5686, Rec=0.9149, F1=0.7004, AUROC=0.7325, AUPRC=0.7477, ECE=0.2865
+Epoch:5: seg_loss(avg):0.7997, cls_loss(avg):0.1806
+Epoch:6: seg_loss(avg):0.6870, cls_loss(avg):0.2542
+Saved checkpoint at epoch 6
+
+Validating epoch 6 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8147, HD95: 18.6589
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6332, Prec=0.5927, Rec=0.9389, F1=0.7257, AUROC=0.7152, AUPRC=0.7283, ECE=0.3198
+Epoch:7: seg_loss(avg):0.6705, cls_loss(avg):0.3299
+Epoch:8: seg_loss(avg):0.6318, cls_loss(avg):0.1896
+Saved checkpoint at epoch 8
+
+Validating epoch 8 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8306, HD95: 18.7891
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5571, Prec=0.5408, Rec=0.9750, F1=0.6948, AUROC=0.7237, AUPRC=0.7394, ECE=0.3840
+Epoch:9: seg_loss(avg):0.5815, cls_loss(avg):0.1715
+Epoch:10: seg_loss(avg):0.5498, cls_loss(avg):0.1221
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8101, HD95: 13.9044
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6394, Prec=0.6003, Rec=0.9148, F1=0.7240, AUROC=0.7356, AUPRC=0.7318, ECE=0.2793
+Epoch:11: seg_loss(avg):0.5680, cls_loss(avg):0.1111
+Epoch:12: seg_loss(avg):0.5492, cls_loss(avg):0.0788
+Saved checkpoint at epoch 12
+
+Validating epoch 12 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8313, HD95: 15.6304
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.7356, Prec=0.7015, Rec=0.8547, F1=0.7696, AUROC=0.7541, AUPRC=0.7536, ECE=0.1859
+Epoch:13: seg_loss(avg):0.5163, cls_loss(avg):0.1325
+Epoch:14: seg_loss(avg):0.5076, cls_loss(avg):0.0579
+Saved checkpoint at epoch 14
+
+Validating epoch 14 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8466, HD95: 13.8291
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6080, Prec=0.5774, Rec=0.9148, F1=0.7070, AUROC=0.7460, AUPRC=0.7429, ECE=0.3480
+Epoch:15: seg_loss(avg):0.5100, cls_loss(avg):0.0403
+Epoch:16: seg_loss(avg):0.5055, cls_loss(avg):0.0374
+Saved checkpoint at epoch 16
+
+Validating epoch 16 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8494, HD95: 13.9992
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6145, Prec=0.5807, Rec=0.9272, F1=0.7132, AUROC=0.7522, AUPRC=0.7562, ECE=0.3643
+Epoch:17: seg_loss(avg):0.4793, cls_loss(avg):0.0507
+Epoch:18: seg_loss(avg):0.5004, cls_loss(avg):0.0575
+Saved checkpoint at epoch 18
+
+Validating epoch 18 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8522, HD95: 12.9198
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6145, Prec=0.5807, Rec=0.9272, F1=0.7132, AUROC=0.7545, AUPRC=0.7595, ECE=0.3571
+Epoch:19: seg_loss(avg):0.4996, cls_loss(avg):0.0411
+Epoch:20: seg_loss(avg):0.4789, cls_loss(avg):0.0572
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8525, HD95: 12.7232
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6145, Prec=0.5807, Rec=0.9272, F1=0.7132, AUROC=0.7551, AUPRC=0.7598, ECE=0.3503
+
+========== Evaluation Summary (All Test Records) ==========
+
+
+Dataset: LNM_CN01_LymphUs
+Eval epochs: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+Dice per eval: [0.21729999780654907, 0.7835000157356262, 0.8147000074386597, 0.8306000232696533, 0.8101000189781189, 0.8313000202178955, 0.8465999960899353, 0.849399983882904, 0.8521999716758728, 0.8525000214576721]
+HD95 per eval: [122.22129821777344, 24.961000442504883, 18.658899307250977, 18.789100646972656, 13.904399871826172, 15.630399703979492, 13.829099655151367, 13.999199867248535, 12.9197998046875, 12.723199844360352]
+Best Dice: 0.8525 at epoch 20
+Best HD95: 12.7232 at epoch 20
+
+LNM_CN01 metrics per eval:
+  Acc:  [0.5898, 0.5953, 0.6332, 0.5571, 0.6394, 0.7356, 0.608, 0.6145, 0.6145, 0.6145]
+  Prec: [0.5629, 0.5686, 0.5927, 0.5408, 0.6003, 0.7015, 0.5774, 0.5807, 0.5807, 0.5807]
+  Rec:  [0.9398, 0.9149, 0.9389, 0.975, 0.9148, 0.8547, 0.9148, 0.9272, 0.9272, 0.9272]
+  F1:   [0.7032, 0.7004, 0.7257, 0.6948, 0.724, 0.7696, 0.707, 0.7132, 0.7132, 0.7132]
+  AUROC:[0.6818, 0.7325, 0.7152, 0.7237, 0.7356, 0.7541, 0.746, 0.7522, 0.7545, 0.7551]
+  AUPRC:[0.7032, 0.7477, 0.7283, 0.7394, 0.7318, 0.7536, 0.7429, 0.7562, 0.7595, 0.7598]
+  ECE:  [0.1498, 0.2865, 0.3198, 0.384, 0.2793, 0.1859, 0.348, 0.3643, 0.3571, 0.3503]
+Best LNM_CN01 F1: 0.7696 at epoch 12
+
+==========================================================
+
+========== Training Completed ==========
+Training completed at Sun May 10 14:04:39 2026
