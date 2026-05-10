@@ -411,7 +411,7 @@ python utils/build_task_suitable_labels.py \
   --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
   --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
   --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_json ./logs/task_suitable_ftcptc/filtered_labels.FTCPTC.json \
+  --output_json ./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json \
   --target_key FTCPTC \
   --task_preset FTCPTC \
   --report_dir ./log/task_suitable_ftcptc
@@ -424,7 +424,7 @@ python utils/build_task_suitable_labels.py \
   --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/LymphUs_train_labels.json \
   --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images \
   --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/masks \
-  --output_json ./logs/task_suitable_lnm/filtered_labels.LNM_CN01.json \
+  --output_json ./log/task_suitable_lnm/filtered_labels.LNM_CN01.json \
   --target_key LNM_CN01 \
   --task_preset LNM_CN01 \
   --report_dir ./log/task_suitable_lnm
@@ -439,7 +439,7 @@ python utils/build_task_suitable_labels.py \
   --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
   --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
   --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_json ./logs/task_suitable_ftcptc/filtered_labels.FTCPTC.json \
+  --output_json ./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json \
   --target_key FTCPTC \
   --task_preset FTCPTC \
   --report_dir ./log/task_suitable_ftcptc \
@@ -511,7 +511,7 @@ TRAIN_LABEL_PATH
 例如：
 
 ```bash
-TRAIN_LABEL_PATH="./logs/task_suitable_ftcptc/filtered_labels.FTCPTC.json"
+TRAIN_LABEL_PATH="./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json"
 ```
 
 这样后续训练就直接基于筛图后的单图数据进行。
