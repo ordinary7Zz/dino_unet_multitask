@@ -33,7 +33,7 @@ TEST_MASK_PATHS=(
 
 # 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/ftcptc_single_test_labels.json"
 )
 
 # 确保数组长度一致
