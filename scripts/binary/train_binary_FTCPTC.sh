@@ -6,7 +6,7 @@ CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
 TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
 TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_1000_1000.json"  # 添加分类标签路径
+TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_sample_exported_only.json"  # 添加分类标签路径
 EPOCH=20
 LR=1e-4
 BATCH_SIZE=12
@@ -33,7 +33,7 @@ TEST_MASK_PATHS=(
 
 # 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels_sample_exported_only.json"
 )
 
 # 确保数组长度一致
@@ -83,4 +83,4 @@ python train_multitask_binary_gamtl.py \
     --checkpoint_interval $CHECKPOINT_INTERVAL \
     --eval_interval $EVAL_INTERVAL \
     --dataset_name "$DATASET_NAME" \
-    --task_schedule "seg,cls"
+    --task_schedule "cls"
