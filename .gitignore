@@ -34,5 +34,3 @@ wandb/
 .vscode/
 
 logs/*
-!logs/train_multitask*/
-!logs/train_multitask*/**
