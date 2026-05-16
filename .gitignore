@@ -31,5 +31,8 @@ __pycache__/
 wandb/
 
 .claude/
+.vscode/
 
-logs/
+logs/*
+!logs/train_multitask*/
+!logs/train_multitask*/**
