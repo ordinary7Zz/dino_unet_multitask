@@ -1,0 +1,203 @@
+Training started at Sun May 10 22:02:14 2026
+Method: dino_unet
+Dataset: train_multitask_LNMCN01_LymphUs
+Epochs: 40
+Target Key: LNM_CN01
+LR: 5e-05
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+First sample: filename=10_Benign.png, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images/10_Benign.png, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/masks/10_Benign.png, target=0
+Training set - LNM_CN01: Negative=99 (55.00%), Positive=81 (45.00%), Missing=0
+Auto-adjusted tau=0.50 (imbalance_ratio=1.22)
+GLA parameters for LNM_CN01: p_neg=0.5500, p_pos=0.4500, tau=0.50
+Logit adjustment magnitude: 0.1003
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 7
+Epoch:1: seg_loss(avg):1.3576, cls_loss(avg):0.7427
+Epoch:2: seg_loss(avg):1.3036, cls_loss(avg):0.6931
+Saved checkpoint at epoch 2
+
+Validating epoch 2 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.0002, HD95: 192.9966
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5193, Prec=0.5193, Rec=1.0000, F1=0.6827, AUROC=0.6868, AUPRC=0.7197, ECE=0.1522
+Epoch:3: seg_loss(avg):1.2118, cls_loss(avg):0.5947
+Epoch:4: seg_loss(avg):1.0307, cls_loss(avg):0.4978
+Saved checkpoint at epoch 4
+
+Validating epoch 4 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.7061, HD95: 32.6369
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5954, Prec=0.5676, Rec=0.9274, F1=0.7033, AUROC=0.7107, AUPRC=0.7500, ECE=0.1819
+Epoch:5: seg_loss(avg):0.9351, cls_loss(avg):0.3442
+Epoch:6: seg_loss(avg):0.8125, cls_loss(avg):0.3483
+Saved checkpoint at epoch 6
+
+Validating epoch 6 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.7718, HD95: 25.2373
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5193, Prec=0.5193, Rec=1.0000, F1=0.6827, AUROC=0.6547, AUPRC=0.6781, ECE=0.3978
+Epoch:7: seg_loss(avg):0.7880, cls_loss(avg):0.3653
+Epoch:8: seg_loss(avg):0.7335, cls_loss(avg):0.3956
+Saved checkpoint at epoch 8
+
+Validating epoch 8 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8110, HD95: 22.3012
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6837, Prec=0.6637, Rec=0.7931, F1=0.7215, AUROC=0.7116, AUPRC=0.7445, ECE=0.1907
+Epoch:9: seg_loss(avg):0.6738, cls_loss(avg):0.1920
+Epoch:10: seg_loss(avg):0.6383, cls_loss(avg):0.1637
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8245, HD95: 18.5007
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6012, Prec=0.5705, Rec=0.9389, F1=0.7088, AUROC=0.7267, AUPRC=0.7291, ECE=0.3106
+Epoch:11: seg_loss(avg):0.6220, cls_loss(avg):0.1787
+Epoch:12: seg_loss(avg):0.5893, cls_loss(avg):0.0971
+Saved checkpoint at epoch 12
+
+Validating epoch 12 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8380, HD95: 14.1566
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6714, Prec=0.6420, Rec=0.8301, F1=0.7230, AUROC=0.7260, AUPRC=0.7430, ECE=0.2471
+Epoch:13: seg_loss(avg):0.5832, cls_loss(avg):0.1988
+Epoch:14: seg_loss(avg):0.5547, cls_loss(avg):0.1797
+Saved checkpoint at epoch 14
+
+Validating epoch 14 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8418, HD95: 15.0944
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6775, Prec=0.6835, Rec=0.7063, F1=0.6934, AUROC=0.7402, AUPRC=0.7614, ECE=0.2295
+Epoch:15: seg_loss(avg):0.5569, cls_loss(avg):0.1682
+Epoch:16: seg_loss(avg):0.5449, cls_loss(avg):0.1075
+Saved checkpoint at epoch 16
+
+Validating epoch 16 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8272, HD95: 14.9805
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5951, Prec=0.5685, Rec=0.9144, F1=0.7001, AUROC=0.7372, AUPRC=0.7479, ECE=0.3303
+Epoch:17: seg_loss(avg):0.5267, cls_loss(avg):0.1257
+Epoch:18: seg_loss(avg):0.5138, cls_loss(avg):0.0857
+Saved checkpoint at epoch 18
+
+Validating epoch 18 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8272, HD95: 14.3157
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6589, Prec=0.6213, Rec=0.8796, F1=0.7272, AUROC=0.7482, AUPRC=0.7690, ECE=0.2960
+Epoch:19: seg_loss(avg):0.5147, cls_loss(avg):0.0831
+Epoch:20: seg_loss(avg):0.4883, cls_loss(avg):0.1120
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8278, HD95: 14.9722
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6392, Prec=0.6017, Rec=0.9028, F1=0.7212, AUROC=0.7381, AUPRC=0.7618, ECE=0.3285
+Epoch:21: seg_loss(avg):0.4622, cls_loss(avg):0.0462
+Epoch:22: seg_loss(avg):0.4918, cls_loss(avg):0.0521
+Saved checkpoint at epoch 22
+
+Validating epoch 22 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8329, HD95: 13.1547
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6524, Prec=0.6157, Rec=0.8796, F1=0.7234, AUROC=0.7327, AUPRC=0.7569, ECE=0.3006
+Epoch:23: seg_loss(avg):0.4698, cls_loss(avg):0.0659
+Epoch:24: seg_loss(avg):0.4671, cls_loss(avg):0.0342
+Saved checkpoint at epoch 24
+
+Validating epoch 24 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8327, HD95: 13.6737
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5890, Prec=0.5643, Rec=0.9148, F1=0.6971, AUROC=0.7344, AUPRC=0.7736, ECE=0.3650
+Epoch:25: seg_loss(avg):0.4570, cls_loss(avg):0.0387
+Epoch:26: seg_loss(avg):0.4567, cls_loss(avg):0.0454
+Saved checkpoint at epoch 26
+
+Validating epoch 26 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8390, HD95: 12.8833
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6207, Prec=0.5865, Rec=0.9148, F1=0.7137, AUROC=0.7361, AUPRC=0.7765, ECE=0.3473
+Epoch:27: seg_loss(avg):0.4525, cls_loss(avg):0.0508
+Epoch:28: seg_loss(avg):0.4385, cls_loss(avg):0.0400
+Saved checkpoint at epoch 28
+
+Validating epoch 28 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8285, HD95: 13.2898
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.5766, Prec=0.5538, Rec=0.9513, F1=0.6991, AUROC=0.7234, AUPRC=0.7381, ECE=0.3947
+Epoch:29: seg_loss(avg):0.4617, cls_loss(avg):0.0552
+Epoch:30: seg_loss(avg):0.4537, cls_loss(avg):0.0388
+Saved checkpoint at epoch 30
+
+Validating epoch 30 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8332, HD95: 13.8848
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.7039, Prec=0.6746, Rec=0.8307, F1=0.7434, AUROC=0.7377, AUPRC=0.7652, ECE=0.2647
+Epoch:31: seg_loss(avg):0.4320, cls_loss(avg):0.0356
+Epoch:32: seg_loss(avg):0.4348, cls_loss(avg):0.0321
+Saved checkpoint at epoch 32
+
+Validating epoch 32 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8342, HD95: 13.6820
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6519, Prec=0.6136, Rec=0.8908, F1=0.7257, AUROC=0.7384, AUPRC=0.7757, ECE=0.3102
+Epoch:33: seg_loss(avg):0.4336, cls_loss(avg):0.0284
+Epoch:34: seg_loss(avg):0.4368, cls_loss(avg):0.0281
+Saved checkpoint at epoch 34
+
+Validating epoch 34 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8389, HD95: 12.7143
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6333, Prec=0.5957, Rec=0.9148, F1=0.7206, AUROC=0.7310, AUPRC=0.7638, ECE=0.3404
+Epoch:35: seg_loss(avg):0.4343, cls_loss(avg):0.0263
+Epoch:36: seg_loss(avg):0.4359, cls_loss(avg):0.0238
+Saved checkpoint at epoch 36
+
+Validating epoch 36 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8364, HD95: 12.5355
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6333, Prec=0.5957, Rec=0.9148, F1=0.7206, AUROC=0.7306, AUPRC=0.7617, ECE=0.3434
+Epoch:37: seg_loss(avg):0.4335, cls_loss(avg):0.0253
+Epoch:38: seg_loss(avg):0.4238, cls_loss(avg):0.0274
+Saved checkpoint at epoch 38
+
+Validating epoch 38 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8364, HD95: 12.5252
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6333, Prec=0.5957, Rec=0.9148, F1=0.7206, AUROC=0.7306, AUPRC=0.7611, ECE=0.3455
+Epoch:39: seg_loss(avg):0.4481, cls_loss(avg):0.0272
+Epoch:40: seg_loss(avg):0.4496, cls_loss(avg):0.0256
+Saved checkpoint at epoch 40
+
+Validating epoch 40 on all test datasets...
+Testing on LNM_CN01_LymphUs...
+  LNM_CN01_LymphUs - Dice: 0.8366, HD95: 12.5298
+  LNM_CN01_LymphUs - LNM_CN01: Acc=0.6333, Prec=0.5957, Rec=0.9148, F1=0.7206, AUROC=0.7305, AUPRC=0.7608, ECE=0.3440
+
+========== Evaluation Summary (All Test Records) ==========
+
+
+Dataset: LNM_CN01_LymphUs
+Eval epochs: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
+Dice per eval: [0.00019999999494757503, 0.7060999870300293, 0.7717999815940857, 0.8109999895095825, 0.8245000243186951, 0.8379999995231628, 0.8417999744415283, 0.8271999955177307, 0.8271999955177307, 0.8277999758720398, 0.8328999876976013, 0.8327000141143799, 0.8389999866485596, 0.828499972820282, 0.8331999778747559, 0.8342000246047974, 0.8389000296592712, 0.8363999724388123, 0.8363999724388123, 0.8366000056266785]
+HD95 per eval: [192.99659729003906, 32.63690185546875, 25.237300872802734, 22.30120086669922, 18.500699996948242, 14.156599998474121, 15.094400405883789, 14.980500221252441, 14.315699577331543, 14.972200393676758, 13.15470027923584, 13.673700332641602, 12.883299827575684, 13.289799690246582, 13.88479995727539, 13.682000160217285, 12.714300155639648, 12.535499572753906, 12.525199890136719, 12.529800415039062]
+Best Dice: 0.8418 at epoch 14
+Best HD95: 12.5252 at epoch 38
+
+LNM_CN01 metrics per eval:
+  Acc:  [0.5193, 0.5954, 0.5193, 0.6837, 0.6012, 0.6714, 0.6775, 0.5951, 0.6589, 0.6392, 0.6524, 0.589, 0.6207, 0.5766, 0.7039, 0.6519, 0.6333, 0.6333, 0.6333, 0.6333]
+  Prec: [0.5193, 0.5676, 0.5193, 0.6637, 0.5705, 0.642, 0.6835, 0.5685, 0.6213, 0.6017, 0.6157, 0.5643, 0.5865, 0.5538, 0.6746, 0.6136, 0.5957, 0.5957, 0.5957, 0.5957]
+  Rec:  [1.0, 0.9274, 1.0, 0.7931, 0.9389, 0.8301, 0.7063, 0.9144, 0.8796, 0.9028, 0.8796, 0.9148, 0.9148, 0.9513, 0.8307, 0.8908, 0.9148, 0.9148, 0.9148, 0.9148]
+  F1:   [0.6827, 0.7033, 0.6827, 0.7215, 0.7088, 0.723, 0.6934, 0.7001, 0.7272, 0.7212, 0.7234, 0.6971, 0.7137, 0.6991, 0.7434, 0.7257, 0.7206, 0.7206, 0.7206, 0.7206]
+  AUROC:[0.6868, 0.7107, 0.6547, 0.7116, 0.7267, 0.726, 0.7402, 0.7372, 0.7482, 0.7381, 0.7327, 0.7344, 0.7361, 0.7234, 0.7377, 0.7384, 0.731, 0.7306, 0.7306, 0.7305]
+  AUPRC:[0.7197, 0.75, 0.6781, 0.7445, 0.7291, 0.743, 0.7614, 0.7479, 0.769, 0.7618, 0.7569, 0.7736, 0.7765, 0.7381, 0.7652, 0.7757, 0.7638, 0.7617, 0.7611, 0.7608]
+  ECE:  [0.1522, 0.1819, 0.3978, 0.1907, 0.3106, 0.2471, 0.2295, 0.3303, 0.296, 0.3285, 0.3006, 0.365, 0.3473, 0.3947, 0.2647, 0.3102, 0.3404, 0.3434, 0.3455, 0.344]
+Best LNM_CN01 F1: 0.7434 at epoch 30
+
+==========================================================
+
+========== Training Completed ==========
+Training completed at Sun May 10 22:07:41 2026

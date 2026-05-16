@@ -1,0 +1,19 @@
+Training started at Sun May 10 20:59:29 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC_with_single_label
+Epochs: 20
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+First sample: filename=2016/刘桂英/刘桂英_01_0002_0002.jpg, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/2016/刘桂英/刘桂英_01_0002_0002.jpg, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/2016/刘桂英/刘桂英_01_0002_0002.png, target=0
+Training set - FTCPTC: Negative=860 (91.59%), Positive=79 (8.41%), Missing=0
+Auto-adjusted tau=1.00 (imbalance_ratio=10.89)
+GLA parameters for FTCPTC: p_neg=0.9159, p_pos=0.0841, tau=1.00
+Logit adjustment magnitude: 2.3875
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 39
+Epoch:1: seg_loss(avg):1.0934, cls_loss(avg):0.5012

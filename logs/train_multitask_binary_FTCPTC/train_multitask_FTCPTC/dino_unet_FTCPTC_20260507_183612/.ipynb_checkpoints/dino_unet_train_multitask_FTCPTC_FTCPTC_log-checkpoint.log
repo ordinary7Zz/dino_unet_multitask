@@ -1,0 +1,117 @@
+Training started at Thu May  7 18:36:12 2026
+Method: dino_unet
+Dataset: train_multitask_FTCPTC
+Epochs: 20
+Target Key: FTCPTC
+LR: 0.0001
+Batch Size: 12
+Image Size: 224 x 224
+DINO pretrained: True
+Use Dilation: False
+First sample: filename=2023/杨胜坤/杨胜坤_01_0016_0016.jpg, image=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/2023/杨胜坤/杨胜坤_01_0016_0016.jpg, mask=/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/2023/杨胜坤/杨胜坤_01_0016_0016.png, target=0
+Training set - FTCPTC: Negative=1000 (50.00%), Positive=1000 (50.00%), Missing=0
+Auto-adjusted tau=0.30 (imbalance_ratio=1.00)
+GLA parameters for FTCPTC: p_neg=0.5000, p_pos=0.5000, tau=0.30
+Logit adjustment magnitude: 0.0000
+Loss weights: seg=1.0, cls=1.0
+GA-MTL schedule per optimizer step: ['seg', 'cls']
+steps_per_epoch (optimizer steps): 83
+Epoch:1: seg_loss(avg):0.9661, cls_loss(avg):0.7216
+Epoch:2: seg_loss(avg):0.7516, cls_loss(avg):0.7020
+
+Validating epoch 2 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.7071, HD95: 18.1615
+  FTCPTC - FTCPTC: Acc=0.3260, Prec=0.3260, Rec=1.0000, F1=0.4913, AUROC=0.4505, AUPRC=0.3193, ECE=0.2354
+Epoch:3: seg_loss(avg):0.6588, cls_loss(avg):0.7053
+Epoch:4: seg_loss(avg):0.6352, cls_loss(avg):0.7057
+
+Validating epoch 4 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.7805, HD95: 12.2920
+  FTCPTC - FTCPTC: Acc=0.3719, Prec=0.3390, Rec=0.9760, F1=0.5028, AUROC=0.5830, AUPRC=0.3816, ECE=0.2633
+Epoch:5: seg_loss(avg):0.5614, cls_loss(avg):0.6973
+Saved checkpoint at epoch 5
+Epoch:6: seg_loss(avg):0.5273, cls_loss(avg):0.6946
+
+Validating epoch 6 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8087, HD95: 10.0218
+  FTCPTC - FTCPTC: Acc=0.3280, Prec=0.3266, Rec=1.0000, F1=0.4920, AUROC=0.5132, AUPRC=0.3207, ECE=0.2489
+Epoch:7: seg_loss(avg):0.4694, cls_loss(avg):0.6710
+Epoch:8: seg_loss(avg):0.4678, cls_loss(avg):0.6475
+
+Validating epoch 8 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8072, HD95: 11.2999
+  FTCPTC - FTCPTC: Acc=0.4580, Prec=0.3315, Rec=0.6517, F1=0.4389, AUROC=0.4984, AUPRC=0.3137, ECE=0.2279
+Epoch:9: seg_loss(avg):0.4539, cls_loss(avg):0.6494
+Epoch:10: seg_loss(avg):0.4411, cls_loss(avg):0.5710
+Saved checkpoint at epoch 10
+
+Validating epoch 10 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8087, HD95: 11.4251
+  FTCPTC - FTCPTC: Acc=0.5876, Prec=0.3184, Rec=0.2322, F1=0.2679, AUROC=0.5313, AUPRC=0.3531, ECE=0.1689
+Epoch:11: seg_loss(avg):0.4271, cls_loss(avg):0.5129
+Epoch:12: seg_loss(avg):0.4147, cls_loss(avg):0.4472
+
+Validating epoch 12 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8204, HD95: 10.4082
+  FTCPTC - FTCPTC: Acc=0.6040, Prec=0.3477, Rec=0.2450, F1=0.2867, AUROC=0.5860, AUPRC=0.3776, ECE=0.2058
+Epoch:13: seg_loss(avg):0.4010, cls_loss(avg):0.4130
+Epoch:14: seg_loss(avg):0.3801, cls_loss(avg):0.3471
+
+Validating epoch 14 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8393, HD95: 8.9221
+  FTCPTC - FTCPTC: Acc=0.6527, Prec=0.4567, Rec=0.3448, F1=0.3921, AUROC=0.5909, AUPRC=0.3978, ECE=0.2146
+Epoch:15: seg_loss(avg):0.3688, cls_loss(avg):0.2769
+Saved checkpoint at epoch 15
+Epoch:16: seg_loss(avg):0.3701, cls_loss(avg):0.2421
+
+Validating epoch 16 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8378, HD95: 9.4854
+  FTCPTC - FTCPTC: Acc=0.6026, Prec=0.3952, Rec=0.4135, F1=0.4034, AUROC=0.5972, AUPRC=0.3799, ECE=0.2749
+Epoch:17: seg_loss(avg):0.3632, cls_loss(avg):0.2155
+Epoch:18: seg_loss(avg):0.3538, cls_loss(avg):0.1558
+
+Validating epoch 18 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8437, HD95: 8.9904
+  FTCPTC - FTCPTC: Acc=0.5969, Prec=0.3654, Rec=0.3212, F1=0.3411, AUROC=0.5549, AUPRC=0.3544, ECE=0.3016
+Epoch:19: seg_loss(avg):0.3527, cls_loss(avg):0.1685
+Epoch:20: seg_loss(avg):0.3578, cls_loss(avg):0.1591
+Saved checkpoint at epoch 20
+
+Validating epoch 20 on all test datasets...
+Testing on FTCPTC...
+  FTCPTC - Dice: 0.8427, HD95: 9.1287
+  FTCPTC - FTCPTC: Acc=0.6027, Prec=0.3653, Rec=0.2965, F1=0.3266, AUROC=0.5542, AUPRC=0.3546, ECE=0.2985
+
+========== Evaluation Summary (All Test Records) ==========
+
+
+Dataset: FTCPTC
+Eval epochs: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+Dice per eval: [0.707099974155426, 0.7804999947547913, 0.8087000250816345, 0.807200014591217, 0.8087000250816345, 0.8203999996185303, 0.8392999768257141, 0.8378000259399414, 0.8436999917030334, 0.8427000045776367]
+HD95 per eval: [18.161500930786133, 12.291999816894531, 10.02180004119873, 11.29990005493164, 11.425100326538086, 10.40820026397705, 8.922100067138672, 9.485400199890137, 8.990400314331055, 9.128700256347656]
+Best Dice: 0.8437 at epoch 18
+Best HD95: 8.9221 at epoch 14
+
+FTCPTC metrics per eval:
+  Acc:  [0.326, 0.3719, 0.328, 0.458, 0.5876, 0.604, 0.6527, 0.6026, 0.5969, 0.6027]
+  Prec: [0.326, 0.339, 0.3266, 0.3315, 0.3184, 0.3477, 0.4567, 0.3952, 0.3654, 0.3653]
+  Rec:  [1.0, 0.976, 1.0, 0.6517, 0.2322, 0.245, 0.3448, 0.4135, 0.3212, 0.2965]
+  F1:   [0.4913, 0.5028, 0.492, 0.4389, 0.2679, 0.2867, 0.3921, 0.4034, 0.3411, 0.3266]
+  AUROC:[0.4505, 0.583, 0.5132, 0.4984, 0.5313, 0.586, 0.5909, 0.5972, 0.5549, 0.5542]
+  AUPRC:[0.3193, 0.3816, 0.3207, 0.3137, 0.3531, 0.3776, 0.3978, 0.3799, 0.3544, 0.3546]
+  ECE:  [0.2354, 0.2633, 0.2489, 0.2279, 0.1689, 0.2058, 0.2146, 0.2749, 0.3016, 0.2985]
+Best FTCPTC F1: 0.5028 at epoch 4
+
+==========================================================
+
+========== Training Completed ==========
+Training completed at Thu May  7 18:42:01 2026
