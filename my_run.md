@@ -27,11 +27,11 @@
 
 ```bash
 python utils/build_binary_resampled_labels.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --output_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_1000_1000.json \
+  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_sample_exported_only.json \
+  --output_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_298_149.json \
   --target_key FTCPTC \
-  --num_class0 1000 \
-  --num_class1 1000 \
+  --num_class0 298 \
+  --num_class1 149 \
   --seed 1024
 ```
 
@@ -515,3 +515,177 @@ TRAIN_LABEL_PATH="./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json"
 ```
 
 这样后续训练就直接基于筛图后的单图数据进行。
+
+---
+
+## 9. 每病人只保留 1 张图的单图标签构建
+
+### 适用脚本
+
+- `utils/build_ftcptc_single_image_labels.py`
+- `utils/build_lnm_cn01_single_image_labels.py`
+
+### 作用
+
+这两个脚本都会从原始标签 JSON 中，为每个病人最终只保留 1 张图，输出新的单图训练标签 JSON，并额外生成一个报告 JSON。
+
+适合的场景：
+
+- 你想把多图病人数据压成严格的单图训练集
+- 你想避免同一病人多张相似图重复进入训练
+- 你想先快速做一个“每病人 1 图”的保守基线实验
+
+### 共同特性
+
+- 都要求输入图像根目录 `--image_dir`
+- 都要求输入原始标签 JSON `--input_json`
+- 都要求指定二分类标签键 `--target_key`
+- 都要求指定输出标签 JSON `--output_json`
+- 都支持 `--patient_id_depth` 控制病人 ID 从 `filename` 的前几段路径构造，当前通常用 `2`
+- 都会输出 `report_json`
+- 都会跳过：
+  - `target_key` 不是 0/1 的条目
+  - 缺失 `filename` 的条目
+  - 图像文件不存在的条目
+  - 同一病人内标签不一致的情况
+
+### 输出内容
+
+输出的 `report_json` 中通常会包含：
+
+- 输入/输出图像数量
+- 输入/输出病人数
+- 每病人候选图数量统计
+- 被跳过病人的原因
+- 缺图记录
+- 筛选前后类别分布
+- 筛选前后病人级类别分布
+
+### 9.1 FTCPTC：优先使用 mask 质量选 1 张图
+
+#### 脚本位置
+
+`utils/build_ftcptc_single_image_labels.py`
+
+#### 选择逻辑
+
+这个脚本用于 `FTCPTC` 单图构建，特点是：
+
+- 如果提供了 `--mask_dir`，会优先使用 mask 质量来排序
+- 如果某张图有可用 mask，会计算：
+  - `mask_area_ratio`
+  - `largest_component_pixels`
+  - `bbox_fill_ratio`
+  - `edge_touch_penalty`
+  - 综合 `score`
+- 病人内优先选择 mask 可用且分数最高的那张图
+- 如果该病人的图都没有可用 mask，仍然会退化为按文件名排序后选择第一张存在的图
+
+#### 基本用法
+
+```bash
+python utils/build_ftcptc_single_image_labels.py \
+  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
+  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
+  --target_key FTCPTC \
+  --mask_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
+  --output_json ./ftcptc_single_train_labels.json \
+  --patient_id_depth 2
+```
+
+#### 如果想显式指定报告路径
+
+```bash
+python utils/build_ftcptc_single_image_labels.py \
+  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
+  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
+  --target_key FTCPTC \
+  --mask_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
+  --output_json ./ftcptc_single_train_labels.json \
+  --report_json ./ftcptc_single_train_labels.report.json \
+  --patient_id_depth 2
+```
+
+#### 不提供 mask 时会怎样
+
+如果不传 `--mask_dir`：
+
+- 脚本仍然可以运行
+- 不会做基于 mask 的质量排序
+- 每个病人会从存在的图像中按文件名排序后保留第一张
+
+#### 适合什么时候用
+
+- 你希望 `FTCPTC` 单图数据尽量保留“主病灶视图”
+- 你已经有分割 mask，想让单图筛选尽量利用 mask 信息
+- 你想先构造一个比随机留 1 张更稳定的单图标签集
+
+### 9.2 LNM_CN01：不依赖 mask，直接每病人取 1 张图
+
+#### 脚本位置
+
+`utils/build_lnm_cn01_single_image_labels.py`
+
+#### 选择逻辑
+
+这个脚本用于 `LNM_CN01` 单图构建，特点是：
+
+- 不依赖 mask 参与排序
+- 即使传入了 `--mask_dir`，也只是接受这个参数，但不会用于筛选
+- 对每个病人，只要图像存在，就按文件名排序后保留第一张
+
+#### 基本用法
+
+```bash
+python utils/build_lnm_cn01_single_image_labels.py \
+  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images \
+  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/LymphUs_train_labels.json \
+  --target_key LNM_CN01 \
+  --output_json ./lnm_single_train_labels.json \
+  --patient_id_depth 2
+```
+
+#### 如果你仍然想保留统一命令风格
+
+即使传 `--mask_dir` 也可以，但它只会在报告里标记“mask 被忽略”，不会影响最终选图：
+
+```bash
+python utils/build_lnm_cn01_single_image_labels.py \
+  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images \
+  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/LymphUs_train_labels.json \
+  --target_key LNM_CN01 \
+  --mask_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/masks \
+  --output_json ./lnm_single_train_labels.json \
+  --report_json ./lnm_single_train_labels.report.json \
+  --patient_id_depth 2
+```
+
+#### 适合什么时候用
+
+- 你想先快速得到一个严格单图版 `LNM_CN01` 训练集
+- 你不想引入 mask 质量评分逻辑
+- 你想先做一个最简单、最稳定、最容易复现的每病人 1 图基线
+
+### 如何接入训练
+
+生成新的单图标签 JSON 后，直接把训练脚本中的：
+
+```bash
+TRAIN_LABEL_PATH
+```
+
+替换成新生成的文件即可。
+
+例如：
+
+```bash
+TRAIN_LABEL_PATH="./ftcptc_single_train_labels.json"
+```
+
+或者：
+
+```bash
+TRAIN_LABEL_PATH="./lnm_single_train_labels.json"
+```
+
+这样训练时，每个病人就只会使用 1 张图。
