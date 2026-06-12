@@ -110,11 +110,11 @@ class MultiTaskDataset(Dataset):
         return label_data
 
     def _list_image_files(self, root):
-        valid_suffixes = ('.jpg', '.png', '.PNG')
+        valid_suffixes = ('.jpg', '.jpeg', '.png')
         return sorted(
             os.path.join(root, filename)
             for filename in os.listdir(root)
-            if filename.endswith(valid_suffixes)
+            if filename.lower().endswith(valid_suffixes)
         )
 
     def _normalize_relative_path(self, path):
