@@ -17,21 +17,25 @@ VAL_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Superimposed_multit
 TEST_DATASET_NAMES=(
     "DDTI_Classification"
     "Cine-Clip"
+    "ThyUs2Path"
 )
 
 TEST_IMAGE_PATHS=(
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/all/images_processed/"
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Cine-Clip/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyUS2Path/batch1_image/dataset/"
 )
 
 TEST_MASK_PATHS=(
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/all/images_processed/"
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Cine-Clip/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyUS2Path/batch1_image/dataset/"
 )
 
 TEST_LABEL_PATHS=(
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/all/DDTI_Classification_test_label.json"
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Cine-Clip/test/Cine-Clip_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/ThyUS2Path/batch1_image/batch1_image_label.json"
 )
 
 # Ensure arrays have the same length
@@ -47,7 +51,7 @@ SAVE_PATH="./predictions/new_test_${DATASET_NAME}"
 SAVE_RESULTS="false"
 
 # Log directory
-LOG_DIR="./logs/test_logs/gamtl/new_test_${DATASET_NAME}"
+LOG_DIR="./logs/test_logs/gamtl/test_outside"
 
 # ---------------------- Execution ----------------------
 
