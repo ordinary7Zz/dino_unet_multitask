@@ -1,0 +1,91 @@
+{
+  "source": "D:\\workspace\\ThyroidAgent\\Classification_Models\\dino_unet_multitask\\my_json\\outputs\\LNM\\gpt_thyroid_lymph_node_preds.json",
+  "schema": "current",
+  "n_samples": 158,
+  "n_positive": 82,
+  "n_negative": 76,
+  "threshold": 0.5,
+  "bootstrap": {
+    "n_boot": 2000,
+    "ci": 0.95,
+    "seed": 0
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.678,
+      "CI95": [
+        0.6013,
+        0.747
+      ]
+    },
+    "precision": {
+      "mean": 0.6227,
+      "CI95": [
+        0.5354,
+        0.7031
+      ]
+    },
+    "recall": {
+      "mean": 0.964,
+      "CI95": [
+        0.9176,
+        1.0
+      ]
+    },
+    "f1": {
+      "mean": 0.7558,
+      "CI95": [
+        0.6842,
+        0.8173
+      ]
+    },
+    "auroc": {
+      "mean": 0.841,
+      "CI95": [
+        0.7751,
+        0.8985
+      ]
+    },
+    "auprc": {
+      "mean": 0.8629,
+      "CI95": [
+        0.7946,
+        0.9162
+      ]
+    },
+    "sensitivity": {
+      "mean": 0.964,
+      "CI95": [
+        0.9176,
+        1.0
+      ]
+    },
+    "specificity": {
+      "mean": 0.3692,
+      "CI95": [
+        0.2637,
+        0.475
+      ]
+    },
+    "youden": {
+      "mean": 0.3332,
+      "CI95": [
+        0.2125,
+        0.4458
+      ]
+    },
+    "ece": {
+      "mean": 0.1849,
+      "CI95": [
+        0.1278,
+        0.246
+      ]
+    }
+  },
+  "youden_threshold": {
+    "best_threshold": 0.7946,
+    "youden": 0.4942,
+    "sensitivity": 0.5732,
+    "specificity": 0.9211
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "source": "D:\\workspace\\ThyroidAgent\\Classification_Models\\dino_unet_multitask\\my_json\\outputs\\BM\\gemini3.1_TN5K_preds.json",
+  "schema": "current",
+  "n_samples": 300,
+  "n_positive": 226,
+  "n_negative": 74,
+  "threshold": 0.5,
+  "bootstrap": {
+    "n_boot": 2000,
+    "ci": 0.95,
+    "seed": 0
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.731,
+      "CI95": [
+        0.68,
+        0.78
+      ]
+    },
+    "precision": {
+      "mean": 0.8284,
+      "CI95": [
+        0.7778,
+        0.8768
+      ]
+    },
+    "recall": {
+      "mean": 0.8106,
+      "CI95": [
+        0.76,
+        0.8596
+      ]
+    },
+    "f1": {
+      "mean": 0.8191,
+      "CI95": [
+        0.779,
+        0.8552
+      ]
+    },
+    "auroc": {
+      "mean": 0.6873,
+      "CI95": [
+        0.6115,
+        0.7564
+      ]
+    },
+    "auprc": {
+      "mean": 0.8462,
+      "CI95": [
+        0.7972,
+        0.8908
+      ]
+    },
+    "sensitivity": {
+      "mean": 0.8106,
+      "CI95": [
+        0.76,
+        0.8596
+      ]
+    },
+    "specificity": {
+      "mean": 0.4879,
+      "CI95": [
+        0.3704,
+        0.6053
+      ]
+    },
+    "youden": {
+      "mean": 0.2985,
+      "CI95": [
+        0.1733,
+        0.4239
+      ]
+    },
+    "ece": {
+      "mean": 0.1327,
+      "CI95": [
+        0.0914,
+        0.1771
+      ]
+    }
+  },
+  "youden_threshold": {
+    "best_threshold": 0.75,
+    "youden": 0.334,
+    "sensitivity": 0.7124,
+    "specificity": 0.6216
+  }
+}

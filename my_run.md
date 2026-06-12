@@ -220,7 +220,80 @@ bash scripts/binary/train_binary_sampler_FTCPTC_clsclsseg_pf02_ns6000.sh
 
 ---
 
-## 7. 病人目录内图像差异性 / 异质性分析
+## 7. 分类结果指标汇总
+
+### 脚本位置
+
+`compute_single_task_binary_metrics.py`
+
+### 作用
+
+读取单个分类模型导出的标准化 JSON，直接计算常见二分类指标及其 CI95：
+
+- AUROC
+- AUPRC
+- precision
+- recall
+- accuracy
+- F1
+- sensitivity / specificity
+- Youden index
+- ECE
+
+### 支持的输入格式
+
+该脚本支持本文档里约定的两种样本级格式：
+
+1. `true_label` + `prob_class_1`
+2. `ground_truth_label` + `malignant_probability`
+
+### 基本用法
+
+```bash
+python compute_single_task_binary_metrics.py \
+  /path/to/model_results.json
+```
+
+### 可选参数
+
+- `--threshold`：计算 precision / recall / F1 / sensitivity / specificity 时使用的阈值，默认 `0.5`
+- `--n-boot`：bootstrap 次数，默认 `2000`
+- `--ci`：置信区间水平，默认 `0.95`
+- `--seed`：bootstrap 随机种子，默认 `0`
+- `--output`：指定输出汇总 JSON 的路径；不指定时默认输出到输入文件同目录下的 `*_binary_metrics.json`
+
+### 示例
+
+#### 示例 1：直接计算并输出同目录结果文件
+
+```bash
+python compute_single_task_binary_metrics.py \
+  my_model_results.json
+```
+
+#### 示例 2：指定阈值和输出路径
+
+```bash
+python compute_single_task_binary_metrics.py \
+  my_model_results.json \
+  --threshold 0.4 \
+  --n-boot 5000 \
+  --seed 1024 \
+  --output my_model_metrics_summary.json
+```
+
+### 输出说明
+
+脚本会在控制台打印一份简洁摘要，并生成一个 JSON 汇总文件，里面包含：
+
+- 样本数、正负样本数
+- 各指标的 mean 与 CI95
+- Youden 最优阈值及其对应统计量
+- bootstrap 参数记录
+
+---
+
+## 8. 病人目录内图像差异性 / 异质性分析
 
 ### 脚本位置
 

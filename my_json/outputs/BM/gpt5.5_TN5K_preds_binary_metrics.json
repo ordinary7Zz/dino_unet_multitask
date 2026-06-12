@@ -1,0 +1,91 @@
+{
+  "source": "D:\\workspace\\ThyroidAgent\\Classification_Models\\dino_unet_multitask\\my_json\\outputs\\BM\\gpt5.5_TN5K_preds.json",
+  "schema": "current",
+  "n_samples": 500,
+  "n_positive": 370,
+  "n_negative": 130,
+  "threshold": 0.5,
+  "bootstrap": {
+    "n_boot": 2000,
+    "ci": 0.95,
+    "seed": 0
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.8078,
+      "CI95": [
+        0.772,
+        0.842
+      ]
+    },
+    "precision": {
+      "mean": 0.8408,
+      "CI95": [
+        0.8029,
+        0.8753
+      ]
+    },
+    "recall": {
+      "mean": 0.9132,
+      "CI95": [
+        0.8832,
+        0.9407
+      ]
+    },
+    "f1": {
+      "mean": 0.8754,
+      "CI95": [
+        0.8497,
+        0.9
+      ]
+    },
+    "auroc": {
+      "mean": 0.7737,
+      "CI95": [
+        0.7234,
+        0.823
+      ]
+    },
+    "auprc": {
+      "mean": 0.892,
+      "CI95": [
+        0.8586,
+        0.9236
+      ]
+    },
+    "sensitivity": {
+      "mean": 0.9132,
+      "CI95": [
+        0.8832,
+        0.9407
+      ]
+    },
+    "specificity": {
+      "mean": 0.5072,
+      "CI95": [
+        0.4154,
+        0.592
+      ]
+    },
+    "youden": {
+      "mean": 0.4205,
+      "CI95": [
+        0.3265,
+        0.5111
+      ]
+    },
+    "ece": {
+      "mean": 0.0856,
+      "CI95": [
+        0.0523,
+        0.1164
+      ]
+    }
+  },
+  "youden_threshold": {
+    "best_threshold": 0.6738,
+    "youden": 0.4638,
+    "sensitivity": 0.8946,
+    "specificity": 0.5692
+  }
+}
