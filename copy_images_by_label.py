@@ -28,17 +28,30 @@ def copy_images_by_label(json_file, label_name, image_root, save_root):
     save_root = Path(save_root)
 
     records = load_records(json_file)
+    total_count = len(records)
+    copied_count = 0
+    missing_count = 0
+    skipped_count = 0
+    label0_count = 0
+    label1_count = 0
 
     for idx, item in enumerate(records):
         if "filename" not in item:
+            skipped_count += 1
             print(f"[跳过] 第 {idx} 条没有 filename")
             continue
 
         if label_name not in item:
+            skipped_count += 1
             raise KeyError(f"第 {idx} 条记录中不存在标签: {label_name}")
 
         label_value = int(item[label_name])
-        if label_value not in (0, 1):
+        if label_value == 0:
+            label0_count += 1
+        elif label_value == 1:
+            label1_count += 1
+        else:
+            skipped_count += 1
             print(f"[跳过] 第 {idx} 条标签值不是 0/1: {label_value}")
             continue
 
@@ -46,6 +59,7 @@ def copy_images_by_label(json_file, label_name, image_root, save_root):
         src_path = image_root / rel_path
 
         if not src_path.exists():
+            missing_count += 1
             print(f"[缺失] 源文件不存在: {src_path}")
             continue
 
@@ -54,7 +68,17 @@ def copy_images_by_label(json_file, label_name, image_root, save_root):
         dst_path.parent.mkdir(parents=True, exist_ok=True)
 
         shutil.copy2(src_path, dst_path)
+        copied_count += 1
         print(f"[复制] {src_path} -> {dst_path}")
+
+    print("[完成] 处理统计:")
+    print(f"  - 总记录数: {total_count}")
+    print(f"  - 复制成功: {copied_count}")
+    print(f"  - 源文件缺失: {missing_count}")
+    print(f"  - 跳过记录: {skipped_count}")
+    print(f"  - 标签 0 数量: {label0_count}")
+    print(f"  - 标签 1 数量: {label1_count}")
+    return copied_count
 
 
 if __name__ == "__main__":

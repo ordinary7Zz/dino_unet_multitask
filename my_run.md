@@ -786,7 +786,7 @@ TRAIN_LABEL_PATH="./lnm_single_train_labels.json"
 ```bash
 python copy_images_by_label.py \
   --json_file "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/data_label.json" \
-  --label_name LNM_CN01 \
+  --label_name malignancy \
   --image_root "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/image" \
   --save_root "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data"
 ```
