@@ -762,3 +762,44 @@ TRAIN_LABEL_PATH="./lnm_single_train_labels.json"
 ```
 
 这样训练时，每个病人就只会使用 1 张图。
+
+---
+
+## 10. 按单个标签值复制图像并重命名
+
+### 脚本位置
+
+`copy_images_by_label.py`
+
+### 作用
+
+根据分类标签 JSON 和指定标签名，把原始图像从 `image_root` 复制到 `save_root/0` 或 `save_root/1` 下，并把文件名重命名为把 `filename` 各级路径用下划线拼接后的形式。
+
+例如：
+
+- `filename = 2016/叶永强/叶永强_01_0003_0003.jpg`
+- 重命名后：`2016_叶永强_叶永强_01_0003_0003.jpg`
+- 若 `LNM_CN01 = 1`，则保存到：`save_root/1/2016_叶永强_叶永强_01_0003_0003.jpg`
+
+### 基本用法
+
+```bash
+python copy_images_by_label.py \
+  --json_file "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/data_label.json" \
+  --label_name LNM_CN01 \
+  --image_root "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/image" \
+  --save_root "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data"
+```
+
+### 参数说明
+
+- `--json_file`：分类标签 JSON 文件路径
+- `--label_name`：要筛选的标签名，例如 `LNM_CN01`、`FTCPTC`
+- `--image_root`：原始图像根目录，脚本会用 `image_root + filename` 定位源图像
+- `--save_root`：保存目录，脚本会自动创建 `0`、`1` 子目录
+
+### 说明
+
+- 只处理标签值为 `0/1` 的样本
+- 如果源图像不存在，会打印缺失信息并跳过
+- 输出文件名不保留原来的目录结构，避免重复文件名冲突
