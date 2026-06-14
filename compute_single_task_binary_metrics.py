@@ -1,3 +1,33 @@
+"""本脚本用于对单个二分类模型的输出结果做指标汇总。
+
+脚本输入通常是一个 JSON 文件，里面保存了模型对每个样本的预测结果和真实标签。
+它会从结果中自动识别两种常见的数据格式：
+
+1. `true_label` + `prob_class_1`
+2. `ground_truth_label` + `malignant_probability`
+
+脚本会基于样本级预测结果，计算并输出常见的二分类评估指标，包括：
+
+- Accuracy
+- Precision
+- Recall / Sensitivity
+- Specificity
+- F1
+- AUROC
+- AUPRC
+- Youden index
+- ECE
+
+同时还支持 bootstrap 置信区间估计，用于观察指标的稳定性。
+如果输入文件里包含多个样本记录，脚本会逐条读取并汇总；如果真实标签只有单一类别，
+则会直接报错，因为此时无法计算 AUROC / AUPRC 等需要正负样本同时存在的指标。
+
+适用场景：
+- 单任务二分类模型的离线评估
+- 训练后对验证集 / 测试集结果做统一指标统计
+- 将不同模型输出转成同一套标准化指标报告
+"""
+
 from __future__ import annotations
 
 import argparse
