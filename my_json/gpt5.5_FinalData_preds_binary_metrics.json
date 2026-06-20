@@ -1,0 +1,91 @@
+{
+  "source": "my_json\\gpt5.5_FinalData_preds.json",
+  "schema": "current",
+  "n_samples": 618,
+  "n_positive": 476,
+  "n_negative": 142,
+  "threshold": 0.5,
+  "bootstrap": {
+    "n_boot": 2000,
+    "ci": 0.95,
+    "seed": 0
+  },
+  "metrics": {
+    "accuracy": {
+      "mean": 0.7124,
+      "CI95": [
+        0.6764,
+        0.7476
+      ]
+    },
+    "precision": {
+      "mean": 0.8018,
+      "CI95": [
+        0.7662,
+        0.835
+      ]
+    },
+    "recall": {
+      "mean": 0.8323,
+      "CI95": [
+        0.7979,
+        0.8646
+      ]
+    },
+    "f1": {
+      "mean": 0.8166,
+      "CI95": [
+        0.7895,
+        0.8413
+      ]
+    },
+    "auroc": {
+      "mean": 0.6109,
+      "CI95": [
+        0.5594,
+        0.6624
+      ]
+    },
+    "auprc": {
+      "mean": 0.8311,
+      "CI95": [
+        0.7915,
+        0.8688
+      ]
+    },
+    "sensitivity": {
+      "mean": 0.8323,
+      "CI95": [
+        0.7979,
+        0.8646
+      ]
+    },
+    "specificity": {
+      "mean": 0.311,
+      "CI95": [
+        0.2378,
+        0.3901
+      ]
+    },
+    "youden": {
+      "mean": 0.1432,
+      "CI95": [
+        0.059,
+        0.2294
+      ]
+    },
+    "ece": {
+      "mean": 0.1244,
+      "CI95": [
+        0.0932,
+        0.1566
+      ]
+    }
+  },
+  "youden_threshold": {
+    "best_threshold": 0.7164,
+    "youden": 0.1804,
+    "sensitivity": 0.7227,
+    "specificity": 0.4577
+  }
+}
