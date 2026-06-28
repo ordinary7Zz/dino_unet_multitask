@@ -7,220 +7,71 @@
 
 ---
 
-## 1. 通过 JSON 人工控制 0/1 类比例
+## 1. 分类推理脚本
 
 ### 脚本位置
 
-`utils/build_binary_resampled_labels.py`
+`infer_classification.py`
 
 ### 作用
 
-从旧标签文件中读取指定二分类标签，按目标数量生成新的标签文件：
+使用训练好的 `DINOv3_S_UNet_MULTITASK` 权重，对图像目录进行批量分类推理。根据分类数量自动选择分类头：
 
-- class 0 数量由 `--num_class0` 控制
-- class 1 数量由 `--num_class1` 控制
-- 当目标数量小于原始数量时，随机下采样
-- 当目标数量大于原始数量时，有放回采样，相当于复制样本
-- 非 0/1 的标签值（例如 `-1`）不会写入新文件
+- `num_classes=2`：使用 `benign_malignant_head`（良恶性二分类，sigmoid + threshold 0.5）
+- `num_classes=5`：使用 `tirads_head`（TIRADS 五分类，softmax + argmax）
+
+输出 CSV 文件，包含每张图像的文件名、预测类别和各类别概率/置信度分数。
 
 ### 基本用法
 
-```bash
-python utils/build_binary_resampled_labels.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_sample_exported_only.json \
-  --output_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_298_149.json \
-  --target_key FTCPTC \
-  --num_class0 298 \
-  --num_class1 149 \
-  --seed 1024
-```
-
-### 示例
-
-#### 示例 1：生成 FTCPTC 训练标签，0 类 2000，1 类 1000
+#### 二分类推理
 
 ```bash
-python utils/build_binary_resampled_labels.py \
-  --input_json train_labels.json \
-  --output_json train_labels_ftcptc_2000_1000.json \
-  --target_key FTCPTC \
-  --num_class0 2000 \
-  --num_class1 1000
+python infer_classification.py \
+    --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/sample/images \
+    --checkpoint /mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/gamtl/dino_unet_gamtl_train_multitask_dataset_4_epoch_50.pth \
+    --num_classes 2 \
+    --output results/binary_preds.csv \
+    --img_size 224
 ```
 
-#### 示例 2：生成 FTCPTC 训练标签，0 类 2000，1 类 1500
+#### 五分类推理
 
 ```bash
-python utils/build_binary_resampled_labels.py \
-  --input_json train_labels.json \
-  --output_json train_labels_ftcptc_2000_1500.json \
-  --target_key FTCPTC \
-  --num_class0 2000 \
-  --num_class1 1500
+python infer_classification.py \
+    --image_dir /path/to/test/images \
+    --checkpoint logs/default/GA-MTL_TIRADS_20250601_120000/GA-MTL_default_TIRADS_epoch_50.pth \
+    --num_classes 5 \
+    --output results/tirads_preds.csv \
+    --img_size 224
 ```
 
-### 说明
+### 参数说明
 
-- 如果 `num_class1` 大于原始正类数量，脚本会自动复制正类样本
-- 输出文件可以直接替换训练脚本中的 `TRAIN_LABEL_PATH`
+| 参数 | 必填 | 默认值 | 说明 |
+|------|------|--------|------|
+| `--image_dir` | ✓ | — | 待推理图像所在目录 |
+| `--checkpoint` | ✓ | — | 模型权重文件路径 (.pth) |
+| `--num_classes` | ✓ | — | 分类类别数：`2` 或 `5` |
+| `--output` | ✓ | — | 输出 CSV 文件路径 |
+| `--img_size` | | `224` | 输入图像尺寸，需与训练时一致 |
+| `--dino_pretrained` | | `True` | DINO backbone 是否使用预训练权重，需与训练时一致 |
+| `--use_dilation` | | `False` | 模型是否使用 dilation 层，需与训练时一致 |
+| `--cuda_device` | | `0` | CUDA 设备索引 |
+| `--batch_size` | | `16` | 推理批大小 |
+| `--num_workers` | | `4` | DataLoader 子进程数 |
+
+### 输出说明
+
+**二分类 CSV 格式**：`filename | predicted_class | prob_0 | prob_1`
+
+**五分类 CSV 格式**：`filename | predicted_class | prob_0 | prob_1 | prob_2 | prob_3 | prob_4`
+
+脚本会在控制台打印预测类别分布统计。
 
 ---
 
-## 2. 图像级二分类多任务训练
-
-### 训练代码
-
-`train_multitask_binary_sampler.py`
-
-### 重要说明
-
-- 文件名里的 `sampler` 是历史遗留命名
-- 当前代码里并没有 `WeightedRandomSampler`
-- 训练使用普通 `DataLoader(shuffle=True)`
-- 如果你想控制 0/1 类比例，应主要依赖新的 train_labels JSON
-
-### 核心参数
-
-- `--train_label_path`：训练标签 JSON 文件
-- `--target_key`：关注的二分类标签，例如 `FTCPTC`
-- `--task_schedule`：多任务优化顺序，例如 `seg,cls` 或 `cls,cls,seg`
-- `--cls_pos_weight`：分类 BCE 中正类损失权重，值越大越偏向提升 recall
-
-### 当前可直接使用的脚本
-
-- `scripts/binary/train_binary_sampler_FTCPTC_segcls.sh`
-- `scripts/binary/train_binary_sampler_FTCPTC_clsclsseg_pf02_ns6000.sh`
-- `scripts/binary/train_binary_sampler_FTCPTC.sh`
-
-### 2.1 `seg,cls` 版本
-
-#### 脚本位置
-
-`scripts/binary/train_binary_sampler_FTCPTC_segcls.sh`
-
-#### 含义
-
-- `task_schedule="seg,cls"`
-- 每个优化 step 做一次分割、一次分类
-- 图像级训练
-- 不做 `WeightedRandomSampler`
-
-#### 运行方式
-
-```bash
-bash scripts/binary/train_binary_sampler_FTCPTC_segcls.sh
-```
-
-#### 如果要改训练标签文件
-
-把脚本中的 `TRAIN_LABEL_PATH` 改成新的 JSON，例如：
-
-```bash
-TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels_ftcptc_2000_1000.json"
-```
-
-#### 如果要改 recall 倾向
-
-优先改：
-
-```bash
-CLS_POS_WEIGHT
-```
-
-#### 经验
-
-- 想更强调 recall：可尝试调大 `CLS_POS_WEIGHT`
-- 如果已经通过新 JSON 做了较强重采样，建议先把 `CLS_POS_WEIGHT` 控制在较保守范围
-
----
-
-## 3. 不依赖新 JSON 的默认训练方式
-
-### 图像级默认脚本
-
-- `scripts/binary/train_binary_sampler_FTCPTC.sh`
-
-### 说明
-
-- 如果 `TRAIN_LABEL_PATH` 仍指向原始 `train_labels.json`，那么训练分布就是原始分布
-- 如果 `TRAIN_LABEL_PATH` 换成你生成的新 JSON，那么训练分布就由新 JSON 决定
-- 病人级默认训练方式见 [`patient_level_training.md`](./patient_level_training.md)
-
----
-
-## 4. 推荐实验顺序
-
-### 方案 A：先只测试人工重采样 JSON 的效果（图像级）
-
-1. 用 `utils/build_binary_resampled_labels.py` 生成新 JSON
-2. 修改 `scripts/binary/train_binary_sampler_FTCPTC_segcls.sh` 中的 `TRAIN_LABEL_PATH`
-3. 运行：
-
-```bash
-bash scripts/binary/train_binary_sampler_FTCPTC_segcls.sh
-```
-
-### 方案 B：人工重采样 JSON + 更偏分类的图像级训练
-
-1. 用 `utils/build_binary_resampled_labels.py` 生成新 JSON
-2. 修改 `scripts/binary/train_binary_sampler_FTCPTC_clsclsseg_pf02_ns6000.sh` 中的 `TRAIN_LABEL_PATH`
-3. 根据需要调整 `CLS_POS_WEIGHT`
-4. 运行：
-
-```bash
-bash scripts/binary/train_binary_sampler_FTCPTC_clsclsseg_pf02_ns6000.sh
-```
-
-### 方案 C：病人级训练
-
-病人级 BCE 训练的完整说明见 [`patient_level_training.md`](./patient_level_training.md)。
-
----
-
-## 5. 参数含义速查
-
-### `TRAIN_LABEL_PATH`
-
-训练时使用的标签 JSON 文件路径。
-
-### `TARGET_KEY` / `--target_key`
-
-当前关注的二分类标签，例如 `FTCPTC` 或 `LNM_CN01`。
-
-### `CLS_POS_WEIGHT`
-
-分类 BCE loss 中正类样本权重。
-
-例如 `3` 表示正类错分的代价更高，训练时更偏向提升 recall。
-
-### `TASK_SCHEDULE`
-
-每个 optimizer step 的任务顺序：
-
-- `seg,cls`：一次分割 + 一次分类
-- `cls,cls,seg`：两次分类 + 一次分割
-
-> 病人级训练特有参数，如 `PATIENT_ID_DEPTH`、`MAX_IMAGES_PER_PATIENT`、`CLS_POOLING`、`FIXED_THRESHOLD`，见 [`patient_level_training.md`](./patient_level_training.md)。
-
----
-
-## 6. 当前建议
-
-如果当前目标是提升 `FTCPTC` 的 recall，可按下面顺序试：
-
-- 先生成新的 train_labels JSON
-- 先跑图像级版本：`scripts/binary/train_binary_sampler_FTCPTC_segcls.sh`
-- 如果 recall 仍然偏低，再试：`scripts/binary/train_binary_sampler_FTCPTC_clsclsseg_pf02_ns6000.sh`
-- 如果你更关心最终病人级判断，再看并运行 [`patient_level_training.md`](./patient_level_training.md) 中的方案
-
-一个可作为起点的比例示例：
-
-- `num_class0 = 2000`
-- `num_class1 = 1000` 或 `1500`
-
----
-
-## 7. 分类结果指标汇总
+## 2. 分类结果指标汇总
 
 ### 脚本位置
 
@@ -293,479 +144,7 @@ python compute_single_task_binary_metrics.py \
 
 ---
 
-## 8. 病人目录内图像差异性 / 异质性分析
-
-### 脚本位置
-
-`utils/analyze_patient_heterogeneity.py`
-
-### 作用
-
-分析同一病人目录下多张图像之间的差异性，输出可审计的 JSON 报告，帮助判断：
-
-- 哪些病人的图像内部差异很大
-- 哪些图像在同病人内部像离群点
-- 哪些条目存在缺图、缺 mask、空 mask、标签不一致等问题
-
-### 输入
-
-- 现有的 label JSON（如 `train_labels.json`）
-- 图像根目录 `image_root`
-- mask 根目录 `mask_root`
-
-### 输出
-
-在 `--output_dir` 下默认生成 4 个 JSON 文件：
-
-- `summary.<target_key>.json`
-- `patients.<target_key>.json`
-- `outliers.<target_key>.json`
-- `audit.<target_key>.json`
-
-其中：
-
-- `summary`：总体统计，例如有效分析条目数、总病人数、高异质性病人数
-- `patients`：每个病人的异质性结果，例如 `heterogeneity_score`、是否高异质性、离群图数量
-- `outliers`：病人内离群图列表，以及触发离群的特征原因
-- `audit`：无法正常分析或需要注意的条目/病人，例如缺图、缺 mask、空 mask、重复 filename、标签不一致
-
-### 默认分析特征
-
-- `mask_area_ratio`
-- `bbox_fill_ratio`
-- `bbox_area_ratio`
-- `largest_component_ratio`
-- `center_x_ratio`
-- `center_y_ratio`
-- `edge_touch_penalty`
-- `masked_intensity_mean`
-- `masked_intensity_std`
-
-### 基本用法（分析 FTCPTC）
-
-```bash
-python utils/analyze_patient_heterogeneity.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_dir ./log/patient_heterogeneity_ftcptc \
-  --target_key FTCPTC \
-  --patient_id_depth 2
-```
-
-### 基本用法（分析 LNM_CN01）
-
-```bash
-python utils/analyze_patient_heterogeneity.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_dir ./log/patient_heterogeneity_lnm \
-  --target_key LNM_CN01 \
-  --patient_id_depth 2
-```
-
-### 小范围调试示例
-
-```bash
-python utils/analyze_patient_heterogeneity.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_dir ./log/patient_heterogeneity_ftcptc_debug \
-  --target_key FTCPTC \
-  --patient_id_depth 2 \
-  --max_patients 50
-```
-
-### 常用参数
-
-- `--target_key`：指定要结合哪个二分类标签做统计，如 `FTCPTC` 或 `LNM_CN01`
-- `--patient_id_depth`：从 filename 前几段路径构造 patient_id，当前数据通常用 2
-- `--min_images_per_patient`：至少有多少张有效图像才计算病人级异质性，默认 2
-- `--high_heterogeneity_percentile`：把异质性分数位于全体病人前多少百分位的病人标记为高异质性，默认 90
-- `--outlier_z_threshold`：样本较少或 MAD 不可用时的 z-score 离群阈值，默认 2.5
-- `--outlier_mad_threshold`：MAD 可用时的 robust 离群阈值，默认 3.5
-- `--max_patients`：仅分析排序后的前 N 个病人，用于快速调试
-- `--report_prefix`：给输出报告文件名加前缀
-
-### 结果怎么看
-
-- 先看 `patients.<target_key>.json`，找 `heterogeneity_score` 高的病人
-- 再看 `outliers.<target_key>.json`，找这些病人内部哪些图像最像离群图
-- 再看 `audit.<target_key>.json`，确认是否存在大量缺图、缺 mask、空 mask 或标签不一致问题
-
-### 说明
-
-- 该脚本主要基于图像和 mask 的几何/灰度统计做差异性分析，不依赖模型训练
-- 即使某些样本 `target_key` 是 `-1`，也仍可做图像差异性分析；只是这些样本不会作为有效 0/1 标签统计
-
----
-
-## 8. 面向单图训练的自动筛图
-
-### 脚本位置
-
-`utils/build_task_suitable_labels.py`
-
-### 作用
-
-从原始 label JSON 中，先删除明显不适合训练的图像，再结合病人目录内的差异性、离群性和质量分数，为每个病人保留少量更适合单图训练的图像，最终输出一个新的图像级 label JSON。
-
-该脚本的目标是：
-
-- 不再把同病人所有图像等权用于训练
-- 先筛出更像主病灶视图的图像
-- 直接把输出 JSON 用于单图训练与推理
-
-### 输入
-
-- 原始 label JSON，例如 `train_labels.json`
-- 图像根目录 `image_root`
-- mask 根目录 `mask_root`
-- 目标二分类标签 `target_key`
-- 任务 preset：`FTCPTC` 或 `LNM_CN01`
-
-### 输出
-
-在 `--report_dir` 下会生成：
-
-- `summary.<target_key>.json`
-- `image_decisions.<target_key>.json`
-- `patients.<target_key>.json`
-- `review.<target_key>.json`
-
-如果不加 `--dry_run`，还会生成：
-
-- `filtered_labels.<target_key>.json`
-
-其中：
-
-- `summary`：筛前/筛后图像数、病人数、bag size 分布、drop reason 计数、高异质性病人数
-- `image_decisions`：每张图为何被保留或删除，以及对应分数和离群信息
-- `patients`：每个病人的异质性分数、保留图数量、保留文件名
-- `review`：建议人工复核的病人，以及病人内离群图
-- `filtered_labels`：可直接替换训练脚本 `TRAIN_LABEL_PATH` 的新标签 JSON
-
-### 当前内置 preset
-
-#### `FTCPTC`
-
-默认更保守：
-
-- `min_mask_area_ratio = 0.0005`
-- `min_largest_component_pixels = 64`
-- `min_keep_per_patient = 4`
-- `max_keep_per_patient = 6`
-
-特点：
-
-- 更允许保留一定视角多样性
-- 更适合先做图像级训练主线
-
-#### `LNM_CN01`
-
-默认更严格：
-
-- `min_mask_area_ratio = 0.0008`
-- `min_largest_component_pixels = 96`
-- `min_keep_per_patient = 2`
-- `max_keep_per_patient = 4`
-
-特点：
-
-- 更强调少量、稳定、干净的主视图
-- 更适合先做保守筛图试验
-
-### 基本用法（FTCPTC）
-
-```bash
-python utils/build_task_suitable_labels.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_json ./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json \
-  --target_key FTCPTC \
-  --task_preset FTCPTC \
-  --report_dir ./log/task_suitable_ftcptc
-```
-
-### 基本用法（LNM_CN01）
-
-```bash
-python utils/build_task_suitable_labels.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/LymphUs_train_labels.json \
-  --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images \
-  --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/masks \
-  --output_json ./log/task_suitable_lnm/filtered_labels.LNM_CN01.json \
-  --target_key LNM_CN01 \
-  --task_preset LNM_CN01 \
-  --report_dir ./log/task_suitable_lnm
-```
-
-### 建议先做 dry run
-
-如果你想先看筛图效果，而不真正写出新的训练 JSON：
-
-```bash
-python utils/build_task_suitable_labels.py \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --image_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --mask_root /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_json ./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json \
-  --target_key FTCPTC \
-  --task_preset FTCPTC \
-  --report_dir ./log/task_suitable_ftcptc \
-  --dry_run
-```
-
-此时：
-
-- 会生成报告 JSON
-- 不会生成 `filtered_labels.FTCPTC.json`
-
-### 常用参数
-
-- `--target_key`：指定要筛哪个二分类标签，如 `FTCPTC` 或 `LNM_CN01`
-- `--task_preset`：选择对应任务 preset，通常与 `target_key` 相同
-- `--patient_id_depth`：从 filename 前几段路径构造 patient_id，当前数据通常用 2
-- `--min_mask_area_ratio`：覆盖默认的极小 mask 过滤阈值
-- `--min_largest_component_pixels`：覆盖默认的最小最大连通域像素阈值
-- `--min_keep_per_patient`：每病人至少保留几张
-- `--max_keep_per_patient`：每病人至多保留几张
-- `--min_images_per_patient`：至少多少张图像才参与病人内异质性评分
-- `--outlier_z_threshold`：MAD 不可用时的 z-score 离群阈值
-- `--outlier_mad_threshold`：MAD 可用时的 robust 离群阈值
-- `--high_heterogeneity_percentile`：病人异质性分数前多少百分位标为高异质性
-- `--review_drop_ratio`：删图比例超过该值时进入人工复核
-- `--heterogeneity_features`：手动指定用于异质性分析的特征列表，逗号分隔
-- `--dry_run`：只生成报告，不写最终训练 JSON
-
-### 脚本默认会做什么
-
-1. 结构审计：
-   - 删除缺失 `filename`、缺图、缺 mask、加载失败等条目
-2. 硬过滤：
-   - 删除 `target_key` 不为 0/1、空 mask、极小 mask、极小连通域图
-3. 病人内分析：
-   - 计算每张图的几何/灰度特征
-   - 计算病人级异质性分数
-   - 检测病人内离群图
-4. 病人内排序与保留：
-   - 综合基础质量分、边缘惩罚、碎片化惩罚、离群惩罚等因素排序
-   - 每病人只保留 top-k 更适合单图训练的图像
-
-### 结果怎么看
-
-建议按下面顺序查看：
-
-1. 先看 `summary.<target_key>.json`
-   - 看筛后样本数是否降得过猛
-   - 看类别分布是否被严重扭曲
-   - 看每病人 bag size 是否明显更干净
-2. 再看 `patients.<target_key>.json`
-   - 找 `heterogeneity_score` 高的病人
-   - 看这些病人最终保留了哪些图
-3. 再看 `image_decisions.<target_key>.json`
-   - 看具体某张图为何被删、为何被保留
-4. 最后看 `review.<target_key>.json`
-   - 抽查高异质性病人、删图比例过高病人和病人内离群图
-
-### 如何接入训练
-
-生成 `filtered_labels.<target_key>.json` 后，直接把训练脚本中的：
-
-```bash
-TRAIN_LABEL_PATH
-```
-
-替换成新的 filtered JSON 即可。
-
-例如：
-
-```bash
-TRAIN_LABEL_PATH="./log/task_suitable_ftcptc/filtered_labels.FTCPTC.json"
-```
-
-这样后续训练就直接基于筛图后的单图数据进行。
-
----
-
-## 9. 每病人只保留 1 张图的单图标签构建
-
-### 适用脚本
-
-- `utils/build_ftcptc_single_image_labels.py`
-- `utils/build_lnm_cn01_single_image_labels.py`
-
-### 作用
-
-这两个脚本都会从原始标签 JSON 中，为每个病人最终只保留 1 张图，输出新的单图训练标签 JSON，并额外生成一个报告 JSON。
-
-适合的场景：
-
-- 你想把多图病人数据压成严格的单图训练集
-- 你想避免同一病人多张相似图重复进入训练
-- 你想先快速做一个“每病人 1 图”的保守基线实验
-
-### 共同特性
-
-- 都要求输入图像根目录 `--image_dir`
-- 都要求输入原始标签 JSON `--input_json`
-- 都要求指定二分类标签键 `--target_key`
-- 都要求指定输出标签 JSON `--output_json`
-- 都支持 `--patient_id_depth` 控制病人 ID 从 `filename` 的前几段路径构造，当前通常用 `2`
-- 都会输出 `report_json`
-- 都会跳过：
-  - `target_key` 不是 0/1 的条目
-  - 缺失 `filename` 的条目
-  - 图像文件不存在的条目
-  - 同一病人内标签不一致的情况
-
-### 输出内容
-
-输出的 `report_json` 中通常会包含：
-
-- 输入/输出图像数量
-- 输入/输出病人数
-- 每病人候选图数量统计
-- 被跳过病人的原因
-- 缺图记录
-- 筛选前后类别分布
-- 筛选前后病人级类别分布
-
-### 9.1 FTCPTC：优先使用 mask 质量选 1 张图
-
-#### 脚本位置
-
-`utils/build_ftcptc_single_image_labels.py`
-
-#### 选择逻辑
-
-这个脚本用于 `FTCPTC` 单图构建，特点是：
-
-- 如果提供了 `--mask_dir`，会优先使用 mask 质量来排序
-- 如果某张图有可用 mask，会计算：
-  - `mask_area_ratio`
-  - `largest_component_pixels`
-  - `bbox_fill_ratio`
-  - `edge_touch_penalty`
-  - 综合 `score`
-- 病人内优先选择 mask 可用且分数最高的那张图
-- 如果该病人的图都没有可用 mask，仍然会退化为按文件名排序后选择第一张存在的图
-
-#### 基本用法
-
-```bash
-python utils/build_ftcptc_single_image_labels.py \
-  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --target_key FTCPTC \
-  --mask_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_json ./ftcptc_single_train_labels.json \
-  --patient_id_depth 2
-```
-
-#### 如果想显式指定报告路径
-
-```bash
-python utils/build_ftcptc_single_image_labels.py \
-  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json \
-  --target_key FTCPTC \
-  --mask_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions \
-  --output_json ./ftcptc_single_train_labels.json \
-  --report_json ./ftcptc_single_train_labels.report.json \
-  --patient_id_depth 2
-```
-
-#### 不提供 mask 时会怎样
-
-如果不传 `--mask_dir`：
-
-- 脚本仍然可以运行
-- 不会做基于 mask 的质量排序
-- 每个病人会从存在的图像中按文件名排序后保留第一张
-
-#### 适合什么时候用
-
-- 你希望 `FTCPTC` 单图数据尽量保留“主病灶视图”
-- 你已经有分割 mask，想让单图筛选尽量利用 mask 信息
-- 你想先构造一个比随机留 1 张更稳定的单图标签集
-
-### 9.2 LNM_CN01：不依赖 mask，直接每病人取 1 张图
-
-#### 脚本位置
-
-`utils/build_lnm_cn01_single_image_labels.py`
-
-#### 选择逻辑
-
-这个脚本用于 `LNM_CN01` 单图构建，特点是：
-
-- 不依赖 mask 参与排序
-- 即使传入了 `--mask_dir`，也只是接受这个参数，但不会用于筛选
-- 对每个病人，只要图像存在，就按文件名排序后保留第一张
-
-#### 基本用法
-
-```bash
-python utils/build_lnm_cn01_single_image_labels.py \
-  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/LymphUs_train_labels.json \
-  --target_key LNM_CN01 \
-  --output_json ./lnm_single_train_labels.json \
-  --patient_id_depth 2
-```
-
-#### 如果你仍然想保留统一命令风格
-
-即使传 `--mask_dir` 也可以，但它只会在报告里标记“mask 被忽略”，不会影响最终选图：
-
-```bash
-python utils/build_lnm_cn01_single_image_labels.py \
-  --image_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/images \
-  --input_json /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/LymphUs_train_labels.json \
-  --target_key LNM_CN01 \
-  --mask_dir /mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis/center1/masks \
-  --output_json ./lnm_single_train_labels.json \
-  --report_json ./lnm_single_train_labels.report.json \
-  --patient_id_depth 2
-```
-
-#### 适合什么时候用
-
-- 你想先快速得到一个严格单图版 `LNM_CN01` 训练集
-- 你不想引入 mask 质量评分逻辑
-- 你想先做一个最简单、最稳定、最容易复现的每病人 1 图基线
-
-### 如何接入训练
-
-生成新的单图标签 JSON 后，直接把训练脚本中的：
-
-```bash
-TRAIN_LABEL_PATH
-```
-
-替换成新生成的文件即可。
-
-例如：
-
-```bash
-TRAIN_LABEL_PATH="./ftcptc_single_train_labels.json"
-```
-
-或者：
-
-```bash
-TRAIN_LABEL_PATH="./lnm_single_train_labels.json"
-```
-
-这样训练时，每个病人就只会使用 1 张图。
-
----
-
-## 10. 按单个标签值复制图像并重命名
+## 3. 按单个标签值复制图像并重命名
 
 ### 脚本位置
 
