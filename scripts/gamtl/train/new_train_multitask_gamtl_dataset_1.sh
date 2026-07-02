@@ -10,50 +10,50 @@ TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Su
 EPOCH=50
 LR=1e-4
 BATCH_SIZE=12
-CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/gamtl"
-CHECKPOINT_INTERVAL=5
-EVAL_INTERVAL=50
+CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_BM"
+CHECKPOINT_INTERVAL=10
+EVAL_INTERVAL=10
 DATASET_NAME="gamtl_train_multitask_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
 # 测试数据集名称数组
 TEST_DATASET_NAMES=(
     "TN3K"
-    "DDTI"
     "ThyroidXL"
     "PKTN"
     "TN5K"
-    "Cine-Clip"
+    "DDTI"
+    "Zhujiang2K"
 )
 
 # 测试图像路径数组
 TEST_IMAGE_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/valid/images/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI/valid/images/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/valid/images/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/valid/images/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/valid/images/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Cine-Clip/valid/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/test/images/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/all/images_processed/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/image/"
 )
 
 # 测试掩码路径数组
 TEST_MASK_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/valid/masks/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI/valid/masks/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/valid/masks/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/valid/masks/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/valid/masks/"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Cine-Clip/valid/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI/test/masks/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/mask/"
 )
 
 # 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/valid/TN3K_valid_label.json"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI/valid/DDTI_valid_label.json"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/valid/ThyroidXL_valid_label.json"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/valid/PKTN_valid_label.json"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/valid/TN5K_valid_label.json"
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Cine-Clip/valid/Cine-Clip_valid_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/TN3K_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/ThyroidXL_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/test/PKTN_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/test/TN5K_test_label.json"
+   "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/all/DDTI_Classification_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/data_label.json"
 )
 
 # 确保数组长度一致
