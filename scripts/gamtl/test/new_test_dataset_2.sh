@@ -38,6 +38,16 @@ TEST_MASK_PATHS=(
     "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/mask/"
 )
 
+# 测试分类标签路径数组
+TEST_LABEL_PATHS=(
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN3K/test/TN3K_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/ThyroidXL/test/ThyroidXL_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/PKTN/test/PKTN_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/TN5K/test/TN5K_test_label.json"
+   "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/DDTI_Classification/all/DDTI_Classification_test_label.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/finall_data/data_label.json"
+)
+
 # Ensure arrays have the same length
 if [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_IMAGE_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_MASK_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_LABEL_PATHS[@]} ]; then
     echo "Error: Arrays must have the same length"
