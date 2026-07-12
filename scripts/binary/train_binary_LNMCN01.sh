@@ -4,13 +4,13 @@
 Train_DATASET="LNM_CN01"
 CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
-TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
-TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/train_labels.json"  # 添加分类标签路径
+TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/images/"
+TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/masks/"
+TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/Malignant_train_labels.json"  # 添加分类标签路径
 EPOCH=50
 LR=1e-4
 BATCH_SIZE=12
-CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
+CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/LNM"
 CHECKPOINT_INTERVAL=5
 EVAL_INTERVAL=50
 DATASET_NAME="train_multitask_${Train_DATASET}"
@@ -23,17 +23,17 @@ TEST_DATASET_NAMES=(
 
 # 测试图像路径数组
 TEST_IMAGE_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/images/"
 )
 
 # 测试掩码路径数组
 TEST_MASK_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/masks/"
 )
 
 # 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/LymphUs_test_labels.json"
 )
 
 # 确保数组长度一致
