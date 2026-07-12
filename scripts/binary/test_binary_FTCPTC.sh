@@ -6,28 +6,27 @@ DATASET_NAME="${TARGET_KEY}"
 CUDA_VISIBLE_DEVICES="1"
 
 # Model checkpoint path
-CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_FTCPTC/20260430_003910/dino_unet_train_multitask_FTCPTC_FTCPTC_epoch_50.pth"
-
-# Validation dataset paths (used when --threshold_malignancy is not provided)
-VAL_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
-VAL_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-VAL_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/FTCPTC_4795/train_multitask_FTCPTC_4795/20260712_185826/dino_unet_train_multitask_FTCPTC_4795_FTCPTC_epoch_15.pth"
 
 # Configure test dataset paths
+# 测试数据集名称数组
 TEST_DATASET_NAMES=(
-    "FTCPTC"
+    "FTCPTC_FangDai"
 )
 
+# 测试图像路径数组
 TEST_IMAGE_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/"
 )
 
+# 测试掩码路径数组
 TEST_MASK_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped_predictions/"
 )
 
+# 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/FangDai_all_labels.json"
 )
 
 if [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_IMAGE_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_MASK_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_LABEL_PATHS[@]} ]; then
@@ -37,12 +36,11 @@ fi
 
 SAVE_PATH="./predictions/binary/test_${DATASET_NAME}"
 SAVE_RESULTS="false"
-LOG_DIR="./logs/test_logs/binary/test_${DATASET_NAME}"
+LOG_DIR="./logs/test_logs/binary/test_${DATASET_NAME}_5012"
 IMG_SIZE=224
 DINO_PRETRAINED="true"
 
-# Set THRESHOLD_MALIGNANCY to a numeric value such as 0.5 to use a fixed threshold.
-# Leave it empty to compute the threshold from the validation set above.
+# Fixed threshold for malignancy classification.
 THRESHOLD_MALIGNANCY="0.5"
 
 # ---------------------- Execution ----------------------
@@ -84,14 +82,6 @@ CMD=(
     --dino_pretrained "$DINO_PRETRAINED"
 )
 
-if [ -n "$THRESHOLD_MALIGNANCY" ]; then
-    CMD+=(--threshold_malignancy "$THRESHOLD_MALIGNANCY")
-else
-    CMD+=(
-        --val_image_path "$VAL_IMAGE_PATH"
-        --val_gt_path "$VAL_MASK_PATH"
-        --val_label_path "$VAL_LABEL_PATH"
-    )
-fi
+CMD+=(--threshold_malignancy "$THRESHOLD_MALIGNANCY")
 
 "${CMD[@]}"
