@@ -6,11 +6,7 @@ DATASET_NAME="${TARGET_KEY}"
 CUDA_VISIBLE_DEVICES="1"
 
 # Model checkpoint path
-<<<<<<< HEAD
-CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_binary_FTCPTC/20260509_222700/dino_unet_train_multitask_FTCPTC_FangDai_FTCPTC_epoch_40.pth"
-=======
 CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_binary_FTCPTC/train_multitask_FTCPTC_FangDai/20260510_225817/dino_unet_train_multitask_FTCPTC_FangDai_FTCPTC_epoch_20.pth"
->>>>>>> ae9bd096515f3947b4405659dab1cf8fbca47d5f
 
 # Validation dataset paths (used when --threshold_malignancy is not provided)
 VAL_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"

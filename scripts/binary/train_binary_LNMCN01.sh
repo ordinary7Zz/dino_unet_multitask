@@ -12,7 +12,7 @@ LR=1e-4
 BATCH_SIZE=12
 CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/LNM"
 CHECKPOINT_INTERVAL=5
-EVAL_INTERVAL=50
+EVAL_INTERVAL=5
 DATASET_NAME="train_multitask_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
