@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 设置训练参数
-Train_DATASET="FangDai"
+Train_DATASET="FTCPTC_4795"
 CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
 TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/images/"
