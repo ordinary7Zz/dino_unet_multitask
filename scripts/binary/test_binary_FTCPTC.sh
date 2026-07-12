@@ -8,6 +8,11 @@ CUDA_VISIBLE_DEVICES="1"
 # Model checkpoint path
 CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/FTCPTC_4795/train_multitask_FTCPTC_4795/20260712_185826/dino_unet_train_multitask_FTCPTC_4795_FTCPTC_epoch_15.pth"
 
+# Validation dataset paths (used when --threshold_malignancy is not provided)
+VAL_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/"
+VAL_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped_predictions/"
+VAL_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/FangDai_all_labels.json"
+
 # Configure test dataset paths
 # 测试数据集名称数组
 TEST_DATASET_NAMES=(
@@ -40,7 +45,8 @@ LOG_DIR="./logs/test_logs/binary/test_${DATASET_NAME}_5012"
 IMG_SIZE=224
 DINO_PRETRAINED="true"
 
-# Fixed threshold for malignancy classification.
+# Set THRESHOLD_MALIGNANCY to a numeric value such as 0.5 to use a fixed threshold.
+# Leave it empty to compute the threshold from the validation set above.
 THRESHOLD_MALIGNANCY="0.5"
 
 # ---------------------- Execution ----------------------
@@ -82,6 +88,14 @@ CMD=(
     --dino_pretrained "$DINO_PRETRAINED"
 )
 
-CMD+=(--threshold_malignancy "$THRESHOLD_MALIGNANCY")
+if [ -n "$THRESHOLD_MALIGNANCY" ]; then
+    CMD+=(--threshold_malignancy "$THRESHOLD_MALIGNANCY")
+else
+    CMD+=(
+        --val_image_path "$VAL_IMAGE_PATH"
+        --val_gt_path "$VAL_MASK_PATH"
+        --val_label_path "$VAL_LABEL_PATH"
+    )
+fi
 
 "${CMD[@]}"

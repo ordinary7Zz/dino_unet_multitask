@@ -6,28 +6,31 @@ DATASET_NAME="${TARGET_KEY}"
 CUDA_VISIBLE_DEVICES="1"
 
 # Model checkpoint path
-CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/train_multitask_LNM_CN01/20260430_003927/dino_unet_train_multitask_LNM_CN01_LNM_CN01_epoch_50.pth"
+CHECKPOINT_PATH="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/LNM_4795/train_multitask_LNM_4795/20260712_185907/dino_unet_train_multitask_LNM_4795_LNM_CN01_epoch_35.pth"
 
 # Validation dataset paths (used when --threshold_malignancy is not provided)
-VAL_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
-VAL_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-VAL_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+VAL_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis_fake/images/"
+VAL_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis_fake/masks/"
+VAL_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis_fake/LymphUs_all_labels.json"
 
 # Configure test dataset paths
 TEST_DATASET_NAMES=(
-    "LNM_CN01"
+    "LymphUs"
 )
 
+# 测试图像路径数组
 TEST_IMAGE_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis_fake/images/"
 )
 
+# 测试掩码路径数组
 TEST_MASK_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis_fake/masks/"
 )
 
+# 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/test_labels.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Lymph_Node_Metastasis_fake/LymphUs_all_labels.json"
 )
 
 if [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_IMAGE_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_MASK_PATHS[@]} ] || [ ${#TEST_DATASET_NAMES[@]} -ne ${#TEST_LABEL_PATHS[@]} ]; then
