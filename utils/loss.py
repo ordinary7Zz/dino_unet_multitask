@@ -65,8 +65,17 @@ def tirads_loss(predict, target, class_weights=None, label_smoothing=0.0):
 
 def benign_malignant_loss_gla(predict, target, p_pos, p_neg, tau=1.0):
     """
-    增强版 GLA 良恶性二分类损失（支持Recall提升）
-    
+    基于 GLA (Logit Adjustment) 的良恶性二分类损失
+
+    参考: Menon et al., "Long-tail learning via logit adjustment", ICLR 2021.
+
+    对于 sigmoid 二分类（单 logit z），两类 softmax 的等价调整为:
+        logit_pos' = z + tau * log(pi_pos)
+        logit_neg' = 0 + tau * log(pi_neg)
+        => sigmoid(z + tau * (log(pi_pos) - log(pi_neg)))
+
+    即对所有样本施加相同的常数偏移，与 target 标签无关。
+
     predict: (B, 1) - logits
     target: (B,) 或 (B,1) - 0/1 (0: benign, 1: malignant)
     p_pos: 恶性样本比例 p(y=1)
@@ -78,16 +87,14 @@ def benign_malignant_loss_gla(predict, target, p_pos, p_neg, tau=1.0):
         target = target.squeeze(1)
 
     # ====== Logit Adjustment (GLA) ======
-    # 添加数值稳定性保护，确保概率值不为0
+    # 常数偏移，与 target 无关
     epsilon = 1e-8
     p_pos = max(p_pos, epsilon)
     p_neg = max(p_neg, epsilon)
-    
-    logit_adjust = target * torch.log(torch.tensor(p_pos, device=predict.device)) + \
-                   (1 - target) * torch.log(torch.tensor(p_neg, device=predict.device))
 
-    adjusted_logits = predict.squeeze(1) + tau * logit_adjust
-    
+    logit_adjust = tau * (np.log(p_pos) - np.log(p_neg))
+    adjusted_logits = predict.squeeze(1) + logit_adjust
+
     # 添加数值稳定性保护，防止logits过大或过小
     adjusted_logits = torch.clamp(adjusted_logits, min=-100, max=100)
 
