@@ -1,39 +1,39 @@
 #!/bin/bash
 
 # 设置训练参数
-Train_DATASET="FTCPTC"
+Train_DATASET="FangDai"
 CUDA_VISIBLE_DEVICES="1"
 METHOD="dino_unet"
-TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
-TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
-TRAIN_LABEL_PATH="my_json/train_labels_filtered_by_csv.json"  # 添加分类标签路径
-EPOCH=20
+TRAIN_IMAGE_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/images/"
+TRAIN_MASK_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/masks/"
+TRAIN_LABEL_PATH="/mnt/wangbd8/workspace/DataSets/ThyroidAgent/train_val_test/Malignant_images/Malignant_train_labels.json"  # 添加分类标签路径
+EPOCH=40
 LR=1e-4
 BATCH_SIZE=12
-CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints"
+CHECKPOINT_DIR="/mnt/wangbd8/workspace/ThyroidAgent/dino_unet_multitask/checkpoints/FTCPTC"
 CHECKPOINT_INTERVAL=5
-EVAL_INTERVAL=2
+EVAL_INTERVAL=5
 DATASET_NAME="train_multitask_${Train_DATASET}"
 
 # 使用数组配置多个测试数据集
 # 测试数据集名称数组
 TEST_DATASET_NAMES=(
-    "FTCPTC"
+    "FTCPTC_FangDai"
 )
 
 # 测试图像路径数组
 TEST_IMAGE_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/"
 )
 
 # 测试掩码路径数组
 TEST_MASK_PATHS=(
-    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/Malignant_ultrasound_images_cropped_predictions/"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped_predictions/"
 )
 
 # 测试分类标签路径数组
 TEST_LABEL_PATHS=(
-    "my_json/test_labels_filtered_by_csv.json"
+    "/mnt/wangbd8/workspace/DataSets/ThyroidAgent/Classifaction_Data/FangDai_Thyroid_Ultrasound_Images_cropped/FangDai_test_labels.json"
 )
 
 # 确保数组长度一致
